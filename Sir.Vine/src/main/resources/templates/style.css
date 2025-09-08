@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#pgInicial {
+    background-color: #151413;
+    height: 100vh;
+    width: 100vw;
+    /* background-image: url(/src/main/resources/static/imgInic.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    opacity: 0.95; */
+
+     position: absolute;
+    z-index: -1;
+
+}
+
+#pgInicial img {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.65;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+   height: 8vh;
+   background-color: #151413;
+   opacity: .7;
+}
+
+#title {
+    position: absolute;
+    z-index: 2;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 70px;
+    color: transparent;
+
+    padding: 0;
+    margin: 0;
+
+}
+
+#sir {
+    background: linear-gradient(90deg, rgba(255, 223, 135, 1) 2%, rgba(255, 0, 38, 1) 15%);
+    -webkit-background-clip: text;
+}
+
+#vine {
+    background: linear-gradient(90deg, rgba(255, 0, 38, 1) 2%, rgba(240, 194, 88, 1) 18%);
+    -webkit-background-clip: text;
+}
+
+h3 {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 260;
+    letter-spacing: 3px;
+    line-height: 40px;
+    font-size: 135%;
+}
+
+#title {
+    border: red solid;
+    width: 40%;
+}
+
+#btnInicial {
+    background-image: linear-gradient(to right, #CF1232 0%, #510B17 51%, #CF1232 100%);
+
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+
+    border: solid #9D7F3C 1px;
+}
+
+#btnInicial:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
