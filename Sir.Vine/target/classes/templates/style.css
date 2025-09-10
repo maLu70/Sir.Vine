@@ -9,46 +9,21 @@ body {
 #pgInicial {
     background-color: #151413;
     height: 100vh;
-    width: 100vw;
-    /* background-image: url(/src/main/resources/static/imgInic.png);
-    background-size: cover;
+
+    background-image: url("/Sir.Vine/src/main/resources/static/img/imgInicial.png");
     background-repeat: no-repeat;
 
-    opacity: 0.95; */
+    background-size: cover;
 
-     position: absolute;
-    z-index: -1;
-
-}
-
-#pgInicial img {
-    position: absolute;
-    z-index: -1;
-    opacity: 0.65;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-}
-
-header {
-   height: 8vh;
-   background-color: #151413;
-   opacity: .7;
-}
-
-#title {
-    position: absolute;
-    z-index: 2;
 }
 
 h1 {
     font-family: "Playfair Display", serif;
-    font-size: 70px;
+    font-size: 5rem;
     color: transparent;
 
     padding: 0;
     margin: 0;
-
 }
 
 #sir {
@@ -66,33 +41,145 @@ h3 {
     font-family: "Inter", sans-serif;
     font-weight: 260;
     letter-spacing: 3px;
-    line-height: 40px;
+    line-height: 2.5rem;
     font-size: 135%;
 }
 
 #title {
-    border: red solid;
     width: 40%;
+    margin: 10vw;
 }
 
 #btnInicial {
-    background-image: linear-gradient(to right, #CF1232 0%, #510B17 51%, #CF1232 100%);
+    background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
 
-    margin: 10px;
-    padding: 15px 45px;
+    margin-top: 3vw;
+    padding: 0.94rem 2.8rem;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
+
     background-size: 200% auto;
     color: white;
-    border-radius: 10px;
+    border-radius: 0.62rem;
     display: block;
 
     border: solid #9D7F3C 1px;
+
+    width: 11vw;
+    height: 3.5vw;
+
+    font-size: 0.94rem;
 }
 
 #btnInicial:hover {
     background-position: right center;
     color: #fff;
     text-decoration: none;
+}
+
+h2 {
+    font-size: 3.44rem;
+    color: transparent;
+
+    padding: 0;
+    margin: 0;
+
+    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 40%);
+    -webkit-background-clip: text;
+
+}
+
+h4 {
+    color: #CF1215;
+    font-family: "Playfair Display", serif;
+
+    font-size: 2.8rem;
+    margin: 1.5rem;
+
+    transition: 0.5s;
+
+
+}
+
+#meet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#vitrine {
+    display: flex;
+    width: 67vw;
+    justify-content: space-between;
+
+}
+
+section {
+    background-color: #151413;
+    height: 100vh;
+}
+
+#vinhos {
+    width: 25vw;
+    height: 38vw;
+
+    background-image: url("/Sir.Vine/src/main/resources/static/img/vinho.jpg");
+    background-size: cover;
+
+    box-shadow: inset 0em -20rem 15rem rgb(0, 0, 0);
+    transition: 0.5s;
+
+    display: flex;
+
+    align-items: flex-end;
+    
+
+}
+
+#espumantes,
+#queijos {
+    background-color: aliceblue;
+
+    width: 40vw;
+    height: 18vw;
+
+    box-shadow: inset 0em -15rem 9rem rgb(0, 0, 0);
+
+    display: flex;
+
+    align-items: flex-end;
+
+}
+
+#espumantes {
+    background-image: url("/Sir.Vine/src/main/resources/static/img/espumante.webp");
+    background-size: cover;
+
+}
+
+#queijos {
+    background-image: url("/Sir.Vine/src/main/resources/static/img/queijo.jpg");
+    background-size: cover;
+}
+
+#qe {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+
+    width: 40vw;
+}
+
+#vinhos:hover {
+    box-shadow: inset 0em -45rem 15rem rgb(0, 0, 0);
+    align-items: flex-start;
+
+
+}
+
+#queijos:hover, #espumantes:hover {
+    box-shadow: inset 0em -25rem 13rem rgb(0, 0, 0);
+    transition: 0.5s;
 }
