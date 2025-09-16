@@ -50,6 +50,10 @@ h3 {
     margin: 10vw;
 }
 
+button {
+    cursor: wait;
+}
+
 #btnInicial {
     background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
 
@@ -101,7 +105,7 @@ h4 {
 
 }
 
-#meet, #dest {
+#meet, #dest, #expCategoria {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -186,6 +190,9 @@ section {
 #prodDestaque img {
     width: 100%;
     height: 70%;
+
+    background-size: cover;
+
 }
 
 #prodDestaque {
@@ -195,6 +202,8 @@ section {
 
     display: flex;
     flex-direction: column;
+
+    cursor: pointer;
 
 }
 
@@ -229,4 +238,30 @@ section {
     display: flex;
     width: 75vw;
     justify-content: space-evenly;
+}
+
+.exp {
+    border: red solid;
+    width: 18vw;
+    height: 24vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.exp .nome {
+    font-family: "Playfair Display", serif;
+    color: white;
+
+}
+
+.exp .desc {
+    font-family: "Inter", sans-serif;
+    color: white;
+
+
+}
+
+.exp .rotulos {
+    font-family: "Inter", sans-serif;
+    color: #F0C258;
 }
