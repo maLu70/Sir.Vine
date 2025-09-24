@@ -50,10 +50,6 @@ h3 {
     margin: 10vw;
 }
 
-button {
-    cursor: wait;
-}
-
 #btnInicial {
     background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
 
