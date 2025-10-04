@@ -12,9 +12,7 @@ import jakarta.persistence.Table;
 
 public class Queijo extends Produto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idEspumante;
+    public Queijo(){}
 
     @Column(name = "leite")
     private String leite;
@@ -49,13 +47,6 @@ public class Queijo extends Produto {
         this.maturacao = maturacao;
     }
 
-    public long getIdEspumante() {
-        return idEspumante;
-    }
-
-    public void setIdEspumante(long idEspumante) {
-        this.idEspumante = idEspumante;
-    }
 
     public String getLeite() {
         return leite;

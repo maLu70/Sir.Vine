@@ -19,73 +19,39 @@ public class VinhoRepositorio {
 
     @Transactional
     public void save(Vinho vinho) {
-        String sql = "INSERT INTO vinho (descricao, nome, preco, img, tipo, teor, volume, cidade, pais, ano) VALUES (:descricao, :nome, :preco, :img, :tipo, :teor, :volume, :cidade, :pais, :ano)";
-
-        Query query = em.createNativeQuery(sql);
-
-        query.setParameter("descricao", vinho.getDescricao());
-        query.setParameter("nome", vinho.getNome());
-        query.setParameter("preco", vinho.getPreco());
-        query.setParameter("img", vinho.getImg());
-        query.setParameter("teor", vinho.getTeor());
-        query.setParameter("tipo", vinho.getTipo());
-        query.setParameter("volume", vinho.getVolume());
-        query.setParameter("teor", vinho.getTeor());
-        query.setParameter("tipo", vinho.getTipo());
-        query.setParameter("volume", vinho.getVolume());
-
-        query.executeUpdate();
+        em.persist(vinho);
     }
 
     public List<Vinho> findAll() {
         Query q = em.createNativeQuery("SELECT * FROM vinho", Vinho.class);
-
         List<Vinho> vinhos = q.getResultList();
-
         return vinhos;
     }
 
     public Vinho findById(int id) {
-        String sql = "SELECT * FROM vinho WHERE id = :vid";
+        return em.find(Vinho.class, id);
+    }
 
-        Query q = em.createNativeQuery(sql, Vinho.class);
-
-        q.setParameter("vid", id);
-        Vinho vinho = (Vinho) q.getSingleResult();
-
-        return vinho;
+    public List<Vinho> findByname(String nome) {
+        Query q = em.createNativeQuery("SELECT * FROM vinho Where nome  LIKE :nome", Vinho.class);
+        q.setParameter("nome", "%" + nome + "%");
+        List<Vinho> vinhos = q.getResultList();
+        return vinhos;
     }
 
     @Transactional
     public void delete(int id) {
-        String sql = "DELETE FROM vinho WHERE id = :id";
-
-        System.out.println("deletei");
-
-        Query q = em.createNativeQuery(sql);
-        q.setParameter("id", id);
-
-        q.executeUpdate();
+        Vinho vinho_deletado = em.find(Vinho.class, id);
+        em.remove(vinho_deletado);
 
     }
 
     @Transactional
     public List<Vinho> update(Vinho vinho) {
-
-        String sql = "update vinho set descricao = :descricao, nome = :nome, preco = :preco  where id = :id";
-        Query query = em.createNativeQuery(sql);
-
-        query.setParameter("descricao", vinho.getDescricao());
-        query.setParameter("nome", vinho.getNome());
-        query.setParameter("preco", vinho.getPreco());
-        query.setParameter("id", vinho.getId());
-
-        query.executeUpdate();
-
+        em.merge(vinho);
         List<Vinho> vinhos = findAll();
 
         return vinhos;
 
     }
 }
-

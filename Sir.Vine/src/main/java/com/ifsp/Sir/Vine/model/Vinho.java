@@ -11,9 +11,9 @@ import jakarta.persistence.Table;
 @Table(name = "vinho")
 public class Vinho extends Produto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idVinho;
+
+    public Vinho(){}
+
 
     @Column(name = "tipo")
     private String tipo;
@@ -35,14 +35,6 @@ public class Vinho extends Produto {
         this.tipo = tipo;
         this.teor = teor;
         this.volume = volume;
-    }
-
-    public long getIdVinho() {
-        return idVinho;
-    }
-
-    public void setIdVinho(long idVinho) {
-        this.idVinho = idVinho;
     }
 
     public String getTipo() {
