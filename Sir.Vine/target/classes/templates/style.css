@@ -6,6 +6,79 @@ body {
     padding: 0;
 }
 
+header {
+    height: 13vh;
+    background-color: rgba(21, 20, 19, 0.8);
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    width: 3vw;
+    object-fit: contain;
+    margin-right: 1vw;
+}
+
+#logo p {
+    font-size: 3rem;
+
+    font-family: "Playfair Display", serif;
+    color: transparent;
+
+    margin: 0;
+}
+
+header ul {
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    color: #d3d0ca;
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+
+    width: 40%;
+
+    padding: 0;
+}
+
+#atalhos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 15%;
+}
+
+#itensCar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    background-color: #CF1232;
+
+    position: absolute;
+
+    top: 3%;
+    right: 11.5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    color: white;
+
+}
+
 #pgInicial {
     background-color: #151413;
     height: 100vh;
@@ -14,7 +87,6 @@ body {
     background-repeat: no-repeat;
 
     background-size: cover;
-
 }
 
 h1 {
@@ -26,12 +98,12 @@ h1 {
     margin: 0;
 }
 
-#sir {
+.sir {
     background: linear-gradient(90deg, rgba(255, 223, 135, 1) 2%, rgba(255, 0, 38, 1) 15%);
     -webkit-background-clip: text;
 }
 
-#vine {
+.vine {
     background: linear-gradient(90deg, rgba(255, 0, 38, 1) 2%, rgba(240, 194, 88, 1) 18%);
     -webkit-background-clip: text;
 }
@@ -47,7 +119,8 @@ h3 {
 
 #title {
     width: 40%;
-    margin: 10vw;
+    margin-left: 10vw;
+    margin-top: 5vw;
 }
 
 #btnInicial {
@@ -61,10 +134,10 @@ h3 {
 
     background-size: 200% auto;
     color: white;
-    border-radius: 0.62rem;
     display: block;
 
     border: solid #9D7F3C 1px;
+    border-radius: 0.62rem;
 
     width: 11vw;
     height: 3.5vw;
@@ -87,7 +160,6 @@ h2 {
 
     background: linear-gradient(90deg, #FF3300 2%, #FFDF87 40%);
     -webkit-background-clip: text;
-
 }
 
 h4 {
@@ -97,7 +169,11 @@ h4 {
     font-size: 2.8rem;
     margin: 1.5rem;
 
-    transition: 0.5s;
+    /* transition: 0.5s; */
+
+    transition: transform .5s ease;
+
+    border: solid red;
 
 }
 
@@ -114,13 +190,11 @@ h4 {
     display: flex;
     width: 67vw;
     justify-content: space-between;
-
 }
 
 section {
     background-color: #151413;
     height: 100vh;
-
 }
 
 #vinhos {
@@ -135,8 +209,10 @@ section {
 
     display: flex;
 
-    align-items: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
 
+    flex-direction: column;
 }
 
 #espumantes,
@@ -150,14 +226,15 @@ section {
 
     display: flex;
 
-    align-items: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
 
+    flex-direction: column;
 }
 
 #espumantes {
     background-image: url("/Sir.Vine/src/main/resources/static/img/espumante.webp");
     background-size: cover;
-
 }
 
 #queijos {
@@ -173,11 +250,47 @@ section {
     width: 40vw;
 }
 
+#vinhos p,
+#queijos p,
+#espumantes p {
+    font-size: 1.6rem;
+    font-family: "Inter", sans-serif;
+    color: #d3d0ca;
+
+    font-weight: 260;
+    letter-spacing: 5px;
+
+    margin: 1.5rem;
+
+    border: solid red;
+
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    display: none;
+}
+
+#vinhos p {
+    width: 75%;
+}
+
+#queijos p,
+#espumantes p {
+    width: 85%;
+}
+
 #vinhos:hover {
     box-shadow: inset 0em -45rem 15rem rgb(0, 0, 0);
-    align-items: flex-start;
+    /* align-items: flex-start; */
 
     transition: 0.5s;
+}
+
+#vinhos:hover h4,
+#vinhos:hover p {
+    opacity: 1;
+    transform: translateY(-6vw);
+    display: block;
+
 }
 
 #queijos:hover,
@@ -186,11 +299,15 @@ section {
     transition: 0.5s;
 }
 
+#queijos:hover h4,
+#espumantes:hover h4 {
+    transform: translateY(-12vw);
+}
+
 #prodDestaque img {
     width: 100%;
     height: 70%;
     object-fit: cover;
-
 }
 
 #prodDestaque {
@@ -202,7 +319,6 @@ section {
     flex-direction: column;
 
     cursor: pointer;
-
 }
 
 #prodDestaque p {
@@ -275,7 +391,6 @@ section {
     color: #F0C258;
     margin: 0;
     font-size: 1.2rem;
-
 }
 
 .bolaImg {
@@ -324,12 +439,16 @@ section {
     background-color: #EBC24A;
 }
 
-#expVinhos, #expEspuma, #expQueijos {
+#expVinhos,
+#expEspuma,
+#expQueijos {
     transition: .5s;
 
 }
 
-#expVinhos:hover, #expQueijos:hover, #expEspuma:hover{
+#expVinhos:hover,
+#expQueijos:hover,
+#expEspuma:hover {
     box-shadow: rgba(240, 88, 88, 0.404) 0px 0px 1.5vw;
     width: 21vw;
     height: 26vw;
