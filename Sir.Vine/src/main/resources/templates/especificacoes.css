@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 body {
     margin: 0;
     padding: 0;
 }
 
 section {
-    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    border: green solid 2px;
+    background-color: #151413;
 }
 
 img {
@@ -19,50 +21,127 @@ img {
 }
 
 hr {
-    border: 1px black solid;
+    border: 1px white solid;
+    margin: 2rem 0 2rem 0;
+}
+
+h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem;
+    font-weight: 260;
+    margin: 0;
+}
+
+h3,
+p,
+table {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
+
+h3 {
+    color: #F0C258;
+    font-weight: 350;
+    font-size: 1.7rem;
+}
+
+p {
+    color: #CAC8C4;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    line-height: 2rem;
+
 }
 
 #especificacoes {
-    border: red solid;
+    width: 80vw;
     display: flex;
 
+    justify-content: space-between;
 }
 
 #bott {
     display: flex;
-    border: red solid;
+    align-items: center;
+    justify-content: space-between;
 
+    width: 100%;
 }
 
 #container {
-    width: 50vw;
+    width: 64%;
 
-    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
 
+    align-content: space-between;
+    justify-content: space-between;
 }
 
 #informacoes {
-    height: 70%;
+    height: 71%;
+    background-color: #221817;
+    color: white;
+    padding: 3rem;
+
 }
 
-#adicionar, #comprar {
-    margin-top: 3vw;
+#adicionar,
+#comprar {
     padding: 0.94rem 2.8rem;
+
     text-align: center;
     text-transform: uppercase;
-    transition: 0.5s;
+    color: white;
 
     background-size: 200% auto;
-    color: white;
-    border-radius: 0.62rem;
-    display: block;
 
     border: solid #9D7F3C 1px;
+    border-radius: 1rem;
 
-    width: 11vw;
-    height: 3.5vw;
+    width: 16vw;
+    height: 5vw;
 
     font-size: 0.94rem;
 
     cursor: pointer;
-} 
+}
+
+#unid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#mais,
+#menos {
+    width: 5vw;
+    height: 5vw;
+    cursor: pointer;
+
+    font-size: 3rem;
+}
+
+#mais {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    margin-left: .5rem;
+
+}
+
+#menos {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+
+    margin-right: .5rem;
+
+}
+
+input {
+    width: 5vw;
+    height: 5vw;
+
+    cursor: default;
+}
