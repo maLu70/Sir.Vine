@@ -167,13 +167,9 @@ h4 {
     font-family: "Playfair Display", serif;
 
     font-size: 2.8rem;
-    margin: 1.5rem;
+    margin: 2rem;
 
-    /* transition: 0.5s; */
-
-    transition: transform .5s ease;
-
-    border: solid red;
+    transition: transform .8s ease;
 
 }
 
@@ -205,14 +201,13 @@ section {
     background-size: cover;
 
     box-shadow: inset 0em -20rem 15rem rgb(0, 0, 0);
-    transition: 0.5s;
 
     display: flex;
 
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 #espumantes,
@@ -227,19 +222,20 @@ section {
     display: flex;
 
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
-    flex-direction: column;
+    flex-direction: column-reverse;
+
+    background-size: cover;
+
 }
 
 #espumantes {
     background-image: url("/Sir.Vine/src/main/resources/static/img/espumante.webp");
-    background-size: cover;
 }
 
 #queijos {
     background-image: url("/Sir.Vine/src/main/resources/static/img/queijo.jpg");
-    background-size: cover;
 }
 
 #qe {
@@ -260,13 +256,9 @@ section {
     font-weight: 260;
     letter-spacing: 5px;
 
-    margin: 1.5rem;
+    margin: 2rem;
 
-    border: solid red;
-
-    transition: opacity 0.5s ease;
     opacity: 0;
-    display: none;
 }
 
 #vinhos p {
@@ -276,32 +268,43 @@ section {
 #queijos p,
 #espumantes p {
     width: 85%;
+
 }
 
 #vinhos:hover {
     box-shadow: inset 0em -45rem 15rem rgb(0, 0, 0);
-    /* align-items: flex-start; */
-
-    transition: 0.5s;
+    transition: .8s;
+    flex-direction: column;
 }
 
 #vinhos:hover h4,
 #vinhos:hover p {
     opacity: 1;
-    transform: translateY(-6vw);
-    display: block;
-
+    transform: translateY(-.5vw);
 }
 
 #queijos:hover,
 #espumantes:hover {
     box-shadow: inset 0em -25rem 13rem rgb(0, 0, 0);
-    transition: 0.5s;
+    transition: 0.8s;
+
+    flex-direction: column;
 }
 
 #queijos:hover h4,
-#espumantes:hover h4 {
-    transform: translateY(-12vw);
+#espumantes:hover h4,
+#queijos:hover p,
+#espumantes:hover p {
+    transform: translateY(-1vw);
+    opacity: 1;
+
+}
+
+#queijos:hover p,
+#espumantes:hover p,
+#vinhos:hover p {
+    transition: 1s;
+
 }
 
 #prodDestaque img {
