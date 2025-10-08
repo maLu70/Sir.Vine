@@ -52,7 +52,8 @@
 
                 <div class="prodCar">
                     <img src="/Sir.Vine/src/main/resources/static/img/espumante.webp" alt="">
-                    <div class="infProdCaar">
+                    
+                    <div class="infProdCar">
                         <h4>Nome do Queijo</h4>
                         <p>Cidade, pais, ano</p>
 
@@ -61,14 +62,59 @@
                         </div>
 
                         <div class="quant"></div>
+
+                        <div class="unid">
+                            <button type="submit" class="menos">-</button>
+
+                            <input type="number" readonly>
+
+                            <button type="submit" class="mais">+</button>
+
+                        </div>
                     </div>
+
+                    <div class="valProdCar">
+                        <img src="/Sir.Vine/src/main/resources/static/icons/" alt="">
+                        <p>R$1111,50</p>
+                    </div>
+
+                </div>
+
+                <div class="prodCar">
+                    <img src="/Sir.Vine/src/main/resources/static/img/espumante.webp" alt="">
+                    
+                    <div class="infProdCar">
+                        <h4>Nome do Queijo</h4>
+                        <p>Cidade, pais, ano</p>
+
+                        <div class="tipoProd">
+                            <p>Queijo</p>
+                        </div>
+
+                        <div class="quant"></div>
+
+                        <div class="unid">
+                            <button type="submit" class="menos">-</button>
+
+                            <input type="number" readonly>
+
+                            <button type="submit" class="mais">+</button>
+
+                        </div>
+                    </div>
+
+                    <div class="valProdCar">
+                        <img src="/Sir.Vine/src/main/resources/static/icons/" alt="">
+                        <p>R$1111,50</p>
+                    </div>
+
                 </div>
 
             </div>
 
             <div id="infCompra">
                 <h3>Resumo do pedido</h3>
-                <table id="detalhes">
+                <table class="detalhes" id="preFre">
                     <tr>
                         <td class="prim">Preço</td>
                         <td>2025</td>
@@ -81,16 +127,15 @@
 
                 <hr>
 
-                <table id="detalhes">
+                <table class="detalhes" id="tot">
                     <tr>
-                        <td>Total</td>
-                        <td class="prim">2025</td>
+                        <td class="prim"> <b>Total</b></td>
+                        <td>2025</td>
                     </tr>
 
                 </table>
 
                 <button id="btnComprar" type="submit">Finalizar compra</button>
-
 
             </div>
         </div>
