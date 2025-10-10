@@ -18,6 +18,7 @@ section {
 
 img {
     width: 28vw;
+    border-radius: 1rem;
 }
 
 hr {
@@ -37,6 +38,22 @@ p,
 table {
     font-family: "Inter", sans-serif;
     margin: 0;
+}
+
+#detalhes {
+    width: 100%;
+
+    color: #CAC8C4;
+
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    line-height: 2rem;
+
+    margin-top: 1.5rem;
+}
+
+#detalhes td {
+    width: 50%;
 }
 
 h3 {
@@ -76,6 +93,7 @@ p {
 
     align-content: space-between;
     justify-content: space-between;
+
 }
 
 #informacoes {
@@ -84,6 +102,7 @@ p {
     color: white;
     padding: 3rem;
 
+    border-radius: 1rem;
 }
 
 #adicionar,
@@ -128,7 +147,6 @@ p {
     border-bottom-right-radius: 1rem;
 
     margin-left: .5rem;
-
 }
 
 #menos {
@@ -136,7 +154,6 @@ p {
     border-bottom-left-radius: 1rem;
 
     margin-right: .5rem;
-
 }
 
 input {
