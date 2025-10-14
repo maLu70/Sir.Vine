@@ -24,21 +24,21 @@ public class Vinho extends Produto {
     @Column(name = "volume")
     private String volume;
 
-    public Vinho(String descricao, String nome, Double preco, String img, String tipo, String teor, String volume) {
+    @Column(name = "uva")
+    private String uva;
+
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Vinho(String descricao, String nome, Double preco, String img, String tipo, String teor, String volume,
+            String uva) {
         super(descricao, nome, preco, img);
         this.tipo = tipo;
         this.teor = teor;
         this.volume = volume;
-    }
-
-    public Vinho(String tipo, String teor, String volume) {
-        this.tipo = tipo;
-        this.teor = teor;
-        this.volume = volume;
-    }
-
-    public String getTipo() {
-        return tipo;
+        this.uva = uva;
     }
 
     public void setTipo(String tipo) {
@@ -59,6 +59,14 @@ public class Vinho extends Produto {
 
     public void setVolume(String volume) {
         this.volume = volume;
+    }
+
+    public String getUva() {
+        return uva;
+    }
+
+    public void setUva(String uva) {
+        this.uva = uva;
     }
 
 }

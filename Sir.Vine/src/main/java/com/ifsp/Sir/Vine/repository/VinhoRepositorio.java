@@ -54,4 +54,15 @@ public class VinhoRepositorio {
         return vinhos;
 
     }
+
+    public int count() {
+        Query q = em.createNativeQuery("SELECT COUNT(*) FROM vinho");
+        return ((Number) q.getSingleResult()).intValue();
+    }
+
+    public Vinho randomVinho() {
+        int count = count();
+        int randomId = (int) (Math.random() * count) + 1;
+        return findAll().get(randomId - 1);
+    }
 }

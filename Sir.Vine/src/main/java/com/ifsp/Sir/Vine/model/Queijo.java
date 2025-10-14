@@ -2,9 +2,6 @@ package com.ifsp.Sir.Vine.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,25 +23,21 @@ public class Queijo extends Produto {
     @Column(name = "gorgura")
     private String gordura;
 
-    @Column(name = "maturacao")
-    private String maturacao;
 
-    public Queijo(String leite, String tipo, String peso, String gordura, String maturacao) {
+    public Queijo(String leite, String tipo, String peso, String gordura) {
         this.leite = leite;
         this.tipo = tipo;
         this.peso = peso;
         this.gordura = gordura;
-        this.maturacao = maturacao;
     }
 
     public Queijo(String descricao, String nome, Double preco, String img, String leite, String tipo, String peso,
-            String gordura, String maturacao) {
+            String gordura) {
         super(descricao, nome, preco, img);
         this.leite = leite;
         this.tipo = tipo;
         this.peso = peso;
         this.gordura = gordura;
-        this.maturacao = maturacao;
     }
 
 
@@ -78,14 +71,6 @@ public class Queijo extends Produto {
 
     public void setGordura(String gordura) {
         this.gordura = gordura;
-    }
-
-    public String getMaturacao() {
-        return maturacao;
-    }
-
-    public void setMaturacao(String maturacao) {
-        this.maturacao = maturacao;
     }
     
 }

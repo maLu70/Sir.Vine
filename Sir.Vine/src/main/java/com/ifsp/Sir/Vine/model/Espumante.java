@@ -2,9 +2,6 @@ package com.ifsp.Sir.Vine.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,17 +19,23 @@ public class Espumante extends Produto {
     @Column(name = "cor")
     private String cor;
 
-    public Espumante(String descricao, String nome, Double preco, String img, String teor, String volume, String cor) {
+    @Column(name = "uva")
+    private String uva;
+
+
+    public Espumante(String descricao, String nome, Double preco, String img, String teor, String volume, String cor, String uva) {
         super(descricao, nome, preco, img);
         this.teor = teor;
         this.volume = volume;
         this.cor = cor;
+        this.uva = uva;
     }
 
-    public Espumante(String teor, String volume, String cor) {
+    public Espumante(String teor, String volume, String cor, String uva) {
         this.teor = teor;
         this.volume = volume;
         this.cor = cor;
+        this.uva = uva;
     }
 
     public String getTeor() {
@@ -58,7 +61,10 @@ public class Espumante extends Produto {
     public void setCor(String cor) {
         this.cor = cor;
     }
-
-    
-    
+    public String getUva() {
+        return uva;
+    }
+    public void setUva(String uva) {
+        this.uva = uva;
+    }
 }
