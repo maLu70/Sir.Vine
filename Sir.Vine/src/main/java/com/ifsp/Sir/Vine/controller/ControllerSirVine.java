@@ -26,17 +26,23 @@ import com.ifsp.Sir.Vine.repository.EspumanteRepositorio;
 public class ControllerSirVine {
 
     @Autowired
-    private EspumanteService EspumanteService;
+    private EspumanteService espumanteService;
 
     @Autowired
-    private QueijoService QueijoService;
+    private QueijoService queijoService;
 
     @Autowired
-    private VinhoService VinhoService;
+    private VinhoService vinhoService;
 
     Model model;
+
+    @Autowired
     QueijoRepositorio queijoRepositorio;
+    
+    @Autowired
     EspumanteRepositorio espumanteRepositorio;
+
+    @Autowired
     VinhoRepositorio vinhoRepositorio;
 
     @GetMapping("/")
@@ -109,17 +115,21 @@ public class ControllerSirVine {
                 System.out.println("\n"+ radioEspuma + "\n " + radioQueijo + "\n " + radioVinho);
 
         if (radioVinho == 1) {
-            Vinho vinho = new Vinho(desc, nome, pc, VinhoService.guardarImg(image), cidade, ano, pais, tipoV, teorV,
+            Vinho vinho = new Vinho(desc, nome, pc, vinhoService.guardarImg(image), cidade, ano, pais, tipoV, teorV,
                     volV, uvaV);
+                    vinhoRepositorio.save(vinho);
         } else if (radioQueijo == 1) {
-            Queijo queijo = new Queijo(desc, nome, pc, QueijoService.guardarImg(image), cidade, ano, pais, anmQueijo,
+            Queijo queijo = new Queijo(desc, nome, pc, queijoService.guardarImg(image), cidade, ano, pais, anmQueijo,
                     tipoQueijo, pesoQueijo, gordQueijo);
-        } else if (radioQueijo == 1) {
-            Espumante espumante = new Espumante(desc, nome, pc, EspumanteService.guardarImg(image), cidade, ano, pais,
+                    queijoRepositorio.save(queijo);
+        } else if (radioEspuma == 1) {
+            Espumante espumante = new Espumante(desc, nome, pc, espumanteService.guardarImg(image), cidade, ano, pais,
                     teorEspuma, volEspuma, tipoEspuma, atmEspuma);
+                    espumanteRepositorio.save(espumante);
         } else {
 
-            System.out.println("\n  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ");
+            return "redirect:/CadastrarProduto";
+
         }
 
         return "redirect:/";

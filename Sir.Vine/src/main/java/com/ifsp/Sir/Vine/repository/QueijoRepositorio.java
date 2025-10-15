@@ -2,6 +2,8 @@ package com.ifsp.Sir.Vine.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.ifsp.Sir.Vine.model.Queijo;
 import com.ifsp.Sir.Vine.model.Vinho;
 
@@ -10,6 +12,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 
+@Repository
 public class QueijoRepositorio {
     @PersistenceContext
     private EntityManager em;

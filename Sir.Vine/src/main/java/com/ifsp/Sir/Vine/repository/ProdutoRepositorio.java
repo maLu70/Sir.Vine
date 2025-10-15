@@ -2,12 +2,15 @@ package com.ifsp.Sir.Vine.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.ifsp.Sir.Vine.model.Produto;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
+@Repository
 public class ProdutoRepositorio {
     @PersistenceContext
     private EntityManager em;

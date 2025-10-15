@@ -20,7 +20,7 @@ public class Queijo extends Produto {
     @Column(name = "peso")
     private String peso;
 
-    @Column(name = "gorgura")
+    @Column(name = "gordura")
     private String gordura;
 
 

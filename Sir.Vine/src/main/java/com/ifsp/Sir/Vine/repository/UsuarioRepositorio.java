@@ -1,11 +1,14 @@
 package com.ifsp.Sir.Vine.repository;
 
+import org.springframework.stereotype.Repository;
+
 import com.ifsp.Sir.Vine.model.Usuario;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
+@Repository
 public class UsuarioRepositorio {
 
     
