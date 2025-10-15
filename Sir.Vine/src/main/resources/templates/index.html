@@ -95,17 +95,17 @@
             <div class="prodDestaque">
 
                 <div class="imgDest">
-                    <img src="/img/vinho.jpg" alt="">
+                    <img th:src="@{${randomv.img}}" alt="">
 
                     <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                 </div>
 
 
-                <p class="nome">Nome do produto</p>
-                <p class="loc">Cidade, pais - ano</p>
+                <p class="nome">[[${randomv.nome}]]</p>
+                <p class="loc">[[${randomv.cidade}]], [[${randomv.pais}]] - [[${randomv.ano}]]</p>
 
                 <b>
-                    <p class="preco">R$ 1111,12</p>
+                    <p class="preco">R$ [[${randomv.preco}]]</p>
                 </b>
 
             </div>
@@ -113,16 +113,16 @@
             <div class="prodDestaque">
 
                 <div class="imgDest">
-                    <img src="/img/vinho.jpg" alt="">
+                    <img th:src="@{${randomq.img}}" alt="">
 
                     <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                 </div>
 
-                <p class="nome">Nome do produto</p>
-                <p class="loc">Cidade, pais - ano</p>
+                <p class="nome">[[${randomq.nome}]]</p>
+                <p class="loc">[[${randomq.cidade}]], [[${randomq.pais}]] - [[${randomq.ano}]]</p>
 
                 <b>
-                    <p class="preco">R$ 1111,12</p>
+                    <p class="preco">R$ [[${randomq.preco}]]</p>
                 </b>
 
             </div>
@@ -130,16 +130,16 @@
             <div class="prodDestaque">
 
                 <div class="imgDest">
-                    <img src="/img/vinho.jpg" alt="">
+                    <img th:src="@{${randome.img}}" alt="">
 
                     <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                 </div>
 
-                <p class="nome">Nome do produto</p>
-                <p class="loc">Cidade, pais - ano</p>
+                <p class="nome">[[${randome.nome}]]</p>
+                <p class="loc">[[${randome.cidade}]], [[${randome.pais}]] - [[${randome.ano}]]</p>
 
                 <b>
-                    <p class="preco">R$ 1111,12</p>
+                    <p class="preco">R$ [[${randome.preco}]]</p>
                 </b>
 
             </div>

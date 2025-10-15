@@ -34,8 +34,6 @@ public class ControllerSirVine {
     @Autowired
     private VinhoService vinhoService;
 
-    Model model;
-
     @Autowired
     QueijoRepositorio queijoRepositorio;
     
@@ -46,17 +44,20 @@ public class ControllerSirVine {
     VinhoRepositorio vinhoRepositorio;
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("randomv", vinhoRepositorio.randomVinho());
+        model.addAttribute("randome", espumanteRepositorio.randomEspumante());
+        model.addAttribute("randomq", queijoRepositorio.randomQueijo());
         return "index";
     }
 
-    @GetMapping("/Carrinho")
+    @GetMapping("/carrinho")
     public String carrinho() {
         return "carrinho";
     }
 
-    @GetMapping("/Especificacao/{tipo}/{id}")
-    public String especificacao(@PathVariable int id, @PathVariable String tipo) {
+    @GetMapping("/especificacao/{tipo}/{id}")
+    public String especificacao(@PathVariable int id, @PathVariable String tipo, Model model) {
         if (tipo.toLowerCase().equals("vinho")) {
 
             model.addAttribute("produto", vinhoRepositorio.findById(id));
@@ -76,12 +77,12 @@ public class ControllerSirVine {
         return "especificacao";
     }
 
-    @GetMapping("/CadastrarProduto")
+    @GetMapping("/cadastrarProduto")
     public String cadastrarProduto() {
         return "adicionarEditarProduto";
     }
 
-    @PostMapping("/CriarProduto")
+    @PostMapping("/criarProduto")
     public String criarProduto(
             @RequestParam(required = false) Integer radioVinho,
             @RequestParam(required = false) Integer radioQueijo,
@@ -128,7 +129,7 @@ public class ControllerSirVine {
                     espumanteRepositorio.save(espumante);
         } else {
 
-            return "redirect:/CadastrarProduto";
+            return "redirect:/cadastrarProduto";
 
         }
 

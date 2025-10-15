@@ -19,9 +19,9 @@ public class QueijoRepositorio {
 
 
     public List<Queijo> findall(){
-        Query q = em.createNativeQuery("SELECT * FROM queijo", Queijo.class);
-        List<Queijo> Queijos = q.getResultList();
-        return Queijos;
+         Query q = em.createQuery("SELECT v FROM Queijo v", Queijo.class);
+        List<Queijo> queijos = q.getResultList();
+        return queijos;
     }
 
     @Transactional

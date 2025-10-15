@@ -23,7 +23,7 @@ public class VinhoRepositorio {
     }
 
     public List<Vinho> findAll() {
-        Query q = em.createNativeQuery("SELECT * FROM vinho", Vinho.class);
+        Query q = em.createQuery("SELECT v FROM Vinho v", Vinho.class);
         List<Vinho> vinhos = q.getResultList();
         return vinhos;
     }
@@ -63,6 +63,8 @@ public class VinhoRepositorio {
     public Vinho randomVinho() {
         int count = count();
         int randomId = (int) (Math.random() * count) + 1;
+        System.out.println("achou o vinho " + randomId);
         return findAll().get(randomId - 1);
+        
     }
 }

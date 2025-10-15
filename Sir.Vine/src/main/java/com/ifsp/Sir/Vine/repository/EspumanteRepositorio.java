@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.ifsp.Sir.Vine.model.Espumante;
+import com.ifsp.Sir.Vine.model.Vinho;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -17,9 +18,9 @@ public class EspumanteRepositorio {
     private EntityManager em;
 
     public List<Espumante> findAll(){
-        Query q = em.createNativeQuery("SELECT * FROM espumante", Espumante.class);
-        List<Espumante> Espumantes = q.getResultList();
-        return Espumantes;
+        Query q = em.createQuery("SELECT v FROM Espumante v", Espumante.class);
+        List<Espumante> espumantes = q.getResultList();
+        return espumantes;
     }
     
     @Transactional
@@ -47,7 +48,7 @@ public class EspumanteRepositorio {
         return ((Number) q.getSingleResult()).intValue();
     }
 
-    public Espumante randoEspumante() {
+    public Espumante randomEspumante() {
         int count = count();
         int randomId = (int) (Math.random() * count) + 1;
         return findAll().get(randomId - 1);

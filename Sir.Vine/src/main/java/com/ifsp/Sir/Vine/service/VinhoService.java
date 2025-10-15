@@ -22,7 +22,7 @@ public class VinhoService {
 
         Files.copy(imagem.getInputStream(), enderecoArquivo.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-        String endereco = "../" + imagem.getOriginalFilename();
+        String endereco = "/vinho/" + imagem.getOriginalFilename();
         return endereco;
 
     }
