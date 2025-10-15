@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto</title>
+</head>
+
+<body>
+
+    <section>
+        <header>
+            <div id="logo" style="display: flex;">
+
+                <img src="/icons/servine.png" alt="">
+
+                <p class="sir">Sir. </p>
+                <p class="vine">Vines</p>
+            </div>
+
+            <ul>
+                <li>Catalogo</li>
+                <li>Espumantes</li>
+                <li>Vinhos</li>
+                <li>Queijos</li>
+            </ul>
+
+            <div id="atalhos">
+
+                <div id="itensCar">X</div>
+                <img src="/icons/lupa.svg" alt="">
+
+                <img src="/icons/carrinho.svg" alt="">
+
+
+                <img src="/icons/perfil.svg" alt="">
+
+            </div>
+
+        </header>
+
+        <h1>Adicionar produto</h1>
+
+        <form th:action="@{/CriarProduto}" th:method="post" enctype="multipart/form-data">
+
+            <div>
+
+                <input type="radio" id="vinho" th:name="radioVinho" name="prod">
+                <label for="vinho">Vinho</label>
+
+                <input type="radio" id="queijo" th:name="radioQueijo" name="prod">
+                <label for="queijo">Queijo</label>
+
+                <input type="radio" id="espumante" th:name="radioEspuma" name="prod">
+                <label for="espumante">Espumante</label>
+
+            </div>
+
+            <br><br>
+
+            <div id="adProd">
+
+                <div>
+
+                    <label for="nome" >Nome do produto</label>
+                    <input type="text" id="nome" th:name="nome">
+
+                    <br><br>
+
+                    <label for="desc" >Descrição</label>
+                    <textarea name="oi" id="desc" th:name="desc"></textarea>
+
+                </div>
+
+                <br><br>
+
+                <div id="adVinho" style="border: red solid;">
+
+                    <label for="volV">Volume (ml)</label>
+                    <input type="number" id="volV" th:name="volV">
+
+                    <br><br>
+
+                    <label for="tipoV">Tipo</label>
+                    <select name="" id="tipoV" th:name="tipoV">
+                        <option th:value="seco">Seco</option>
+                        <option th:value="branco">Branco</option>
+                        <option th:value="tinto">Tinto</option>
+                        <option th:value="rose">Rosé</option>
+
+                    </select>
+
+                    <br><br>
+
+                    <label for="teorV">Teor Alcoólico (%)</label>
+                    <input type="number" id="teorV" th:name="teorV" step="0.01">
+
+                    <br><br>
+
+                    <label for="uvaV">Uva</label>
+                    <input type="text" th:name="uvaV" id="uvaV">
+
+                    <br><br>
+
+                </div>
+
+                <br><br>
+
+                <div id="adEspuma" style="border: rgb(255, 187, 0) solid;">
+
+                    <label for="volEspuma">Volume (ml)</label>
+                    <input type="number" th:name="volEspuma" id="volEspuma">
+
+                    <br><br>
+
+                    <label for="tipoEspuma">Tipo</label>
+                    <select name="" id="tipoEspuma" th:name="tipoEspuma">
+
+                        <option th:value="nature">Nature</option>
+                        <option th:value="eBrut">Extra Brut</option>
+                        <option th:value="brut">Brut</option>
+                        <option th:value="demiSec">Demi-Sec</option>
+                        <option th:value="moscatel">Moscatel</option>
+
+                    </select>
+
+                    <br><br>
+
+                    <label for="teorEspuma">Teor Alcoólico (%)</label>
+                    <input type="number" id="teorEspuma" th:name="teorEspuma" step="0.01">
+
+                    <br><br>
+
+                    <label for="atmEspuma">Pressão</label>
+                    <input type="number" id="atmEspuma" th:name="atmEspuma" step="0.01">
+
+                    <br><br>
+
+                </div>
+                <br><br>
+
+
+                <div id="adEspuma" style="border: rgb(0, 132, 255) solid;">
+
+                    <label for="pesoQueijo">Peso (Kg)</label>
+                    <input type="number" id="pesoQueijo" th:name="pesoQueijo"  step="0.01">
+
+                    <br><br>
+
+                    <label for="tipoQueijo">Tipo</label>
+                    <input type="text" id="tipoQueijo" th:name="tipoQueijo" >
+
+                    <br><br>
+
+                    <label for="gordQueijo">Gordura (%)</label>
+                    <input type="number" id="gordQueijo" step="0.01" th:name="gordQueijo" >
+
+                    <br><br>
+
+                    <label for="anmQueijo">Animal de leite</label>
+                    <input type="text" id="anmQueijo" th:name="anmQueijo" >
+
+                    <br><br>
+
+                </div>
+
+                <div>
+
+                    <label for="pais">País</label>
+                    <input type="text" id="pais" th:name="pais" >
+
+                    <br><br>
+
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" th:name="cidade">
+
+                    <br><br>
+
+                    <label for="ano">Ano</label>
+                    <input type="number" id="ano" th:name="ano">
+
+                    <br><br>
+
+                    <label for="pc">Preço (R$)</label>
+                    <input type="number" id="pc" step="0.01" th:name="pc">
+
+                    <br><br>
+
+                    <label for="est">Estoque</label>
+                    <input type="number" id="est" th:name="est">
+
+                    <br><br>
+
+                    <label for="image">Imagem</label>
+                    <input type="file" accept="image/*" th:name="image" id="image">
+                </div>
+
+            </div>
+
+            <button type="submit">vai irmao</button>
+        </form>
+    </section>
+
+</body>
+
+</html>

@@ -38,11 +38,17 @@ public class Produto {
     @Column(name = "pais")
     private String pais;
 
-    public Produto(String descricao, String nome, Double preco, String img) {
+    public Produto() {
+    }
+
+    public Produto(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais) {
         this.descricao = descricao;
         this.nome = nome;
         this.preco = preco;
         this.img = img;
+        this.cidade = cidade;
+        this.ano = ano;
+        this.pais = pais;
     }
 
     public String getCidade() {
@@ -75,15 +81,6 @@ public class Produto {
 
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public Produto(String descricao, String nome, Double preco) {
-        this.descricao = descricao;
-        this.nome = nome;
-        this.preco = preco;
-    }
-
-    public Produto() {
     }
 
     public long getId() {

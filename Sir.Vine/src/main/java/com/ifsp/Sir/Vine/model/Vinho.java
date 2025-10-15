@@ -11,10 +11,6 @@ import jakarta.persistence.Table;
 @Table(name = "vinho")
 public class Vinho extends Produto {
 
-
-    public Vinho(){}
-
-
     @Column(name = "tipo")
     private String tipo;
 
@@ -27,18 +23,27 @@ public class Vinho extends Produto {
     @Column(name = "uva")
     private String uva;
 
-    
-    public String getTipo() {
-        return tipo;
+    public Vinho() {
     }
 
-    public Vinho(String descricao, String nome, Double preco, String img, String tipo, String teor, String volume,
-            String uva) {
-        super(descricao, nome, preco, img);
+    public Vinho(String tipo, String teor, String volume, String uva) {
         this.tipo = tipo;
         this.teor = teor;
         this.volume = volume;
         this.uva = uva;
+    }
+
+    public Vinho(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais,
+            String tipo, String teor, String volume, String uva) {
+        super(descricao, nome, preco, img, cidade, ano, pais);
+        this.tipo = tipo;
+        this.teor = teor;
+        this.volume = volume;
+        this.uva = uva;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
 
     public void setTipo(String tipo) {

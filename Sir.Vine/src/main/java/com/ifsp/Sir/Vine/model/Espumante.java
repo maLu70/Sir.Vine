@@ -8,34 +8,43 @@ import jakarta.persistence.Table;
 @Table(name = "espumante")
 public class Espumante extends Produto {
 
-    public Espumante(){}
-
     @Column(name = "teor")
     private String teor;
 
     @Column(name = "volume")
     private String volume;
 
-    @Column(name = "cor")
-    private String cor;
+    @Column(name = "tipo")
+    private String tipo;
+    
+    @Column(name = "pressao")
+    private String pressao;
 
-    @Column(name = "uva")
-    private String uva;
-
-
-    public Espumante(String descricao, String nome, Double preco, String img, String teor, String volume, String cor, String uva) {
-        super(descricao, nome, preco, img);
-        this.teor = teor;
-        this.volume = volume;
-        this.cor = cor;
-        this.uva = uva;
+    public Espumante() {
     }
 
-    public Espumante(String teor, String volume, String cor, String uva) {
+    public Espumante(String teor, String volume, String tipo, String pressao) {
         this.teor = teor;
         this.volume = volume;
-        this.cor = cor;
-        this.uva = uva;
+        this.tipo = tipo;
+        this.pressao = pressao;
+    }
+
+    public Espumante(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais,
+            String teor, String volume, String tipo, String pressao) {
+        super(descricao, nome, preco, img, cidade, ano, pais);
+        this.teor = teor;
+        this.volume = volume;
+        this.tipo = tipo;
+        this.pressao = pressao;
+    }
+
+    public String getPressao() {
+        return pressao;
+    }
+
+    public void setPressao(String pressao) {
+        this.pressao = pressao;
     }
 
     public String getTeor() {
@@ -54,17 +63,12 @@ public class Espumante extends Produto {
         this.volume = volume;
     }
 
-    public String getCor() {
-        return cor;
+    public String gettipo() {
+        return tipo;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void settipo(String tipo) {
+        this.tipo = tipo;
     }
-    public String getUva() {
-        return uva;
-    }
-    public void setUva(String uva) {
-        this.uva = uva;
-    }
+
 }

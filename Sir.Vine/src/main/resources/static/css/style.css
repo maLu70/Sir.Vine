@@ -1,0 +1,508 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 13vh;
+    background-color: rgba(21, 20, 19, 0.8);
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    width: 3vw;
+    object-fit: contain;
+    margin-right: 1vw;
+}
+
+#logo p {
+    font-size: 3rem;
+
+    font-family: "Playfair Display", serif;
+    color: transparent;
+
+    margin: 0;
+}
+
+header ul {
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    color: #d3d0ca;
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+
+    width: 40%;
+
+    padding: 0;
+}
+
+#atalhos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 15%;
+}
+
+#itensCar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    background-color: #CF1232;
+
+    position: absolute;
+
+    top: 3%;
+    right: 11.5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    color: white;
+
+}
+
+#pgInicial {
+    background-color: #151413;
+    height: 100vh;
+
+    background-image: url("/img/imgInicial.png");
+    background-repeat: no-repeat;
+
+    background-size: cover;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+    color: transparent;
+
+    padding: 0;
+    margin: 0;
+}
+
+.sir {
+    background: linear-gradient(90deg, rgba(255, 223, 135, 1) 2%, rgba(255, 0, 38, 1) 15%);
+    -webkit-background-clip: text;
+}
+
+.vine {
+    background: linear-gradient(90deg, rgba(255, 0, 38, 1) 2%, rgba(240, 194, 88, 1) 18%);
+    -webkit-background-clip: text;
+}
+
+h3 {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 260;
+    letter-spacing: 3px;
+    line-height: 2.5rem;
+    font-size: 135%;
+}
+
+#title {
+    width: 40%;
+    margin-left: 10vw;
+    margin-top: 5vw;
+}
+
+#btnInicial {
+    background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
+
+    margin-top: 3vw;
+    padding: 0.94rem 2.8rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    background-size: 200% auto;
+    color: white;
+    display: block;
+
+    border: solid #9D7F3C 1px;
+    border-radius: 0.62rem;
+
+    width: 11vw;
+    height: 3.5vw;
+
+    font-size: 0.94rem;
+}
+
+#btnInicial:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 3.44rem;
+    color: transparent;
+
+    padding: 0;
+    margin: 0;
+
+    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 40%);
+    -webkit-background-clip: text;
+}
+
+h4 {
+    color: #CF1215;
+    font-family: "Playfair Display", serif;
+
+    font-size: 2.8rem;
+    margin: 2rem;
+
+    transition: transform .8s ease;
+}
+
+#meet,
+#dest,
+#expCategoria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#vitrine {
+    display: flex;
+    width: 67vw;
+    justify-content: space-between;
+}
+
+section {
+    background-color: #151413;
+    height: 100vh;
+}
+
+#vinhos {
+    width: 25vw;
+    height: 38vw;
+
+    background-image: url("/img/vinho.jpg");
+    background-size: cover;
+
+    box-shadow: inset 0em -20rem 15rem rgb(0, 0, 0);
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    flex-direction: column-reverse;
+}
+
+#espumantes,
+#queijos {
+    background-color: aliceblue;
+
+    width: 40vw;
+    height: 18vw;
+
+    box-shadow: inset 0em -15rem 9rem rgb(0, 0, 0);
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    flex-direction: column-reverse;
+
+    background-size: cover;
+
+}
+
+#espumantes {
+    background-image: url("/img/espumante.webp");
+}
+
+#queijos {
+    background-image: url("/img/queijo.jpg");
+}
+
+#qe {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+
+    width: 40vw;
+}
+
+#vinhos p,
+#queijos p,
+#espumantes p {
+    font-size: 1.6rem;
+    font-family: "Inter", sans-serif;
+    color: #d3d0ca;
+
+    font-weight: 260;
+    letter-spacing: 5px;
+
+    margin: 2rem;
+
+    opacity: 0;
+}
+
+#vinhos p {
+    width: 75%;
+}
+
+#queijos p,
+#espumantes p {
+    width: 85%;
+
+}
+
+#vinhos:hover {
+    box-shadow: inset 0em -45rem 15rem rgb(0, 0, 0);
+    transition: .8s;
+    flex-direction: column;
+}
+
+#vinhos:hover h4,
+#vinhos:hover p {
+    opacity: 1;
+    transform: translateY(-.5vw);
+}
+
+#queijos:hover,
+#espumantes:hover {
+    box-shadow: inset 0em -25rem 13rem rgb(0, 0, 0);
+    transition: 0.8s;
+
+    flex-direction: column;
+}
+
+#queijos:hover h4,
+#espumantes:hover h4,
+#queijos:hover p,
+#espumantes:hover p {
+    transform: translateY(-1vw);
+    opacity: 1;
+
+}
+
+#queijos:hover p,
+#espumantes:hover p,
+#vinhos:hover p {
+    transition: 1s;
+
+}
+
+.imgDest {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prodDestaque img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+.prodDestaque {
+    width: 20vw;
+    height: 30vw;
+    background-color: #201E1B;
+
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    align-items: center;
+
+    border: #201E1B solid 1px;
+}
+
+.prodDestaque p {
+    margin: 1%;
+    margin-left: 8%;
+    width: 91%;
+}
+
+.prodDestaque b {
+    width: 100%;
+}
+
+.prodDestaque .nome {
+    font-family: "Playfair Display", serif;
+    color: white;
+    font-size: 2rem;
+    margin-top: 5%;
+}
+
+.prodDestaque .loc {
+    color: #F0C258;
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+}
+
+.prodDestaque .preco {
+    color: #CF1215;
+    font-family: "Inter", sans-serif;
+    font-size: 1.8rem;
+}
+
+#pDest {
+    width: 75vw;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.imgDest .btnAdcProd {
+    background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
+
+    margin-top: 3vw;
+    padding: 0.94rem 2.8rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    background-size: 200% auto;
+    color: white;
+
+    border: solid #9D7F3C 1px;
+    border-radius: 1rem;
+
+    width: 90%;
+
+    position: relative;
+    top: -6vw;
+    z-index: 1;
+
+    cursor: pointer;
+
+    transition: transform .5s ease, opacity 0.3s ease-in-out;
+
+    opacity: 0;
+
+}
+
+.prodDestaque:hover .btnAdcProd {
+    opacity: 1;
+    transform: translateY(-1vw);
+}
+
+.exp {
+    width: 20vw;
+    height: 25vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #221817;
+    box-shadow: rgba(240, 194, 88, 0.15) 0px 0px 1vw;
+
+    cursor: pointer;
+
+}
+
+.exp .nome {
+    font-family: "Playfair Display", serif;
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+
+}
+
+.exp .desc {
+    font-family: "Inter", sans-serif;
+    color: #A6A096;
+    margin: 0;
+    font-size: 1.4rem;
+
+}
+
+.exp .rotulos {
+    font-family: "Inter", sans-serif;
+    color: #F0C258;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.bolaImg {
+    border-radius: 50%;
+    width: 60%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bolaImg img {
+    width: 50%;
+}
+
+.iconExp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    height: 19vw;
+    width: 13vw;
+
+}
+
+#contCat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 68vw;
+
+}
+
+#expVinhos .bolaImg {
+    background-color: #871A1C;
+}
+
+#expEspuma .bolaImg {
+    background-color: #FFDF87;
+}
+
+#expQueijos .bolaImg {
+    background-color: #EBC24A;
+}
+
+#expVinhos,
+#expEspuma,
+#expQueijos {
+    transition: .5s;
+
+}
+
+#expVinhos:hover,
+#expQueijos:hover,
+#expEspuma:hover {
+    box-shadow: rgba(240, 88, 88, 0.404) 0px 0px 1.5vw;
+    width: 21vw;
+    height: 26vw;
+
+}
