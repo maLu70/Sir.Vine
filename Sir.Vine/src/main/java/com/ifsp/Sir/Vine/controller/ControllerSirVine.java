@@ -77,9 +77,9 @@ public class ControllerSirVine {
 
     @PostMapping("/CriarProduto")
     public String criarProduto(
-            @RequestParam(required = false) Boolean radioVinho,
-            @RequestParam(required = false) Boolean radioQueijo,
-            @RequestParam(required = false) Boolean radioEspuma,
+            @RequestParam(required = false) Integer radioVinho,
+            @RequestParam(required = false) Integer radioQueijo,
+            @RequestParam(required = false) Integer radioEspuma,
 
             @RequestParam(required = false) String volV,
             @RequestParam(required = false) String tipoV,
@@ -106,13 +106,15 @@ public class ControllerSirVine {
             @RequestParam String desc,
             @RequestParam("image") MultipartFile image) throws IOException {
 
-        if (radioVinho) {
+                System.out.println("\n"+ radioEspuma + "\n " + radioQueijo + "\n " + radioVinho);
+
+        if (radioVinho == 1) {
             Vinho vinho = new Vinho(desc, nome, pc, VinhoService.guardarImg(image), cidade, ano, pais, tipoV, teorV,
                     volV, uvaV);
-        } else if (radioQueijo) {
+        } else if (radioQueijo == 1) {
             Queijo queijo = new Queijo(desc, nome, pc, QueijoService.guardarImg(image), cidade, ano, pais, anmQueijo,
                     tipoQueijo, pesoQueijo, gordQueijo);
-        } else if (radioQueijo) {
+        } else if (radioQueijo == 1) {
             Espumante espumante = new Espumante(desc, nome, pc, EspumanteService.guardarImg(image), cidade, ano, pais,
                     teorEspuma, volEspuma, tipoEspuma, atmEspuma);
         } else {
