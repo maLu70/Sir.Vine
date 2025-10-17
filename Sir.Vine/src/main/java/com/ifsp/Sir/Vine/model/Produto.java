@@ -12,7 +12,6 @@ import jakarta.persistence.InheritanceType;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -38,10 +37,16 @@ public class Produto {
     @Column(name = "pais")
     private String pais;
 
+    @Column(name = "estoque")
+    private int estoque;
+
+    @Column(name = "tipo_do_produto")
+    private String tipo_do_produto;
+
     public Produto() {
     }
 
-    public Produto(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais) {
+    public Produto(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais, int estoque, String tipo_do_produto) {
         this.descricao = descricao;
         this.nome = nome;
         this.preco = preco;
@@ -49,6 +54,17 @@ public class Produto {
         this.cidade = cidade;
         this.ano = ano;
         this.pais = pais;
+        this.estoque = estoque;
+        this.tipo_do_produto = tipo_do_produto;
+
+    }
+
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
     public String getCidade() {
@@ -113,5 +129,13 @@ public class Produto {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public String getTipo_do_produto() {
+        return tipo_do_produto;
+    }
+
+    public void setTipo_do_produto(String tipo_do_produto) {
+        this.tipo_do_produto = tipo_do_produto;
     }
 }

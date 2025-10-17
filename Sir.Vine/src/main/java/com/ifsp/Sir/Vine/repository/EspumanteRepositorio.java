@@ -28,7 +28,7 @@ public class EspumanteRepositorio {
         em.persist(espumante);
     }
 
-    public Espumante findById(int id) {
+    public Espumante findById(long id) {
         return em.find(Espumante.class, id);
     }
 

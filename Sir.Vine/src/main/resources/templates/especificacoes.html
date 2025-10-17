@@ -7,49 +7,82 @@
     <title>Especificações do Produto</title>
 
     <link rel="stylesheet" th:href="@{/css/especificacoes.css}">
+
 </head>
 
 <body>
 
     <section>
         <div id="especificacoes">
-            <img src="/img/vinho.jpg" alt="">
+            <img th:src="${produto.img}" alt="">
 
             <div id="container">
 
                 <div id="informacoes">
-                    <h2 id="produto">Nome do Produto</h2>
-                    <h3 id="inf">Cidade, PaÍs - ano</h3>
 
+                    <div id="nome">
+                        <h2 id="produto" th:text="${produto.nome}"></h2>
+                        <h3 id="inf">[[${produto.cidade}]], [[${produto.pais}]] - [[${produto.ano}]]</h3>
+                    </div>
+                    
                     <hr>
 
-                    <p id="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim tempora eligendi amet
-                        sit
-                        dolores provident voluptates culpa sint ab inventore dolorem blanditiis unde, nemo voluptas
-                        excepturi, ipsa dicta ut omnis.</p>
+                    <p id="desc" th:text="${produto.descricao}"></p>
 
-                    <table id="detalhes">
-                        <tr>
-                            <td>Ano: 2025</td>
-                            <td>Ano: 2025</td>
-                        </tr>
-                        <tr>
-                            <td>Cidade: Cidade</td>
-                            <td>Cidade: Cidade</td>
+                    <div id="tbEsp"  style="display: flex;">
 
-                        </tr>
-                        <tr>
-                            <td>País: País</td>
-                            <td>Ano: 2025</td>
+                        <table class="detalhes">
+                            <tr>
+                                <td>Ano: [[${produto.ano}]]</td>
+                            </tr>
+                            <tr>
+                                <td>Cidade: [[${produto.cidade}]]</td>
+                            </tr>
+                            <tr>
+                                <td>Pais: [[${produto.pais}]]</td>
+                            </tr>
+                            <tr>
+                                <td>Tipo: [[${produto.pressao}]]</td>
+                            </tr>
+                        </table>
 
-                        </tr>
+                        <table id="vinho" class="detalhes" th:style="${tipo == 'vinho'} ? 'display: block;' : 'display: none;'">
+                            <tr>
+                                <td>Teor: [[${vinho.teor}]]%</td>
+                            </tr>
+                            <tr>
+                                <td>Quantidade: [[${vinho.volume}]]ml</td>
+                            </tr>
+                            <tr>
+                                <td>Uva: [[${vinho.uva}]]</td>
+                            </tr>
+                        </table>
 
-                        <tr>
-                            <td>País: País</td>
-                            <td>Ano: 2025</td>
+                        <table id="espuma" class="detalhes" th:style="${tipo == 'espumante'} ? 'display: block;' : 'display: none;'">
+                            <tr>
+                                <td>Teor: [[${espumante.teor}]]%</td>
+                            </tr>
+                            <tr>
+                                <td>Quantidade: [[${espumante.volume}]]ml</td>
+                            </tr>
 
-                        </tr>
-                    </table>
+                            <tr>
+                                <td>Uva: [[${espumante.pressao}]]</td>
+                            </tr>
+                        </table>
+
+                         <table id="queijo" class="detalhes" th:style="${tipo == 'queijo'} ? 'display: block;' : 'display: none;'">
+                            <tr>
+                                <td>Animal de leite: [[${queijo.leite}]]</td>
+                            </tr>
+                            <tr>
+                                <td>Peso: [[${queijo.peso}]]g</td>
+                            </tr>
+                            <tr>
+                                <td>Gordura: [[${queijo.gordura}]]%</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
 
                 <div id="bott">

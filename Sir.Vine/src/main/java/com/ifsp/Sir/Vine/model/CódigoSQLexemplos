@@ -1,23 +1,20 @@
---drop database sirvine;
---create database sirvine;
---use sirvine;
--- Inserir os produtos na tabela produto
-INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco) VALUES
-('2024', 'Serro', 'Queijo fresco tradicional de Minas Gerais, de textura macia e sabor suave', '/queijos/queijo_minas_frescal.jpg', 'Minas Frescal', 'Brasil', 25.90),
-('2024', 'São Roque de Minas', 'Queijo artesanal produzido na Serra da Canastra, com sabor marcante', '/queijos/queijo_canastra.jpg', 'Canastra', 'Brasil', 42.50),
-('2024', 'Carambeí', 'Queijo de massa semidura, cor amarela palha e sabor suave', '/queijos/queijo_prato.jpg', 'Queijo Prato', 'Brasil', 38.75),
-('2024', 'Patos de Minas', 'Queijo ideal para derreter, perfeito para pizzas e sanduíches', '/queijos/queijo_mussarela.jpg', 'Mussarela', 'Brasil', 32.90),
-('2024', 'Pesqueira', 'Tradicional do Nordeste, perfeito para assar na brasa', '/queijos/queijo_coalho.jpg', 'Coalho', 'Brasil', 28.60),
-('2024', 'Meaux', 'Queijo francês de casca branca e mofada, cremoso e suave', '/queijos/queijo_brie.jpg', 'Brie', 'França', 67.90),
-('2024', 'Gouda', 'Queijo holandês de sabor adocicado e textura firme', '/queijos/queijo_gouda.jpg', 'Gouda', 'Holanda', 55.80),
-('2024', 'Cheddar', 'Queijo inglês de cor laranja e sabor intenso', '/queijos/queijo_cheddar.jpg', 'Cheddar', 'Inglaterra', 49.90),
-('2024', 'Roquefort-sur-Soulzon', 'Queijo francês de leite de ovelha com veias azuis de mofo', '/queijos/queijo_roquefort.jpg', 'Roquefort', 'França', 89.90),
-('2023', 'Parma', 'Queijo italiano duro e granulado, ideal para ralar', '/queijos/queijo_parmesao.jpg', 'Parmesão', 'Itália', 75.50),
-('2024', 'Battipaglia', 'Queijo italiano de formato alongado e sabor defumado', '/queijos/queijo_provolone.jpg', 'Provolone', 'Itália', 58.40),
-('2024', 'Normandia', 'Queijo francês cremoso com casca branca aveludada', '/queijos/queijo_camembert.jpg', 'Camembert', 'França', 62.30),
-('2024', 'Minas Gerais', 'Cremoso e spreadable, tradicional da culinária brasileira', '/queijos/queijo_requeijao.jpg', 'Requeijão Cremoso', 'Brasil', 18.90),
-('2024', 'São Paulo', 'Queijo fresco com grumos, leve e com alto teor proteico', '/queijos/queijo_cottage.jpg', 'Cottage', 'Brasil', 15.80),
-('2024', 'Araxá', 'Queijo mineiro com maior tempo de cura que o frescal', '/queijos/queijo_minas_padrao.jpg', 'Minas Padrão', 'Brasil', 35.70);
+
+INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco, estoque, tipo_do_produto) VALUES
+('2024', 'Serro', 'Queijo fresco tradicional de Minas Gerais, de textura macia e sabor suave', '/queijos/queijo_minas_frescal.jpg', 'Minas Frescal', 'Brasil', 25.90, 100, 'queijo'),
+('2024', 'São Roque de Minas', 'Queijo artesanal produzido na Serra da Canastra, com sabor marcante', '/queijos/queijo_canastra.jpg', 'Canastra', 'Brasil', 42.50, 80, 'queijo'),
+('2024', 'Carambeí', 'Queijo de massa semidura, cor amarela palha e sabor suave', '/queijos/queijo_prato.jpg', 'Queijo Prato', 'Brasil', 38.75, 90, 'queijo'),
+('2024', 'Patos de Minas', 'Queijo ideal para derreter, perfeito para pizzas e sanduíches', '/queijos/queijo_mussarela.jpg', 'Mussarela', 'Brasil', 32.90, 120, 'queijo'),
+('2024', 'Pesqueira', 'Tradicional do Nordeste, perfeito para assar na brasa', '/queijos/queijo_coalho.jpg', 'Coalho', 'Brasil', 28.60, 75, 'queijo'),
+('2024', 'Meaux', 'Queijo francês de casca branca e mofada, cremoso e suave', '/queijos/queijo_brie.jpg', 'Brie', 'França', 67.90, 60, 'queijo'),
+('2024', 'Gouda', 'Queijo holandês de sabor adocicado e textura firme', '/queijos/queijo_gouda.jpg', 'Gouda', 'Holanda', 55.80, 65, 'queijo'),
+('2024', 'Cheddar', 'Queijo inglês de cor laranja e sabor intenso', '/queijos/queijo_cheddar.jpg', 'Cheddar', 'Inglaterra', 49.90, 85, 'queijo'),
+('2024', 'Roquefort-sur-Soulzon', 'Queijo francês de leite de ovelha com veias azuis de mofo', '/queijos/queijo_roquefort.jpg', 'Roquefort', 'França', 89.90, 40, 'queijo'),
+('2023', 'Parma', 'Queijo italiano duro e granulado, ideal para ralar', '/queijos/queijo_parmesao.jpg', 'Parmesão', 'Itália', 75.50, 70, 'queijo'),
+('2024', 'Battipaglia', 'Queijo italiano de formato alongado e sabor defumado', '/queijos/queijo_provolone.jpg', 'Provolone', 'Itália', 58.40, 90, 'queijo'),
+('2024', 'Normandia', 'Queijo francês cremoso com casca branca aveludada', '/queijos/queijo_camembert.jpg', 'Camembert', 'França', 62.30, 50, 'queijo'),
+('2024', 'Minas Gerais', 'Cremoso e spreadable, tradicional da culinária brasileira', '/queijos/queijo_requeijao.jpg', 'Requeijão Cremoso', 'Brasil', 18.90, 110, 'queijo'),
+('2024', 'São Paulo', 'Queijo fresco com grumos, leve e com alto teor proteico', '/queijos/queijo_cottage.jpg', 'Cottage', 'Brasil', 15.80, 95, 'queijo'),
+('2024', 'Araxá', 'Queijo mineiro com maior tempo de cura que o frescal', '/queijos/queijo_minas_padrao.jpg', 'Minas Padrão', 'Brasil', 35.70, 88, 'queijo');
 
 -- Inserir os dados específicos dos queijos na tabela queijo
 INSERT INTO queijo (id, leite, tipo, peso, gordura) VALUES
@@ -37,23 +34,23 @@ INSERT INTO queijo (id, leite, tipo, peso, gordura) VALUES
 (14, 'Vaca', 'Fresco', '300', '4'),
 (15, 'Vaca', 'Semiduro', '900', '44');
 
--- Inserir os produtos na tabela produto
-INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco) VALUES
-('2021', 'Bordeaux', 'Vinho tinto encorpado com taninos suaves e notas de frutas vermelhas', '/vinhos/vinho_margaux.jpg', 'Château Margaux', 'França', 450.00),
-('2020', 'Napa Valley', 'Cabernet Sauvignon intenso com aromas de cassis e baunilha', '/vinhos/vinho_opus_one.jpg', 'Opus One', 'Estados Unidos', 680.00),
-('2019', 'Toscana', 'Vinho italiano elegante com nuances de cereja e especiarias', '/vinhos/vinho_sassicaia.jpg', 'Sassicaia', 'Itália', 520.00),
-('2022', 'Serra Gaúcha', 'Vinho branco fresco e aromático com notas cítricas', '/vinhos/vinho_miolo.jpg', 'Miolo Chardonnay', 'Brasil', 65.00),
-('2018', 'Rioja', 'Tinto espanhol envelhecido em carvalho com complexo sabor terroso', '/vinhos/vinho_marques.jpg', 'Marqués de Riscal', 'Espanha', 180.00),
-('2021', 'Vale do São Francisco', 'Vinho tropical brasileiro com boa acidez e frutado', '/vinhos/vinho_verde_brasil.jpg', 'Vinho Verde Brasileiro', 'Brasil', 45.00),
-('2017', 'Porto', 'Vinho do Porto encorpado e adocicado, ideal para sobremesas', '/vinhos/vinho_taylors.jpg', 'Taylor''s Late Bottled Vintage', 'Portugal', 220.00),
-('2020', 'Mendoza', 'Malbec argentino robusto com taninos redondos', '/vinhos/vinho_catena.jpg', 'Catena Zapata', 'Argentina', 150.00),
-('2019', 'Borgonha', 'Pinot Noir francês elegante com minerality característico', '/vinhos/vinho_romanee_conti.jpg', 'Romanée-Conti', 'França', 3500.00),
-('2021', 'Champagne', 'Espumante francês brut com bolhas finas e persistentes', '/vinhos/vinho_dom_perignon.jpg', 'Dom Pérignon', 'França', 850.00),
-('2020', 'Barossa Valley', 'Shiraz australiano encorpado com especiarias e chocolate', '/vinhos/vinho_penfolds.jpg', 'Penfolds Grange', 'Austrália', 720.00),
-('2022', 'Vale dos Vinhedos', 'Espumante brasileiro brut com frescor e acidez equilibrada', '/vinhos/vinho_cave_geisse.jpg', 'Cave Geisse', 'Brasil', 120.00),
-('2018', 'Douro', 'Vinho português estruturado com blend de castas tradicionais', '/vinhos/vinho_quinta_crasto.jpg', 'Quinta do Crasto', 'Portugal', 95.00),
-('2021', 'Casablanca Valley', 'Sauvignon Blanc chileno refrescante com notas herbáceas', '/vinhos/vinho_casillero.jpg', 'Casillero del Diablo', 'Chile', 75.00),
-('2019', 'Penedès', 'Cava espanhol seco com boa complexidade aromática', '/vinhos/vinho_freixenet.jpg', 'Freixenet', 'Espanha', 110.00);
+-- Inserir os produtos na tabela produto (Vinhos)
+INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco, estoque, tipo_do_produto) VALUES
+('2021', 'Bordeaux', 'Vinho tinto encorpado com taninos suaves e notas de frutas vermelhas', '/vinhos/vinho_margaux.jpg', 'Château Margaux', 'França', 450.00, 30, 'vinho'),
+('2020', 'Napa Valley', 'Cabernet Sauvignon intenso com aromas de cassis e baunilha', '/vinhos/vinho_opus_one.jpg', 'Opus One', 'Estados Unidos', 680.00, 25, 'vinho'),
+('2019', 'Toscana', 'Vinho italiano elegante com nuances de cereja e especiarias', '/vinhos/vinho_sassicaia.jpg', 'Sassicaia', 'Itália', 520.00, 28, 'vinho'),
+('2022', 'Serra Gaúcha', 'Vinho branco fresco e aromático com notas cítricas', '/vinhos/vinho_miolo.jpg', 'Miolo Chardonnay', 'Brasil', 65.00, 60, 'vinho'),
+('2018', 'Rioja', 'Tinto espanhol envelhecido em carvalho com complexo sabor terroso', '/vinhos/vinho_marques.jpg', 'Marqués de Riscal', 'Espanha', 180.00, 40, 'vinho'),
+('2021', 'Vale do São Francisco', 'Vinho tropical brasileiro com boa acidez e frutado', '/vinhos/vinho_verde_brasil.jpg', 'Vinho Verde Brasileiro', 'Brasil', 45.00, 55, 'vinho'),
+('2017', 'Porto', 'Vinho do Porto encorpado e adocicado, ideal para sobremesas', '/vinhos/vinho_taylors.jpg', 'Taylor''s Late Bottled Vintage', 'Portugal', 220.00, 35, 'vinho'),
+('2020', 'Mendoza', 'Malbec argentino robusto com taninos redondos', '/vinhos/vinho_catena.jpg', 'Catena Zapata', 'Argentina', 150.00, 45, 'vinho'),
+('2019', 'Borgonha', 'Pinot Noir francês elegante com mineralidade característico', '/vinhos/vinho_romanee_conti.jpg', 'Romanée-Conti', 'França', 3500.00, 5, 'vinho'),
+('2021', 'Champagne', 'Espumante francês brut com bolhas finas e persistentes', '/vinhos/vinho_dom_perignon.jpg', 'Dom Pérignon', 'França', 850.00, 12, 'vinho'),
+('2020', 'Barossa Valley', 'Shiraz australiano encorpado com especiarias e chocolate', '/vinhos/vinho_penfolds.jpg', 'Penfolds Grange', 'Austrália', 720.00, 15, 'vinho'),
+('2022', 'Vale dos Vinhedos', 'Espumante brasileiro brut com frescor e acidez equilibrada', '/vinhos/vinho_cave_geisse.jpg', 'Cave Geisse', 'Brasil', 120.00, 50, 'vinho'),
+('2018', 'Douro', 'Vinho português estruturado com blend de castas tradicionais', '/vinhos/vinho_quinta_crasto.jpg', 'Quinta do Crasto', 'Portugal', 95.00, 48, 'vinho'),
+('2021', 'Casablanca Valley', 'Sauvignon Blanc chileno refrescante com notas herbáceas', '/vinhos/vinho_casillero.jpg', 'Casillero del Diablo', 'Chile', 75.00, 66, 'vinho'),
+('2019', 'Penedès', 'Cava espanhol seco com boa complexidade aromática', '/vinhos/vinho_freixenet.jpg', 'Freixenet', 'Espanha', 110.00, 58, 'vinho');
 
 -- Inserir os dados específicos dos vinhos na tabela vinho
 INSERT INTO vinho (id, tipo, teor, volume, uva) VALUES
@@ -73,24 +70,23 @@ INSERT INTO vinho (id, tipo, teor, volume, uva) VALUES
 (29, 'Branco', '13.0', '750', 'Sauvignon Blanc'),
 (30, 'Espumante', '12.2', '750', 'Macabeo');
 
--- Inserir os produtos na tabela produto
-INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco) VALUES
-('2020', 'Champagne', 'Espumante francês premium com bolhas finas e complexidade aromática', '/espumantes/espumante_dom_perignon.jpg', 'Dom Pérignon', 'França', 850.00),
-('2019', 'Champagne', 'Brut clássico com elegância e persistência nas bolhas', '/espumantes/espumante_veuve_clicquot.jpg', 'Veuve Clicquot', 'França', 420.00),
-('2021', 'Vale dos Vinhedos', 'Espumante brasileiro brut de método tradicional', '/espumantes/espumante_cave_geisse.jpg', 'Cave Geisse', 'Brasil', 120.00),
-('2020', 'Penedès', 'Cava espanhol seco com boa complexidade e frescor', '/espumantes/espumante_freixenet.jpg', 'Freixenet', 'Espanha', 85.00),
-('2018', 'Trento', 'Espumante italiano brut de alta qualidade', '/espumantes/espumante_ferrari.jpg', 'Ferrari', 'Itália', 280.00),
-('2022', 'Serra Gaúcha', 'Espumante brasileiro demi-sec frutado e acessível', '/espumantes/espumante_salton.jpg', 'Salton', 'Brasil', 55.00),
-('2019', 'Champagne', 'Rosé sofisticado com notas de frutas vermelhas', '/espumantes/espumante_laurent_perrier.jpg', 'Laurent-Perrier', 'França', 380.00),
-('2021', 'Napa Valley', 'Espumante americano brut com estilo californiano', '/espumantes/espumante_schramsberg.jpg', 'Schramsberg', 'Estados Unidos', 220.00),
-('2020', 'Vale do São Francisco', 'Espumante tropical brasileiro extra brut', '/espumantes/espumante_miolo.jpg', 'Miolo', 'Brasil', 70.00),
-('2017', 'Champagne', 'Blanc de Blancs com mineralidade característica', '/espumantes/espumante_taittinger.jpg', 'Taittinger', 'França', 320.00),
-('2022', 'Serra Gaúcha', 'Espumante moscatel brasileiro doce e aromático', '/espumantes/espumante_aurora.jpg', 'Aurora', 'Brasil', 45.00),
-('2019', 'Penedès', 'Cava rosé espanhol fresco e vibrante', '/espumantes/espumante_codorniu.jpg', 'Codorníu', 'Espanha', 95.00),
-('2020', 'Mendoza', 'Espumante argentino brut nature sem dosagem', '/espumantes/espumante_chandon.jpg', 'Chandon', 'Argentina', 110.00),
-('2018', 'Champagne', 'Vintage com envelhecimento prolongado em caves', '/espumantes/espumante_bollinger.jpg', 'Bollinger', 'França', 480.00),
-('2021', 'Vale dos Vinhedos', 'Espumante brasileiro brut reserva especial', '/espumantes/espumante_peterlongo.jpg', 'Peterlongo', 'Brasil', 135.00);
-
+-- Inserir os produtos na tabela produto (Espumantes)
+INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco, estoque, tipo_do_produto) VALUES
+('2020', 'Champagne', 'Espumante francês premium com bolhas finas e complexidade aromática', '/espumantes/espumante_dom_perignon.jpg', 'Dom Pérignon', 'França', 850.00, 10, 'espumante'),
+('2019', 'Champagne', 'Brut clássico com elegância e persistência nas bolhas', '/espumantes/espumante_veuve_clicquot.jpg', 'Veuve Clicquot', 'França', 420.00, 18, 'espumante'),
+('2021', 'Vale dos Vinhedos', 'Espumante brasileiro brut de método tradicional', '/espumantes/espumante_cave_geisse.jpg', 'Cave Geisse', 'Brasil', 120.00, 50, 'espumante'),
+('2020', 'Penedès', 'Cava espanhol seco com boa complexidade e frescor', '/espumantes/espumante_freixenet.jpg', 'Freixenet', 'Espanha', 85.00, 40, 'espumante'),
+('2018', 'Trento', 'Espumante italiano brut de alta qualidade', '/espumantes/espumante_ferrari.jpg', 'Ferrari', 'Itália', 280.00, 22, 'espumante'),
+('2022', 'Serra Gaúcha', 'Espumante brasileiro demi-sec frutado e acessível', '/espumantes/espumante_salton.jpg', 'Salton', 'Brasil', 55.00, 90, 'espumante'),
+('2019', 'Champagne', 'Rosé sofisticado com notas de frutas vermelhas', '/espumantes/espumante_laurent_perrier.jpg', 'Laurent-Perrier', 'França', 380.00, 14, 'espumante'),
+('2021', 'Napa Valley', 'Espumante americano brut com estilo californiano', '/espumantes/espumante_schramsberg.jpg', 'Schramsberg', 'Estados Unidos', 220.00, 20, 'espumante'),
+('2020', 'Vale do São Francisco', 'Espumante tropical brasileiro extra brut', '/espumantes/espumante_miolo.jpg', 'Miolo', 'Brasil', 70.00, 35, 'espumante'),
+('2017', 'Champagne', 'Blanc de Blancs com mineralidade característica', '/espumantes/espumante_taittinger.jpg', 'Taittinger', 'França', 320.00, 16, 'espumante'),
+('2022', 'Serra Gaúcha', 'Espumante moscatel brasileiro doce e aromático', '/espumantes/espumante_aurora.jpg', 'Aurora', 'Brasil', 45.00, 100, 'espumante'),
+('2019', 'Penedès', 'Cava rosé espanhol fresco e vibrante', '/espumantes/espumante_codorniu.jpg', 'Codorníu', 'Espanha', 95.00, 42, 'espumante'),
+('2020', 'Mendoza', 'Espumante argentino brut nature sem dosagem', '/espumantes/espumante_chandon.jpg', 'Chandon', 'Argentina', 110.00, 36, 'espumante'),
+('2018', 'Champagne', 'Vintage com envelhecimento prolongado em caves', '/espumantes/espumante_bollinger.jpg', 'Bollinger', 'França', 480.00, 12, 'espumante'),
+('2021', 'Vale dos Vinhedos', 'Espumante brasileiro brut reserva especial', '/espumantes/espumante_peterlongo.jpg', 'Peterlongo', 'Brasil', 135.00, 45, 'espumante');
 -- Inserir os dados específicos dos espumantes na tabela espumante
 INSERT INTO espumante (id, teor, volume, tipo, pressao) VALUES
 (31, '12.5', '750', 'Brut', '6.0'),

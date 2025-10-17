@@ -32,8 +32,8 @@ public class Queijo extends Produto {
     }
 
     public Queijo(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais,
-            String leite, String tipo, String peso, String gordura) {
-        super(descricao, nome, preco, img, cidade, ano, pais);
+            String leite, String tipo, String peso, String gordura, int estoque, String tipo_do_produto) {
+        super(descricao, nome, preco, img, cidade, ano, pais, estoque, tipo_do_produto);
         this.leite = leite;
         this.tipo = tipo;
         this.peso = peso;

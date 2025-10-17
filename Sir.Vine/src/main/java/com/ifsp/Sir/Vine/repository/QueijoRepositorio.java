@@ -30,7 +30,7 @@ public class QueijoRepositorio {
     }
 
 
-    public Queijo findById(int id) {
+    public Queijo findById(long id) {
         return em.find(Queijo.class, id);
     }
 

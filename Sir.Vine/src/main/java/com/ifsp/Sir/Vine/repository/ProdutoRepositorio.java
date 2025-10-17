@@ -21,7 +21,7 @@ public class ProdutoRepositorio {
         return Produtos;
     }
 
-    public Produto findById(int id) {
+    public Produto findById(long id) {
         return em.find(Produto.class, id);
     }
 }

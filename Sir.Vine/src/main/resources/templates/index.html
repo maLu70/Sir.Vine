@@ -48,7 +48,8 @@
 
             <br>
 
-            <h3>Descubra nossa seleção exclusiva de vinhos, queijos e espumantes do mundo inteiro. Cada garrafa conta uma história
+            <h3>Descubra nossa seleção exclusiva de vinhos, queijos e espumantes do mundo inteiro. Cada garrafa conta
+                uma história
                 única de tradição e excelência.</h3>
 
             <button id="btnInicial" type="submit">Ver Catálogo</button>
@@ -66,19 +67,24 @@
 
             <div id="vinhos">
                 <h4>Vinhos</h4>
-                <p>Nossa curadoria reúne vinhos de alta qualidade, vindos de vinícolas que prezam pela tradição e pelo cuidado em cada etapa da produção. Tintos, brancos ou rosés, cada rótulo foi escolhido para proporcionar experiências marcantes, seja em momentos de celebração ou em simples prazeres do dia a dia.</p>
+                <p>Nossa curadoria reúne vinhos de alta qualidade, vindos de vinícolas que prezam pela tradição e pelo
+                    cuidado em cada etapa da produção. Tintos, brancos ou rosés, cada rótulo foi escolhido para
+                    proporcionar experiências marcantes, seja em momentos de celebração ou em simples prazeres do dia a
+                    dia.</p>
             </div>
 
             <div id="qe">
 
                 <div id="queijos">
                     <h4>Queijos</h4>
-                    <p>Nossos queijos vêm de produtores que valorizam o sabor autêntico e a qualidade artesanal. Cremosos ou curados, são perfeitos para compor tábuas irresistíveis e encontros especiais.</p>
+                    <p>Nossos queijos vêm de produtores que valorizam o sabor autêntico e a qualidade artesanal.
+                        Cremosos ou curados, são perfeitos para compor tábuas irresistíveis e encontros especiais.</p>
                 </div>
 
                 <div id="espumantes">
                     <h4>Espumantes</h4>
-                    <p>Com borbulhas finas e sabor refrescante, nossos espumantes celebram a leveza e a sofisticação. Ideal para brindar com elegância e transformar qualquer ocasião em um momento único.</p>
+                    <p>Com borbulhas finas e sabor refrescante, nossos espumantes celebram a leveza e a sofisticação.
+                        Ideal para brindar com elegância e transformar qualquer ocasião em um momento único.</p>
                 </div>
 
             </div>
@@ -91,58 +97,69 @@
         <h2>Destaques do dia</h2>
 
         <div id="pDest">
-            
-            <div class="prodDestaque">
 
-                <div class="imgDest">
-                    <img th:src="@{${randomv.img}}" alt="">
+            <a th:href="@{/Especificacao/{tipo}/{id}(id=${randomv.id},tipo=${randomv.tipo_do_produto})}">
 
-                    <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+
+                <div class="prodDestaque">
+
+                    <div class="imgDest">
+                        <img th:src="@{${randomv.img}}" alt="">
+
+                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                    </div>
+
+
+                    <p class="nome">[[${randomv.nome}]]</p>
+                    <p class="loc">[[${randomv.cidade}]], [[${randomv.pais}]] - [[${randomv.ano}]]</p>
+
+                    <b>
+                        <p class="preco">R$ [[${randomv.preco}]]</p>
+                    </b>
+
                 </div>
 
+            </a>
 
-                <p class="nome">[[${randomv.nome}]]</p>
-                <p class="loc">[[${randomv.cidade}]], [[${randomv.pais}]] - [[${randomv.ano}]]</p>
+            <a th:href="@{/Especificacao/{tipo}/{id}(id=${randomq.id},tipo=${randomq.tipo_do_produto})}">
 
-                <b>
-                    <p class="preco">R$ [[${randomv.preco}]]</p>
-                </b>
+                <div class="prodDestaque">
 
-            </div>
+                    <div class="imgDest">
+                        <img th:src="@{${randomq.img}}" alt="">
 
-            <div class="prodDestaque">
+                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                    </div>
 
-                <div class="imgDest">
-                    <img th:src="@{${randomq.img}}" alt="">
+                    <p class="nome">[[${randomq.nome}]]</p>
+                    <p class="loc">[[${randomq.cidade}]], [[${randomq.pais}]] - [[${randomq.ano}]]</p>
 
-                    <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                    <b>
+                        <p class="preco">R$ [[${randomq.preco}]]</p>
+                    </b>
+
                 </div>
+            </a>
 
-                <p class="nome">[[${randomq.nome}]]</p>
-                <p class="loc">[[${randomq.cidade}]], [[${randomq.pais}]] - [[${randomq.ano}]]</p>
+            <a th:href="@{/Especificacao/{tipo}/{id}(id=${randome.id},tipo=${randome.tipo_do_produto})}">
 
-                <b>
-                    <p class="preco">R$ [[${randomq.preco}]]</p>
-                </b>
+                <div class="prodDestaque">
 
-            </div>
+                    <div class="imgDest">
+                        <img th:src="@{${randome.img}}" alt="">
 
-            <div class="prodDestaque">
+                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                    </div>
 
-                <div class="imgDest">
-                    <img th:src="@{${randome.img}}" alt="">
+                    <p class="nome">[[${randome.nome}]]</p>
+                    <p class="loc">[[${randome.cidade}]], [[${randome.pais}]] - [[${randome.ano}]]</p>
 
-                    <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                    <b>
+                        <p class="preco">R$ [[${randome.preco}]]</p>
+                    </b>
+
                 </div>
-
-                <p class="nome">[[${randome.nome}]]</p>
-                <p class="loc">[[${randome.cidade}]], [[${randome.pais}]] - [[${randome.ano}]]</p>
-
-                <b>
-                    <p class="preco">R$ [[${randome.preco}]]</p>
-                </b>
-
-            </div>
+            </a>
         </div>
 
     </section>

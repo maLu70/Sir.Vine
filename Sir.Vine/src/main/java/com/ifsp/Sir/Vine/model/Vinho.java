@@ -34,8 +34,8 @@ public class Vinho extends Produto {
     }
 
     public Vinho(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais,
-            String tipo, String teor, String volume, String uva) {
-        super(descricao, nome, preco, img, cidade, ano, pais);
+            String tipo, String teor, String volume, String uva, int estoque, String tipo_do_produto) {
+        super(descricao, nome, preco, img, cidade, ano, pais, estoque, tipo_do_produto);
         this.tipo = tipo;
         this.teor = teor;
         this.volume = volume;

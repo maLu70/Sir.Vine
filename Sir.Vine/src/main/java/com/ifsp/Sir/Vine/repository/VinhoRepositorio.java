@@ -28,7 +28,7 @@ public class VinhoRepositorio {
         return vinhos;
     }
 
-    public Vinho findById(int id) {
+    public Vinho findById(long id) {
         return em.find(Vinho.class, id);
     }
 

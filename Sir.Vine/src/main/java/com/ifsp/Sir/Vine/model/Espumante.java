@@ -31,8 +31,8 @@ public class Espumante extends Produto {
     }
 
     public Espumante(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais,
-            String teor, String volume, String tipo, String pressao) {
-        super(descricao, nome, preco, img, cidade, ano, pais);
+            String teor, String volume, String tipo, String pressao, int estoque, String tipo_do_produto) {
+        super(descricao, nome, preco, img, cidade, ano, pais, estoque, tipo_do_produto);
         this.teor = teor;
         this.volume = volume;
         this.tipo = tipo;

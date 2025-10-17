@@ -36,7 +36,7 @@ public class ControllerSirVine {
 
     @Autowired
     QueijoRepositorio queijoRepositorio;
-    
+
     @Autowired
     EspumanteRepositorio espumanteRepositorio;
 
@@ -51,38 +51,56 @@ public class ControllerSirVine {
         return "index";
     }
 
-    @GetMapping("/carrinho")
+    @GetMapping("/Carrinho")
     public String carrinho() {
         return "carrinho";
     }
 
-    @GetMapping("/especificacao/{tipo}/{id}")
-    public String especificacao(@PathVariable int id, @PathVariable String tipo, Model model) {
+    @GetMapping("/Especificacao/{tipo}/{id}")
+    public String especificacao(@PathVariable String id, @PathVariable String tipo, Model model) {
+
         if (tipo.toLowerCase().equals("vinho")) {
 
-            model.addAttribute("produto", vinhoRepositorio.findById(id));
+            model.addAttribute("produto", vinhoRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("vinho", vinhoRepositorio.findById(Long.valueOf(id)));
+
+            model.addAttribute("queijo", queijoRepositorio.randomQueijo());
+            model.addAttribute("espumante", espumanteRepositorio.randomEspumante());
+
             model.addAttribute("tipo", "vinho");
 
         } else if (tipo.toLowerCase().equals("espumante")) {
 
-            model.addAttribute("produto", espumanteRepositorio.findById(id));
+            model.addAttribute("produto", espumanteRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("espumante", espumanteRepositorio.findById(Long.valueOf(id)));
+
+            model.addAttribute("vinho", vinhoRepositorio.randomVinho());
+
+            model.addAttribute("queijo", queijoRepositorio.randomQueijo());
+
             model.addAttribute("tipo", "espumante");
 
         } else if (tipo.toLowerCase().equals("queijo")) {
 
-            model.addAttribute("produto", queijoRepositorio.findById(id));
+            model.addAttribute("produto", queijoRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("queijo", queijoRepositorio.findById(Long.valueOf(id)));
+
+            model.addAttribute("vinho", vinhoRepositorio.randomVinho());
+            model.addAttribute("espumante", espumanteRepositorio.randomEspumante());
+
             model.addAttribute("tipo", "queijo");
+
         }
 
-        return "especificacao";
+        return "especificacoes";
     }
 
-    @GetMapping("/cadastrarProduto")
+    @GetMapping("/CadastrarProduto")
     public String cadastrarProduto() {
         return "adicionarEditarProduto";
     }
 
-    @PostMapping("/criarProduto")
+    @PostMapping("/CriarProduto")
     public String criarProduto(
             @RequestParam(required = false) Integer radioVinho,
             @RequestParam(required = false) Integer radioQueijo,
@@ -107,26 +125,24 @@ public class ControllerSirVine {
             @RequestParam String cidade,
             @RequestParam String ano,
             @RequestParam Double pc,
-            @RequestParam String est,
-            
+            @RequestParam Integer est,
+
             @RequestParam String nome,
             @RequestParam String desc,
             @RequestParam("image") MultipartFile image) throws IOException {
 
-                System.out.println("\n"+ radioEspuma + "\n " + radioQueijo + "\n " + radioVinho);
-
         if (radioVinho == 1) {
             Vinho vinho = new Vinho(desc, nome, pc, vinhoService.guardarImg(image), cidade, ano, pais, tipoV, teorV,
-                    volV, uvaV);
-                    vinhoRepositorio.save(vinho);
+                    volV, uvaV, est, "vinho");
+            vinhoRepositorio.save(vinho);
         } else if (radioQueijo == 1) {
             Queijo queijo = new Queijo(desc, nome, pc, queijoService.guardarImg(image), cidade, ano, pais, anmQueijo,
-                    tipoQueijo, pesoQueijo, gordQueijo);
-                    queijoRepositorio.save(queijo);
+                    tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
+            queijoRepositorio.save(queijo);
         } else if (radioEspuma == 1) {
             Espumante espumante = new Espumante(desc, nome, pc, espumanteService.guardarImg(image), cidade, ano, pais,
-                    teorEspuma, volEspuma, tipoEspuma, atmEspuma);
-                    espumanteRepositorio.save(espumante);
+                    teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
+            espumanteRepositorio.save(espumante);
         } else {
 
             return "redirect:/cadastrarProduto";
