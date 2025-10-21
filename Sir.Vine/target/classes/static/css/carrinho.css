@@ -97,7 +97,12 @@ h1 {
     color: white;
     font-size: 3rem;
     font-family: "Playfair Display", serif;
+    color: transparent;
+    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 40%);
+    -webkit-background-clip: text;
+
     margin: 0;
+
 }
 
 h2 {

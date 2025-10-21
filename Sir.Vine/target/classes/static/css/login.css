@@ -1,0 +1,196 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 13vh;
+    width: 100%;
+    background-color: #211D1C;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    width: 3vw;
+    object-fit: contain;
+    margin-right: 1vw;
+}
+
+#logo p {
+    font-size: 3rem;
+
+    font-family: "Playfair Display", serif;
+    color: transparent;
+
+    margin: 0;
+}
+
+header ul {
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    color: #d3d0ca;
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+
+    width: 40%;
+
+    padding: 0;
+}
+
+#atalhos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 15%;
+}
+
+#itensCar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    background-color: #CF1232;
+
+    position: absolute;
+
+    top: 3%;
+    right: 11.5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    color: white;
+}
+
+.sir {
+    background: linear-gradient(90deg, rgba(255, 223, 135, 1) 2%, rgba(255, 0, 38, 1) 15%);
+    -webkit-background-clip: text;
+}
+
+.vine {
+    background: linear-gradient(90deg, rgba(255, 0, 38, 1) 2%, rgba(240, 194, 88, 1) 18%);
+    -webkit-background-clip: text;
+}
+
+section {
+    background-color: #151413;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btnLogin {
+    background-image: linear-gradient(to right, #CF1232 0%, #510B17 50%);
+
+    padding: 0.94rem 2.8rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    background-size: 200% auto;
+    color: white;
+
+    border: solid #9D7F3C 1px;
+    border-radius: 0.62rem;
+
+    width: 100%;
+    height: 3.5vw;
+
+    font-size: 1.2rem;
+
+    cursor: pointer;
+}
+
+#login {
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 30%;
+    height: 60%;
+    background-color: #221817;
+    box-shadow: #f0c25826 0px 0px 1vw;
+
+    justify-content: space-evenly;
+}
+
+img {
+    width: 5vw;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    color: transparent;
+    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 40%);
+    -webkit-background-clip: text;
+}
+
+h2 {
+    font-size: 2.8rem;
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    text-align: left;
+    width: 100%;
+}
+
+p {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #CAC8C4;
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    width: 100%;
+}
+
+label {
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    text-align: left;
+    width: 100%;
+}
+
+a {
+    color: white;
+    font-size: 1.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+input {
+    background-color: #1B1312;
+    border: solid 1px #CAC8C4;
+    width: 96%;
+    height: 50%;
+    border-radius: 15px;
+
+    font-size: 1.2rem;
+
+    padding-left: 3%;
+}
+
+#inSenha, #inEmail, #infLogin, #btn {
+    width: 90%;
+}
+
+#inSenha, #inEmail {
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
