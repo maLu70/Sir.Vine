@@ -76,7 +76,6 @@ header ul {
 
     padding: 0;
     color: white;
-
 }
 
 .sir {
@@ -98,7 +97,7 @@ h1 {
     color: white;
     font-size: 3rem;
     font-family: "Playfair Display", serif;
-
+    margin: 0;
 }
 
 h2 {
@@ -106,7 +105,12 @@ h2 {
     font-family: "Inter", sans-serif;
     font-weight: 300;
     letter-spacing: 2px;
+    margin: 10px 0 0 0;
+}
 
+#infCar {
+    width: 80%;
+    margin: 2%;
 }
 
 hr {
@@ -144,6 +148,8 @@ hr {
     justify-content: space-evenly;
 
     height: 22vw;
+
+    border-radius: 15px;
 }
 
 h3 {
@@ -152,7 +158,6 @@ h3 {
     width: 90%;
     font-size: 1.8rem;
     margin: 0;
-
 }
 
 .detalhes {
@@ -181,27 +186,31 @@ h3 {
 
 .prodCar {
     display: flex;
-    height: 11vw;
+    height: 12vw;
     margin-bottom: 1vw;
     background-color: #211D1C;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .prodCar img {
     width: 20%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 5%;
+    border-top-left-radius: 5%;
 }
 
 #car {
     display: flex;
-    border: rgb(255, 255, 255) solid;
     justify-content: space-evenly;
-
 }
 
 .infProdCar {
     width: 50%;
     color: white;
-    height: 100%;
-    border: solid red;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -211,20 +220,19 @@ h3 {
 .infProdCar p {
     font-family: "Inter", sans-serif;
     color: #F0C258;
-            margin: 0;
-
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 h4 {
     font-family: "Playfair Display", serif;
-    font-size: 1.5rem;
-            margin: 0;
-
+    font-size: 2rem;
+    margin: 0;
 }
 
 .tipoProd {
     border: #9D7F3C 1px solid;
-    width: 10%;
+    width: 15%;
     padding: 1%;
     border-radius: 110px;
     background-color: #9D7F3C;
@@ -233,25 +241,59 @@ h4 {
 .tipoProd p {
     margin: 0;
     text-align: center;
-    font-size: .8rem;
     color: white;
+    font-size: 1rem;
 }
 
 .unid {
-    height: 15%;
+    height: 18%;
     display: flex;
     align-items: center;
+    margin: 0;
+    width: 20%;
 }
 
 .unid input {
-    width: 5%;
+    width: 30%;
     height: 100%;
-    margin: 0 1% 0 1%;
+    margin: 0 3% 0 3%;
+    background-color: #15141300;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    text-align: right;
 }
 
-.mais, .menos {
-    width: 5%;
+.mais,
+.menos {
+    width: 30%;
     height: 100%;
     border-radius: 25%;
     border: none;
+    background-color: #15141300;
+    border: white solid 1px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.valProdCar {
+    height: 80%;
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.valProdCar img {
+    width: 15%;
+    height: auto;
+}
+
+.valProdCar p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #CF1215;
+    margin: 0;
 }
