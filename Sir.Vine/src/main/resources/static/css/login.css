@@ -132,10 +132,6 @@ section {
     margin: 2%;
 }
 
-img {
-    width: 4vw;
-}
-
 h1 {
     font-family: "Playfair Display", serif;
     color: transparent;
@@ -171,7 +167,7 @@ label {
     width: 100%;
 }
 
-a {
+#btn a {
     color: white;
     font-size: 1.3rem;
     text-align: left;

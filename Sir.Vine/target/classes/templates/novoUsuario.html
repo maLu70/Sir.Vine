@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sir. Vine - Login</title>
 
-    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/novoUsuario.css}">
 
-    <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/login.css">
+    <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/novoUsuario.css">
 
 </head>
 
@@ -44,26 +44,41 @@
 
         </header>
 
-        <h1>Bem Vindo de Volta</h1>
+        <h1>Bem Vindo</h1>
 
         <div id="login">
 
             <div id="infLogin">
-                <h2>Login</h2>
-                <p>Entre com seu email e senha</p>
+                <h2>Criar Conta</h2>
+                <p>Registre-se com seu email e senha</p>
             </div>
 
-            <div id="inEmail"><label for="email">Email</label>
+            <div id="inNome">
+                <label for="nome">Nome Completo</label>
+                <input type="text" placeholder="Nome Completo" id="nome" required>
+            </div>
+
+            <div id="inCPF">
+                <label for="cpf">CPF</label>
+                <input type="text" placeholder="CPF" id="cpf" required>
+            </div>
+
+            <div id="inEmail">
+                <label for="email">Email</label>
                 <input type="email" placeholder="Email" id="email" required>
             </div>
 
-            <div id="inSenha"><label for="senha">Senha</label>
+            <div id="inSenha">
+                <label for="senha">Senha</label>
                 <input type="password" placeholder="Senha" id="senha" required>
             </div>
-            
-            <div id="btn"><button id="btnLogin">Fazer Login</button>
-                <a href="">Ainda não tem uma conta? Clique aqui</a>
+
+            <div id="confSenha">
+                <label for="senha">Confirmar Senha</label>
+                <input type="password" placeholder="Senha" id="senha" required>
             </div>
+
+                <button id="btnLogin">Registrar-se</button>
         </div>
 
     </section>

@@ -88,7 +88,7 @@ header ul {
 
 section {
     background-color: #151413;
-    height: 100vh;
+    height: 130vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,7 +107,7 @@ section {
     border: solid #9D7F3C 1px;
     border-radius: 0.62rem;
 
-    width: 100%;
+    width: 90%;
     height: 3.5vw;
 
     font-size: 1.2rem;
@@ -123,7 +123,7 @@ section {
     align-items: center;
 
     width: 30%;
-    height: 60%;
+    height: 120%;
     background-color: #221817;
     box-shadow: #f0c25826 0px 0px 1vw;
 
@@ -147,8 +147,7 @@ h2 {
     text-align: left;
 
     width: 100%;
-        margin: 0 0 5px 0;
-
+    margin: 0 0 5px 0;
 }
 
 p {
@@ -167,20 +166,11 @@ label {
     width: 100%;
 }
 
-#btn a {
-    color: white;
-    font-size: 1.3rem;
-    text-align: left;
-        font-family: "Inter", sans-serif;
-
-    width: 100%;
-}
-
 input {
     background-color: #1B1312;
     border: solid 1px #CAC8C4;
     width: 96%;
-    height: 50%;
+    height: 52%;
     border-radius: 15px;
 
     font-size: 1.2rem;
@@ -188,19 +178,12 @@ input {
     padding-left: 3%;
 }
 
-#inSenha, #inEmail, #infLogin, #btn {
+#inSenha, #inEmail, #infLogin, #btn, #inCPF, #inNome, #confSenha {
     width: 90%;
 }
 
-#inSenha, #inEmail {
-    height: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-#btn {
-    height: 18%;
+#inSenha, #inEmail, #inCPF, #inNome, #confSenha {
+    height: 9%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
