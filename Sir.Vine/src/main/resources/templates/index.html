@@ -15,30 +15,43 @@
 
     <section id="pgInicial">
         <header>
+
             <div id="logo" style="display: flex;">
+                <a href="/">
 
-                <img src="/icons/servine.png" alt="">
 
-                <p class="sir">Sir. </p>
-                <p class="vine">Vines</p>
+                    <img src="/icons/servine.png" alt="">
+
+                    <p class="sir">Sir. </p>
+                    <p class="vine">Vines</p>
+                </a>
+
             </div>
 
             <ul>
-                <li>Catalogo</li>
-                <li>Espumantes</li>
-                <li>Vinhos</li>
-                <li>Queijos</li>
+                <li><a href="/Catalogo">Catálogo</a></li>
+
+
+                <li><a href="/CatalogoEspuma">Espumantes</a></li>
+                <li><a href="/CatalogoVinho">Vinhos</a></li>
+                <li><a href="/CatalogoQueijo">Queijos</a></li>
             </ul>
 
             <div id="atalhos">
 
                 <div id="itensCar">X</div>
-                <img src="/icons/lupa.svg" alt="">
 
-                <img src="/icons/carrinho.svg" alt="">
+                <a href="/Catalogo">
+                    <img src="/icons/lupa.svg" alt="">
+                </a>
 
+                <a href="/Carrinho">
+                    <img src="/icons/carrinho.svg" alt="">
+                </a>
 
-                <img src="/icons/perfil.svg" alt="">
+                <a href="/Perfil">
+                    <img src="/icons/perfil.svg" alt="">
+                </a>
 
             </div>
 
@@ -55,6 +68,8 @@
                 única de tradição e excelência.</h3>
 
             <button id="btnInicial" type="submit">Ver Catálogo</button>
+            <button id="btnInicialAdc" type="submit">Adicionar novo produto</button>
+
 
         </div>
 
@@ -108,7 +123,10 @@
                     <div class="imgDest">
                         <img th:src="@{${randomv.img}}" alt="">
 
-                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                        <div class="btnsAdEdit">
+                            <button type="submit" class="btnEditProd">Editar Produto</button>
+                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                        </div>
                     </div>
 
 
@@ -130,7 +148,10 @@
                     <div class="imgDest">
                         <img th:src="@{${randomq.img}}" alt="">
 
-                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                        <div class="btnsAdEdit">
+                            <button type="submit" class="btnEditProd">Editar Produto</button>
+                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                        </div>
                     </div>
 
                     <p class="nome">[[${randomq.nome}]]</p>
@@ -150,7 +171,10 @@
                     <div class="imgDest">
                         <img th:src="@{${randome.img}}" alt="">
 
-                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                        <div class="btnsAdEdit">
+                            <button type="submit" class="btnEditProd">Editar Produto</button>
+                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                        </div>
                     </div>
 
                     <p class="nome">[[${randome.nome}]]</p>
@@ -178,10 +202,12 @@
                     </div>
 
                     <p class="nome">Vinhos</p>
-                    <p class="desc"> Dos clássicos aos ---- ------ --- --</p>
+                    <p class="desc"> Dos clássicos aos contemporâneos</p>
                     <b>
                         <p class="rotulos">X+ Rótulos</p>
                     </b>
+
+                    <button class="btnExp">Explorar</button>
                 </div>
             </div>
 
@@ -192,12 +218,15 @@
                         <img src="/icons/coracao.png" alt="">
                     </div>
 
-                    <p class="nome">Vinhos</p>
-                    <p class="desc"> Dos clássicos aos ---------------</p>
+                    <p class="nome">Espumantes</p>
+                    <p class="desc"> Dos clássicos aos inovadores</p>
 
                     <b>
                         <p class="rotulos">X+ Rótulos</p>
                     </b>
+
+                    <button class="btnExp">Explorar</button>
+
                 </div>
             </div>
 
@@ -208,11 +237,15 @@
                         <img src="/icons/coracao.png" alt="">
                     </div>
 
-                    <p class="nome">Vinhos</p>
-                    <p class="desc"> Dos clássicos aos --- ------ ------</p>
+                    <p class="nome">Queijos</p>
+                    <p class="desc"> Dos clássicos aos artesanais</p>
+
                     <b>
                         <p class="rotulos">X+ Rótulos</p>
                     </b>
+
+                    <button class="btnExp">Explorar</button>
+
                 </div>
             </div>
         </div>
