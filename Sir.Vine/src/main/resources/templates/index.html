@@ -30,8 +30,6 @@
 
             <ul>
                 <li><a href="/Catalogo">Catálogo</a></li>
-
-
                 <li><a href="/CatalogoEspuma">Espumantes</a></li>
                 <li><a href="/CatalogoVinho">Vinhos</a></li>
                 <li><a href="/CatalogoQueijo">Queijos</a></li>
@@ -67,9 +65,10 @@
                 uma história
                 única de tradição e excelência.</h3>
 
-            <button id="btnInicial" type="submit">Ver Catálogo</button>
-            <button id="btnInicialAdc" type="submit">Adicionar novo produto</button>
-
+            <div id="btnsIndex">
+                <button id="btnInicial" type="submit"><a href="/Catalogo">Ver Catálogo</a></button>
+                <button id="btnInicialAdc" type="submit"> <a href="/Sir.Vine/src/main/resources/templates/adicionarEditarProduto.html">Adicionar produto</a></button>
+            </div>
 
         </div>
 
@@ -250,6 +249,38 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <table border="1">
+            <thead>
+                <tr>
+                  <th id="footSir"> <img src="/Sir.Vine/src/main/resources/static/icons/servine.png" alt=""> Sir. Vines</th>
+                  <th id="footProd">Produtos</th>
+                  <th id="footContat">Contate-nos</th>
+                </tr>
+              </thead>
+
+              <tr>
+                <td>Há mais de 20 anos selecionando os melhores vinhos do mundo para proporcionar experiências únicas aos nossos clientes.</td>
+                <td>
+                    <ul>
+                        <li>Vinhos</li>
+                        <li>Queijos</li>
+                        <li>Espumantes</li>
+                    </ul>
+                </td>
+
+                <td>
+                    <ul>
+                        <li>(15) 99746-0239</li>
+                        <li>email@sirvine.com</li>
+                        <li>Rua dos Vinhos, 123</li>
+                        <li>Vila Vinhedo - Uvalândia/SP</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </footer>
 
 
 </body>

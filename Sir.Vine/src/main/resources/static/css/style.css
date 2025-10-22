@@ -59,7 +59,6 @@ header ul {
 
 ul a {
     color: #d3d0ca;
-
 }
 
 #atalhos {
@@ -135,31 +134,42 @@ h3 {
     margin-top: 5vw;
 }
 
+#btnsIndex {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 3vw;
+
+    width: 28vw;
+}
+
 #btnInicial, #btnInicialAdc {
     background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
 
-    margin-top: 3vw;
     padding: 0.94rem 2.8rem;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
 
     background-size: 200% auto;
-    color: white;
+   
     display: block;
 
     border: solid #9D7F3C 1px;
     border-radius: 0.62rem;
 
-    width: 11vw;
+    width: 49%;
     height: 3.5vw;
 
     font-size: 0.94rem;
 }
 
-#btnInicial:hover {
+#btnsIndex a {
+    color: white;
+}
+
+#btnInicial:hover, #btnInicialAdc:hover {
     background-position: right center;
-    color: #fff;
     text-decoration: none;
 }
 
@@ -537,4 +547,12 @@ section {
     font-size: 1.2rem;
 
     cursor: pointer;
+}
+
+#footSir {
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+    color: transparent;
+    background: linear-gradient(90deg, rgba(255, 0, 38, 1) 40%, rgba(255, 223, 135, 1) 4%);
+    -webkit-background-clip: text;
 }
