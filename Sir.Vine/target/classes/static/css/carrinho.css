@@ -111,7 +111,7 @@ h1 {
     font-size: 3rem;
     font-family: "Playfair Display", serif;
     color: transparent;
-    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 40%);
+    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 20%);
     -webkit-background-clip: text;
 
     margin: 0;
