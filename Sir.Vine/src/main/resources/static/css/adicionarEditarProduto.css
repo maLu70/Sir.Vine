@@ -101,11 +101,6 @@ ul a {
     -webkit-background-clip: text;
 }
 
-section {
-    background-color: #151413;
-    height: 100vh;
-}
-
 h1 {
     color: white;
     font-size: 3rem;
@@ -114,20 +109,22 @@ h1 {
     background: linear-gradient(90deg, #FF3300 2%, #FFDF87 20%);
     -webkit-background-clip: text;
 
-    margin: 0;
+    width: 80%;
+
 }
 
 #radios {
     display: flex;
     width: 80%;
-    border: solid red;
     justify-content: space-between;
+
+    align-items: start;
 }
 
 #adProd {
-    width: 80%;
-    border: solid red;
     background-color: #221817;
+    border-radius: 15px;
+    box-shadow: #f0c25826 0px 0px 1vw;
 }
 
 .inpLabel {
@@ -138,16 +135,135 @@ h1 {
 label {
     color: white;
     font-family: "Inter", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin: 10px 0 10px 0;
 }
 
-#queijo,
-#vinho,
-#espumante {
-    width: 200px;
-    border: blue solid 2px;
+.rd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    appearance: none;
-    height: 1.5vw;
-    width: 1.5vw;
+.rd input[type="radio"] {
+    display: none;
+}
+
+.rd label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    text-align: center;
+
+    font-size: 2rem;
+}
+
+.rd label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid red;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.rd input[type="radio"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    width: 80%;
+}
+
+#novoProd {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #151413;
+
+}
+
+#bloc1, #bloc2, #adVinho, #adEspuma, #adQueijo {
+    width: 90%;
+}
+
+#adProd{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+input, textarea, select {
+    background-color: #1B1312;
+    border: solid #F0C258 1px;
+    border-radius: 15px;
+    color: white;
+
+    font-size: 1.5rem;
+
+    padding: 12px;
+
+    height: 6vh;
+
+    margin-bottom: 3vh;
+
+    box-sizing: border-box;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    border: solid #F0C258 1px;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0 30px #1B1312 inset;
+}
+
+#bloc1 {
+    margin-top: 3%;
+}
+
+#bloc2 {
+}
+
+textarea {
+    height: 10vh;
+
+}
+
+#bloc2 .inpLabel, #adVinho .inpLabel, #adEspuma .inpLabel, #adQueijo .inpLabel {
+    width: 49%;
+}
+
+#bloc2, #adVinho, #adEspuma, #adQueijo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#btns {
+    border: red solid;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 49%;
 }
