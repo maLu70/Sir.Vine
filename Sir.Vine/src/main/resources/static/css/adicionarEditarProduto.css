@@ -125,6 +125,8 @@ h1 {
     background-color: #221817;
     border-radius: 15px;
     box-shadow: #f0c25826 0px 0px 1vw;
+
+    margin-bottom: 5%;
 }
 
 .inpLabel {
@@ -171,13 +173,13 @@ label {
     transition: all 0.2s ease;
 }
 
-.rd input[type="radio"]:checked + label::after {
+.rd input[type="radio"]:checked+label::after {
     content: "";
     position: absolute;
-    left: 5px;
-    top: 7px;
-    width: 15px;
-    height: 15px;
+    left: 0px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
     background: red;
     border-radius: 50%;
 }
@@ -196,21 +198,26 @@ form {
     flex-direction: column;
 
     background-color: #151413;
-
 }
 
-#bloc1, #bloc2, #adVinho, #adEspuma, #adQueijo {
+#bloc1,
+#bloc2,
+#adVinho,
+#adEspuma,
+#adQueijo {
     width: 90%;
 }
 
-#adProd{
+#adProd {
     display: flex;
     flex-direction: column;
 
     align-items: center;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     background-color: #1B1312;
     border: solid #F0C258 1px;
     border-radius: 15px;
@@ -239,31 +246,62 @@ select:-webkit-autofill {
     margin-top: 3%;
 }
 
-#bloc2 {
-}
+#bloc2 {}
 
 textarea {
     height: 10vh;
-
 }
 
-#bloc2 .inpLabel, #adVinho .inpLabel, #adEspuma .inpLabel, #adQueijo .inpLabel {
+#bloc2 .inpLabel,
+#adVinho .inpLabel,
+#adEspuma .inpLabel,
+#adQueijo .inpLabel {
     width: 49%;
 }
 
-#bloc2, #adVinho, #adEspuma, #adQueijo {
+#bloc2,
+#adVinho,
+#adEspuma,
+#adQueijo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 #btns {
-    border: red solid;
     width: 90%;
     display: flex;
     justify-content: space-between;
+
+    margin-bottom: 3%;
 }
 
 button {
     width: 49%;
+    height: 8vh;
+
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    border-radius: 0.62rem;
+    cursor: pointer;
+
+    padding: 0.94rem 2.8rem;
+
+}
+
+#btnCriar {
+    color: white;
+    background-image: linear-gradient(to right, #CF1232 0%, #510B17 50%);
+    background-size: 200% auto;
+
+    border: solid #9D7F3C 1px;
+}
+
+#btnCancelar {
+    background-color: #EBC24A;
+    color: #6C0000;
+    border: #6C0000 solid 1px;
 }
