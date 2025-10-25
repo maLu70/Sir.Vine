@@ -318,14 +318,12 @@ section {
 #espumantes:hover p {
     transform: translateY(-1vw);
     opacity: 1;
-
 }
 
 #queijos:hover p,
 #espumantes:hover p,
 #vinhos:hover p {
     transition: 1s;
-
 }
 
 .imgDest {
@@ -341,7 +339,6 @@ section {
     height: 100%;
 
     object-fit: cover;
-
 }
 
 .prodDestaque {

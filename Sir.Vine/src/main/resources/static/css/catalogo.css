@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 13vh;
+    background-color: #211D1C;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo a {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+#logo img {
+    width: 3vw;
+    object-fit: contain;
+    margin-right: 1vw;
+}
+
+#logo p {
+    font-size: 3rem;
+
+    font-family: "Playfair Display", serif;
+    color: transparent;
+
+    margin: 0;
+}
+
+header ul {
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+
+    width: 40%;
+
+    padding: 0;
+}
+
+ul a {
+    color: #d3d0ca;
+}
+
+#atalhos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 15%;
+}
+
+#itensCar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    background-color: #CF1232;
+
+    position: absolute;
+
+    top: 3%;
+    right: 11.5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    color: white;
+
+}
+
+.sir {
+    background: linear-gradient(90deg, rgba(255, 223, 135, 1) 2%, rgba(255, 0, 38, 1) 15%);
+    -webkit-background-clip: text;
+}
+
+.vine {
+    background: linear-gradient(90deg, rgba(255, 0, 38, 1) 2%, rgba(240, 194, 88, 1) 18%);
+    -webkit-background-clip: text;
+}
+
+section {
+    background-color: #151413;
+}
+
+#container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.imgDest {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prod img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.prod {
+    width: 20vw;
+    height: 30vw;
+    background-color: #201E1B;
+
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    align-items: center;
+
+    border: #201E1B solid 1px;
+
+    margin-bottom: 3vh;
+}
+
+.prod p {
+    margin: 1%;
+    margin-left: 8%;
+    width: 91%;
+}
+
+.prod b {
+    width: 100%;
+}
+
+.prod .nome {
+    font-family: "Playfair Display", serif;
+    color: white;
+    font-size: 2rem;
+    margin-top: 5%;
+}
+
+.prod .loc {
+    color: #F0C258;
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+}
+
+.prod .preco {
+    color: #CF1215;
+    font-family: "Inter", sans-serif;
+    font-size: 1.8rem;
+}
+
+#produtos {
+    width: 65vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+}
+
+.btnsAdEdit {
+    position: relative;
+    top: -6vw;
+    z-index: 1;
+    opacity: 0;
+    transition: transform .5s ease, opacity 0.3s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.imgDest .btnAdcProd,
+.imgDest .btnEditProd {
+    background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
+
+    padding: 0.94rem 2.8rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    background-size: 200% auto;
+    color: white;
+
+    border: solid #9D7F3C 1px;
+    border-radius: 1rem;
+
+    width: 100%;
+
+    cursor: pointer;
+}
+
+.prod:hover .btnsAdEdit {
+    opacity: 1;
+    transform: translateY(-1vw);
+}
+
+#contFiltros {
+    width: 20vw;
+    background-color: #211D1C;
+    padding: 0 2vw 2vw 2vw;
+
+    color: white;
+    font-family: "Inter", sans-serif;
+
+    height: fit-content;
+}
+
+
+h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+
+    margin-bottom: 0;
+}
+
+#contFiltros input {
+    background-color: #211D1C;
+    border: solid #F0C258 1px;
+    border-radius: 15px;
+    color: white;
+
+    font-size: 1.5rem;
+    padding: 12px;
+
+    height: 3vh;
+    width: 35%;
+}
+
+#fPc span {
+    border: solid #F0C258 2px;
+    height: 2px;
+    width: 5%;
+    background-color: #F0C258;
+}
+
+#fPc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+label {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 1.7rem;
+    margin: 10px 0 10px 0;
+}
+
+.rd {
+    display: flex;
+    justify-content: start;
+}
+
+.rd input[type="radio"] {
+    display: none;
+}
+
+.rd label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    text-align: center;
+
+    font-size: 1.5rem;
+}
+
+.rd label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border: 3px solid red;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.rd input[type="radio"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    background: red;
+    border-radius: 50%;
+}
+
+#rdCategoria,
+#rdPais {
+    margin-top: 10px;
+}
+
+#btnFiltro {
+    background-image: linear-gradient(to right, #CF1232 0%, #6B212D 51%, #CF1232 100%);
+    background-size: 200% auto;
+
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 1.3rem;
+
+    border: solid #9D7F3C 1px;
+    border-radius: 15px;
+    padding: 0.94rem 2.8rem;
+    width: 100%;
+    height: 8vh;
+
+    cursor: pointer;
+
+    margin-top: 2rem;
+}
+
+#pesq {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#pesq input,
+#pesq select {
+    background-color: #1B1312;
+    border: solid #CAC8C4 1px;
+    border-radius: 15px;
+    color: white;
+
+    font-size: 1.5rem;
+
+    padding: 12px;
+
+    height: 6vh;
+
+    margin: 3vh 1vh;
+
+    box-sizing: border-box;
+}
+
+#pesq input {
+    width: 72%;
+
+    background-image: url("/Sir.Vine/src/main/resources/static/icons/lupa.svg");
+    background-repeat: no-repeat;
+    background-size: 35px;
+    padding-left: 50px;
+    background-position: 10px center;
+
+}
+
+#pesq select {
+    width: 20%;
+}
