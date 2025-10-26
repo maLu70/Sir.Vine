@@ -18,6 +18,20 @@ private String senha;
 @Column(name = "ADMIN")
 private boolean admin;
 
+@Column(name = "nome")
+private String nome;
+
+@Column(name = "CPF")
+private String CPF;
+
+public Usuario( String nome, String cPF, String email, String senha) {
+    this.nome = nome;
+    CPF = cPF;
+    this.email = email;
+    this.senha = senha;
+    this.admin = false;
+}
+
 public String getEmail() {
     return email;
 }

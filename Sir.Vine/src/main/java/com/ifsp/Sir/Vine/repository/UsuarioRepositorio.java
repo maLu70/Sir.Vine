@@ -39,4 +39,16 @@ private EntityManager em;
     public void save(Usuario usuario) {
         em.persist(usuario);
     }
+
+    public void update(Usuario usuario) {
+        em.merge(usuario);
+    }
+
+    public void delete(Usuario usuario) {
+        em.remove(em.contains(usuario) ? usuario : em.merge(usuario));
+    }  
+
+    public void saver(Usuario usuario) {
+        em.persist(usuario);
+    }
 }

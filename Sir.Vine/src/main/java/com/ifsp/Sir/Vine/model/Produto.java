@@ -38,7 +38,7 @@ public class Produto {
     private String pais;
 
     @Column(name = "estoque")
-    private int estoque;
+    private Integer estoque;
 
     @Column(name = "tipo_do_produto")
     private String tipo_do_produto;
@@ -46,7 +46,7 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais, int estoque, String tipo_do_produto) {
+    public Produto(String descricao, String nome, Double preco, String img, String cidade, String ano, String pais, Integer estoque, String tipo_do_produto) {
         this.descricao = descricao;
         this.nome = nome;
         this.preco = preco;
@@ -59,11 +59,11 @@ public class Produto {
 
     }
 
-    public int getEstoque() {
+    public Integer getEstoque() {
         return estoque;
     }
 
-    public void setEstoque(int estoque) {
+    public void setEstoque(Integer estoque) {
         this.estoque = estoque;
     }
 

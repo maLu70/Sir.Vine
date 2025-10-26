@@ -1,6 +1,6 @@
 
-INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco, estoque, tipo_do_produto) VALUES
-('2024', 'Serro', 'Queijo fresco tradicional de Minas Gerais, de textura macia e sabor suave', '/queijos/queijo_minas_frescal.jpg', 'Minas Frescal', 'Brasil', 25.90, 100, 'queijo'),
+INSERT INTO produto (ano, cidade, descricao, img, nome, pais, preco, estoque, tipo_do_produto, estoque) VALUES
+('2024', 'Serro', 'Queijo fresco tradicional de Minas Gerais, de textura macia e sabor suave', '/queijos/queijo_minas_frescal.jpg', 'Minas Frescal', 'Brasil', 25.90, 100, 'queijo', 10),
 ('2024', 'São Roque de Minas', 'Queijo artesanal produzido na Serra da Canastra, com sabor marcante', '/queijos/queijo_canastra.jpg', 'Canastra', 'Brasil', 42.50, 80, 'queijo'),
 ('2024', 'Carambeí', 'Queijo de massa semidura, cor amarela palha e sabor suave', '/queijos/queijo_prato.jpg', 'Queijo Prato', 'Brasil', 38.75, 90, 'queijo'),
 ('2024', 'Patos de Minas', 'Queijo ideal para derreter, perfeito para pizzas e sanduíches', '/queijos/queijo_mussarela.jpg', 'Mussarela', 'Brasil', 32.90, 120, 'queijo'),

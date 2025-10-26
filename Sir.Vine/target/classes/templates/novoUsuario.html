@@ -63,33 +63,35 @@
                 <h2>Criar Conta</h2>
                 <p>Registre-se com seu email e senha</p>
             </div>
+            <form th:action="@{/CriarUsuario}" th:method="post">
+                <div id="inNome">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" placeholder="Nome Completo" id="nome" th:name="nome" required>
+                </div>
 
-            <div id="inNome">
-                <label for="nome">Nome Completo</label>
-                <input type="text" placeholder="Nome Completo" id="nome" required>
-            </div>
+                <div id="inCPF">
+                    <label for="cpf">CPF</label>
+                    <input type="text" placeholder="CPF" id="cpf" required th:name="CPF">
+                </div>
 
-            <div id="inCPF">
-                <label for="cpf">CPF</label>
-                <input type="text" placeholder="CPF" id="cpf" required>
-            </div>
+                <div id="inEmail">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Email" id="email" required th:name="email">
+                </div>
 
-            <div id="inEmail">
-                <label for="email">Email</label>
-                <input type="email" placeholder="Email" id="email" required>
-            </div>
+                <div id="inSenha">
+                    <label for="senha">Senha</label>
+                    <input type="password" placeholder="Senha" id="senha" required th:name="senha">
+                </div>
 
-            <div id="inSenha">
-                <label for="senha">Senha</label>
-                <input type="password" placeholder="Senha" id="senha" required>
-            </div>
+                <div id="confSenha">
+                    <label for="senha">Confirmar Senha</label>
+                    <input type="password" placeholder="Senha" id="senha" required th:name="confSenha">
+                </div>
 
-            <div id="confSenha">
-                <label for="senha">Confirmar Senha</label>
-                <input type="password" placeholder="Senha" id="senha" required>
-            </div>
-
-                <button id="btnLogin">Registrar-se</button>
+                <p>[[${error}]]</p>
+                <button id="btnLogin" type="submit">Registrar-se</button>
+            </form>
         </div>
 
     </section>

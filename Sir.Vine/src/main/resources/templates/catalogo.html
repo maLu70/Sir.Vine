@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo</title>
 
-    <link rel="stylesheet" th:href="@{/css/catlogo.css}">
+    <link rel="stylesheet" th:href="@{/css/catalogo.css}">
 
     <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/catalogo.css">
 
@@ -54,189 +54,92 @@
 
         </header>
 
-        <div id="pesq">
-            <input type="text" id="inpPesq" placeholder="Buscar" >
 
-            <select name="ordenar" id="ordenar">
-                <option value="az">Nome: A-Z</option>
-                <option value="pCres">Preço: Crescente</option>
-                <option value="pDecre">Preço: Decrescente</option>
-            </select>
+        <form action="" th:action="@{/FiltrarProdutos}" th:method="post">
+            <div id="pesq">
+                <input type="text" id="inpPesq" placeholder="Buscar" th:name="nomeProduto">
+
+                <select name="ordenar" id="ordenar" th:name="ordenar">
+                    <option value="az">Nome: A-Z</option>
+                    <option value="pCres">Preço: Crescente</option>
+                    <option value="pDecre">Preço: Decrescente</option>
+                </select>
+
+            </div>
+
+            <div id="container">
+
+                <div id="contFiltros">
+
+                    <h2>Filtros</h2>
+
+                    <h3>Faixa de preço</h3>
+
+                    <div id="fPc">
+                        <input type="number" name="" id="" placeholder="R$ Min." th:name="precoMin">
+
+                        <span></span>
+
+                        <input type="number" name="" id="" placeholder="R$ Max." th:name="precoMax">
+
+                    </div>
+
+                    <h3>Categoria</h3>
+
+                    <div id="rdCategoria">
+                        <div class="rd">
+                            <input type="radio" id="vinho" th:name="radio" name="prod" th:value="vinho">
+                            <label for="vinho">Vinho</label>
+                        </div>
+
+                        <div class="rd">
+                            <input type="radio" id="queijo" th:name="radio" name="prod" th:value="queijo">
+                            <label for="queijo">Queijo</label>
+                        </div>
+
+                        <div class="rd">
+                            <input type="radio" id="espumante" th:name="radio" name="prod" th:value="espumante">
+                            <label for="espumante">Espumante</label>
+                        </div>
+
+                    </div>
+
+                    <h3>País</h3>
+                    <div id="rdPais">
+                        <div class="rd" th:each="pais : ${paises}">
+                            <input type="radio" th:id="${#strings.replace(pais, ' ', '_')}" th:name="radiopais" name="pais"
+                                th:value="${pais}">
+                            <label th:for="${#strings.replace(pais, ' ', '_')}" th:text="${pais}"></label>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" id="btnFiltro">Aplicar Filtros</button>
+        </form>
 
         </div>
 
-        <div id="container">
+        <div id="produtos">
+            <div class="prod" th:each="produto : ${produtos}">
 
-            <div id="contFiltros">
+                <div class="imgDest">
+                    <img th:src="@{${produto.img}}" alt="">
 
-                <h2>Filtros</h2>
-
-                <h3>Faixa de preço</h3>
-
-                <div id="fPc">
-                    <input type="number" name="" id="" placeholder="R$ Min.">
-
-                    <span></span>
-
-                    <input type="number" name="" id="" placeholder="R$ Max.">
-
+                    <div class="btnsAdEdit">
+                        <button type="submit" class="btnEditProd">Editar Produto</button>
+                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                    </div>
                 </div>
 
-                <h3>Categoria</h3>
+                <p class="nome">[[${produto.nome}]]</p>
+                <p class="loc">[[${produto.cidade}]], [[${produto.pais}]] - [[${produto.ano}]]</p>
 
-                <div id="rdCategoria">
-                    <div class="rd">
-                        <input type="radio" id="vinho" th:name="radioVinho" name="prod" th:value="1">
-                        <label for="vinho">Vinho</label>
-                    </div>
-
-                    <div class="rd">
-                        <input type="radio" id="queijo" th:name="radioQueijo" name="prod" th:value="1">
-                        <label for="queijo">Queijo</label>
-                    </div>
-
-                    <div class="rd">
-                        <input type="radio" id="espumante" th:name="radioEspuma" name="prod" th:value="1">
-                        <label for="espumante">Espumante</label>
-                    </div>
-
-                </div>
-
-                <h3>País</h3>
-                <div id="rdPais">
-                    <div class="rd">
-                        <input type="radio" id="vinho" th:name="radioVinho" name="prod" th:value="1">
-                        <label for="vinho">Vinho</label>
-                    </div>
-
-                </div>
-
-                <button type="submit" id="btnFiltro">Aplicar Filtros</button>
-
+                <b>
+                    <p class="preco">R$ [[${produto.preco}]]</p>
+                </b>
 
             </div>
 
-            <div id="produtos">
-                <div class="prod">
-
-                    <div class="imgDest">
-                        <img th:src="@{${randome.img}}" alt="">
-
-                        <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd">Editar Produto</button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-
-                    <p class="nome">nome do produto</p>
-                    <p class="loc">cidade, pais - ano</p>
-
-                    <b>
-                        <p class="preco">R$ 1111.111</p>
-                    </b>
-
-                </div>
-
-                <div class="prod">
-
-                    <div class="imgDest">
-                        <img th:src="@{${randome.img}}" alt="">
-
-                        <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd">Editar Produto</button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-
-                    <p class="nome">nome do produto</p>
-                    <p class="loc">cidade, pais - ano</p>
-
-                    <b>
-                        <p class="preco">R$ 1111.111</p>
-                    </b>
-
-                </div>
-
-                <div class="prod">
-
-                    <div class="imgDest">
-                        <img th:src="@{${randome.img}}" alt="">
-
-                        <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd">Editar Produto</button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-
-                    <p class="nome">nome do produto</p>
-                    <p class="loc">cidade, pais - ano</p>
-
-                    <b>
-                        <p class="preco">R$ 1111.111</p>
-                    </b>
-
-                </div>
-
-                <div class="prod">
-
-                    <div class="imgDest">
-                        <img th:src="@{${randome.img}}" alt="">
-
-                        <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd">Editar Produto</button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-
-                    <p class="nome">nome do produto</p>
-                    <p class="loc">cidade, pais - ano</p>
-
-                    <b>
-                        <p class="preco">R$ 1111.111</p>
-                    </b>
-
-                </div>
-
-                <div class="prod">
-
-                    <div class="imgDest">
-                        <img th:src="@{${randome.img}}" alt="">
-
-                        <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd">Editar Produto</button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-
-                    <p class="nome">nome do produto</p>
-                    <p class="loc">cidade, pais - ano</p>
-
-                    <b>
-                        <p class="preco">R$ 1111.111</p>
-                    </b>
-
-                </div>
-
-                <div class="prod">
-
-                    <div class="imgDest">
-                        <img th:src="@{${randome.img}}" alt="">
-
-                        <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd">Editar Produto</button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                        </div>
-                    </div>
-
-                    <p class="nome">nome do produto</p>
-                    <p class="loc">cidade, pais - ano</p>
-
-                    <b>
-                        <p class="preco">R$ 1111.111</p>
-                    </b>
-
-                </div>
-            </div>
         </div>
 
     </section>
