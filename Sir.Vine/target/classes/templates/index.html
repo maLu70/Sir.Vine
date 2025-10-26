@@ -19,7 +19,6 @@
             <div id="logo" style="display: flex;">
                 <a href="/">
 
-
                     <img src="/icons/servine.png" alt="">
 
                     <p class="sir">Sir. </p>
@@ -67,7 +66,9 @@
 
             <div id="btnsIndex">
                 <button id="btnInicial" type="submit"><a href="/Catalogo">Ver Catálogo</a></button>
-                <button id="btnInicialAdc" type="submit"> <a href="/Sir.Vine/src/main/resources/templates/adicionarEditarProduto.html">Adicionar produto</a></button>
+                <button id="btnInicialAdc" type="submit"> <a
+                        href="/Sir.Vine/src/main/resources/templates/adicionarEditarProduto.html">Adicionar
+                        produto</a></button>
             </div>
 
         </div>
@@ -116,7 +117,6 @@
 
             <a th:href="@{/Especificacao/{tipo}/{id}(id=${randomv.id},tipo=${randomv.tipo_do_produto})}">
 
-
                 <div class="prodDestaque">
 
                     <div class="imgDest">
@@ -127,7 +127,6 @@
                             <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                         </div>
                     </div>
-
 
                     <p class="nome">[[${randomv.nome}]]</p>
                     <p class="loc">[[${randomv.cidade}]], [[${randomv.pais}]] - [[${randomv.ano}]]</p>
@@ -184,7 +183,7 @@
                     </b>
 
                 </div>
-                
+
             </a>
         </div>
 
@@ -252,35 +251,45 @@
     </section>
 
     <footer>
-        <table border="1">
-            <thead>
-                <tr>
-                  <th id="footSir"> <img src="/Sir.Vine/src/main/resources/static/icons/servine.png" alt=""> Sir. Vines</th>
-                  <th id="footProd">Produtos</th>
-                  <th id="footContat">Contate-nos</th>
-                </tr>
-              </thead>
 
-              <tr>
-                <td>Há mais de 20 anos selecionando os melhores vinhos do mundo para proporcionar experiências únicas aos nossos clientes.</td>
-                <td>
+        <div class="footerContainer">
+
+            <div class="contFooter">
+
+                <div id="footSir">
+                    <img src="/Sir.Vine/src/main/resources/static/icons/servine.png" alt="Logo Sir Vines">
+
+                    <h2>Sir. Vines</h2>
+                </div>
+
+                <p id="footDesc">
+                    Há mais de 20 anos selecionando os melhores vinhos do mundo para proporcionar experiências únicas
+                    aos nossos clientes.
+                </p>
+            </div>
+
+            <div class="contFooter" >
+
+                <div id="footProd">
+                    <h3>Produtos</h3>
                     <ul>
                         <li>Vinhos</li>
                         <li>Queijos</li>
                         <li>Espumantes</li>
-                    </ul>
-                </td>
+                </div>
+                </ul>
+            </div>
 
-                <td>
-                    <ul>
-                        <li>(15) 99746-0239</li>
-                        <li>email@sirvine.com</li>
-                        <li>Rua dos Vinhos, 123</li>
-                        <li>Vila Vinhedo - Uvalândia/SP</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+            <div class="contFooter" id="footContat">
+                <h3>Contate-nos</h3>
+                <ul>
+                    <li>(15) 99746-0239</li>
+                    <li>email@sirvine.com</li>
+                    <li>Rua dos Vinhos, 123</li>
+                    <li>Vila Vinhedo - Uvalândia/SP</li>
+                </ul>
+            </div>
+        </div>
     </footer>
 
 
