@@ -19,7 +19,6 @@
             <div id="logo" style="display: flex;">
                 <a href="/">
 
-
                     <img src="/icons/servine.png" alt="">
 
                     <p class="sir">Sir. </p>
@@ -63,7 +62,7 @@
                 <h2>Criar Conta</h2>
                 <p>Registre-se com seu email e senha</p>
             </div>
-            <form th:action="@{/CriarUsuario}" th:method="post">
+            <form th:action="@{/CriarUsuario}" th:method="post" id="formNovoUsuario">
                 <div id="inNome">
                     <label for="nome">Nome Completo</label>
                     <input type="text" placeholder="Nome Completo" id="nome" th:name="nome" required>
@@ -89,7 +88,6 @@
                     <input type="password" placeholder="Senha" id="senha" required th:name="confSenha">
                 </div>
 
-                <p>[[${error}]]</p>
                 <button id="btnLogin" type="submit">Registrar-se</button>
             </form>
         </div>
