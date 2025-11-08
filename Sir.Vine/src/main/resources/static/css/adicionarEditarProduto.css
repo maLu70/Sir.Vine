@@ -110,7 +110,6 @@ h1 {
     -webkit-background-clip: text;
 
     width: 80%;
-
 }
 
 #radios {
@@ -246,8 +245,6 @@ select:-webkit-autofill {
     margin-top: 3%;
 }
 
-#bloc2 {}
-
 textarea {
     height: 10vh;
 }
@@ -268,9 +265,15 @@ textarea {
     justify-content: space-between;
 }
 
+#adVinho,
+#adEspuma,
+#adQueijo {
+    display: none;
+}
+
 #btns {
     width: 90%;
-    display: flex;
+    display: none;
     justify-content: space-between;
 
     margin-bottom: 3%;

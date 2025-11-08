@@ -7,7 +7,10 @@
     <title>Adicionar Produto</title>
 
     <link rel="stylesheet" th:href="@{/css/adicionarEditarProduto.css}">
+
     <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/adicionarEditarProduto.css">
+    <script src="/Sir.Vine/src/main/resources/static/script/adicionarEditarProduto.js" defer></script>
+
 </head>
 
 <body>
@@ -66,12 +69,12 @@
                     </div>
                     <div class="rd">
 
-                        <input type="radio" id="queijo" th:name="radioQueijo" name="prod" th:value="1">
+                        <input type="radio" id="queijo" th:name="radioQueijo" name="prod" th:value="2">
                         <label for="queijo">Queijo</label>
                     </div>
                     <div class="rd">
 
-                        <input type="radio" id="espumante" th:name="radioEspuma" name="prod" th:value="1">
+                        <input type="radio" id="espumante" th:name="radioEspuma" name="prod" th:value="3">
                         <label for="espumante">Espumante</label>
                     </div>
                 </div>
@@ -217,6 +220,7 @@
             </form>
 
         </div>
+    </div>
 
 </body>
 
