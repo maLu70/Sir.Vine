@@ -69,7 +69,6 @@ p {
     font-size: 1.5rem;
     letter-spacing: 3px;
     line-height: 2rem;
-
 }
 
 #especificacoes {
@@ -112,55 +111,89 @@ p {
     padding: 0.94rem 2.8rem;
 
     text-align: center;
-    text-transform: uppercase;
+    font-weight: bold;
     color: white;
 
     background-size: 200% auto;
 
-    border: solid #9D7F3C 1px;
-    border-radius: 1rem;
+    border-radius: 10px;
 
-    width: 16vw;
-    height: 5vw;
+    width: 18vw;
+    height: 4vw;
 
-    font-size: 0.94rem;
+    font-size: 1rem;
 
     cursor: pointer;
+}
+
+#adicionar {
+    color: white;
+    border: solid #9D7F3C 1px;
+    background-image: linear-gradient(to right, #CF1232 0%, #510B17 50%);
+}
+
+#comprar {
+    background-color: #EBC24A;
+    color: #6C0000;
+    border: solid #6C0000 1px;
 }
 
 #unid {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 #mais,
 #menos {
-    width: 5vw;
-    height: 5vw;
+    width: 4vw;
+    height: 4vw;
     cursor: pointer;
 
     font-size: 3rem;
+
+    border-radius: 10px;
+    background-color: #1B1818;
+    color: white;
+    border: white solid 2px;
 }
 
 #mais {
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-
     margin-left: .5rem;
 }
 
 #menos {
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-
     margin-right: .5rem;
 }
 
 input {
-    width: 5vw;
-    height: 5vw;
+    width: 4vw;
+    height: 4vw;
 
     cursor: default;
+
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+
+    color: white;
+    font-size: 2.5rem;
+
+    text-align: center;
+    padding-left: 5%;
+}
+
+#infPCLoc {
+    display: flex;
+    border: red solid 1px;
+    justify-content: space-between;
+}
+
+h4 {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Inter", sans-serif;
+    color: #ff0004;
+    font-weight: bold;
+    font-size: 2rem;
 }
