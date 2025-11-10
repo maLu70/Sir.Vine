@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto</title>
+
+    <link rel="stylesheet" th:href="@{/css/editarProduto.css}">
+
+    <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/editarProduto.css">
+</head>
+
+<body>
+
+    <div>
+        <header>
+
+            <div id="logo" style="display: flex;">
+                <a href="/">
+
+                    <img src="/icons/servine.png" alt="">
+
+                    <p class="sir">Sir. </p>
+                    <p class="vine">Vines</p>
+                </a>
+
+            </div>
+
+            <ul>
+                <li><a href="/Catalogo">Catálogo</a></li>
+                <li><a href="/CatalogoEspuma">Espumantes</a></li>
+                <li><a href="/CatalogoVinho">Vinhos</a></li>
+                <li><a href="/CatalogoQueijo">Queijos</a></li>
+            </ul>
+
+            <div id="atalhos">
+
+                <div id="itensCar">X</div>
+
+                <a href="/Catalogo">
+                    <img src="/icons/lupa.svg" alt="">
+                </a>
+
+                <a href="/Carrinho">
+                    <img src="/icons/carrinho.svg" alt="">
+                </a>
+
+                <a href="/Perfil">
+                    <img src="/icons/perfil.svg" alt="">
+                </a>
+
+            </div>
+
+        </header>
+
+        <div id="novoProd">
+
+            <h1>Editar produto</h1>
+
+            <form th:action="@{/CriarProduto}" th:method="post" enctype="multipart/form-data">
+
+                <div id="adProd">
+
+                    <div id="bloc1">
+
+                        <div class="inpLabel">
+                            <label for="nome">Nome do produto</label>
+                            <input type="text" id="nome" th:name="nome">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="desc">Descrição</label>
+                            <textarea name="oi" id="desc" th:name="desc"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div id="adVinho" class="contInput">
+
+                        <div class="inpLabel">
+                            <label for="volV">Volume (ml)</label>
+                            <input type="number" id="volV" th:name="volV">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="tipoV">Tipo</label>
+                            <select name="" id="tipoV" th:name="tipoV">
+                                <option th:value="seco">Seco</option>
+                                <option th:value="branco">Branco</option>
+                                <option th:value="tinto">Tinto</option>
+                                <option th:value="rose">Rosé</option>
+                            </select>
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="teorV">Teor Alcoólico (%)</label>
+                            <input type="number" id="teorV" th:name="teorV" step="0.01">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="uvaV">Uva</label>
+                            <input type="text" th:name="uvaV" id="uvaV">
+                        </div>
+                    </div>
+
+                    <div id="adEspuma" class="contInput">
+
+                        <div class="inpLabel">
+                            <label for="volEspuma">Volume (ml)</label>
+                            <input type="number" th:name="volEspuma" id="volEspuma">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="tipoEspuma">Tipo</label>
+                            <select name="" id="tipoEspuma" th:name="tipoEspuma">
+                                <option th:value="nature">Nature</option>
+                                <option th:value="eBrut">Extra Brut</option>
+                                <option th:value="brut">Brut</option>
+                                <option th:value="demiSec">Demi-Sec</option>
+                                <option th:value="moscatel">Moscatel</option>
+                            </select>
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="teorEspuma">Teor Alcoólico (%)</label>
+                            <input type="number" id="teorEspuma" th:name="teorEspuma" step="0.01">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="atmEspuma">Pressão</label>
+                            <input type="number" id="atmEspuma" th:name="atmEspuma" step="0.01">
+                        </div>
+                    </div>
+
+                    <div id="adQueijo" class="contInput">
+
+                        <div class="inpLabel">
+                            <label for="pesoQueijo">Peso (Kg)</label>
+                            <input type="number" id="pesoQueijo" th:name="pesoQueijo" step="0.01">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="tipoQueijo">Tipo</label>
+                            <input type="text" id="tipoQueijo" th:name="tipoQueijo">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="gordQueijo">Gordura (%)</label>
+                            <input type="number" id="gordQueijo" step="0.01" th:name="gordQueijo">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="anmQueijo">Animal de leite</label>
+                            <input type="text" id="anmQueijo" th:name="anmQueijo">
+                        </div>
+
+                    </div>
+
+                    <div id="bloc2" class="contInput">
+                        <div class="inpLabel">
+                            <label for="pais">País</label>
+                            <input type="text" id="pais" th:name="pais">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" th:name="cidade">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="ano">Ano</label>
+                            <input type="number" id="ano" th:name="ano">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="pc">Preço (R$)</label>
+                            <input type="number" id="pc" step="0.01" th:name="pc">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="est">Estoque</label>
+                            <input type="number" id="est" th:name="est">
+                        </div>
+
+                        <div class="inpLabel">
+                            <label for="image">Imagem</label>
+                            <input type="file" accept="image/*" th:name="image" id="image">
+                        </div>
+                    </div>
+
+                    <div id="btns">
+                        <button type="submit" id="btnCancelar">Cancelar</button>
+
+                        <button type="submit" id="btnCriar">Editar Produto</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

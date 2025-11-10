@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 13vh;
+    width: 100%;
+    background-color: #211D1C;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    width: 3vw;
+    object-fit: contain;
+    margin-right: 1vw;
+}
+
+#logo p {
+    font-size: 3rem;
+
+    font-family: "Playfair Display", serif;
+    color: transparent;
+
+    margin: 0;
+}
+
+#logo a {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+header ul {
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    color: #d3d0ca;
+    font-family: "Inter", sans-serif;
+    font-size: 1.6rem;
+
+    width: 40%;
+
+    padding: 0;
+}
+
+ul a {
+    color: #d3d0ca;
+}
+
+#atalhos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 15%;
+}
+
+#itensCar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    background-color: #CF1232;
+
+    position: absolute;
+
+    top: 3%;
+    right: 11.5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    color: white;
+}
+
+.sir {
+    background: linear-gradient(90deg, rgba(255, 223, 135, 1) 2%, rgba(255, 0, 38, 1) 15%);
+    -webkit-background-clip: text;
+}
+
+.vine {
+    background: linear-gradient(90deg, rgba(255, 0, 38, 1) 2%, rgba(240, 194, 88, 1) 18%);
+    -webkit-background-clip: text;
+}
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    font-family: "Playfair Display", serif;
+    color: transparent;
+    background: linear-gradient(90deg, #FF3300 2%, #FFDF87 20%);
+    -webkit-background-clip: text;
+
+    width: 80%;
+}
+
+#adProd {
+    background-color: #221817;
+    border-radius: 15px;
+    box-shadow: #f0c25826 0px 0px 1vw;
+
+    margin-bottom: 5%;
+}
+
+.inpLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 1.7rem;
+    margin: 10px 0 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    width: 80%;
+}
+
+#novoProd {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #151413;
+}
+
+#bloc1,
+#bloc2,
+#adVinho,
+#adEspuma,
+#adQueijo {
+    width: 90%;
+}
+
+#adProd {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+input,
+textarea,
+select {
+    background-color: #1B1312;
+    border: solid #F0C258 1px;
+    border-radius: 15px;
+    color: white;
+
+    font-size: 1.5rem;
+
+    padding: 12px;
+
+    height: 6vh;
+
+    margin-bottom: 3vh;
+
+    box-sizing: border-box;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    border: solid #F0C258 1px;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0 30px #1B1312 inset;
+}
+
+#bloc1 {
+    margin-top: 3%;
+}
+
+textarea {
+    height: 10vh;
+}
+
+#bloc2 .inpLabel,
+#adVinho .inpLabel,
+#adEspuma .inpLabel,
+#adQueijo .inpLabel {
+    width: 49%;
+}
+
+#bloc2,
+#adVinho,
+#adEspuma,
+#adQueijo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#adVinho,
+#adEspuma,
+#adQueijo {
+    display: flex;
+}
+
+#btns {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 3%;
+}
+
+button {
+    width: 49%;
+    height: 8vh;
+
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    border-radius: 0.62rem;
+    cursor: pointer;
+
+    padding: 0.94rem 2.8rem;
+
+}
+
+#btnCriar {
+    color: white;
+    background-image: linear-gradient(to right, #CF1232 0%, #510B17 50%);
+    background-size: 200% auto;
+
+    border: solid #9D7F3C 1px;
+}
+
+#btnCancelar {
+    background-color: #EBC24A;
+    color: #6C0000;
+    border: #6C0000 solid 1px;
+}

@@ -56,6 +56,7 @@ public class ControllerSirVine {
         model.addAttribute("randomv", vinhoRepositorio.randomVinho());
         model.addAttribute("randome", espumanteRepositorio.randomEspumante());
         model.addAttribute("randomq", queijoRepositorio.randomQueijo());
+
         return "index";
     }
 
@@ -71,21 +72,16 @@ public class ControllerSirVine {
 
             model.addAttribute("produto", vinhoRepositorio.findById(Long.valueOf(id)));
             model.addAttribute("vinho", vinhoRepositorio.findById(Long.valueOf(id)));
-
             model.addAttribute("queijo", queijoRepositorio.randomQueijo());
             model.addAttribute("espumante", espumanteRepositorio.randomEspumante());
-
             model.addAttribute("tipo", "vinho");
 
         } else if (tipo.toLowerCase().equals("espumante")) {
 
             model.addAttribute("produto", espumanteRepositorio.findById(Long.valueOf(id)));
             model.addAttribute("espumante", espumanteRepositorio.findById(Long.valueOf(id)));
-
             model.addAttribute("vinho", vinhoRepositorio.randomVinho());
-
             model.addAttribute("queijo", queijoRepositorio.randomQueijo());
-
             model.addAttribute("tipo", "espumante");
 
         } else if (tipo.toLowerCase().equals("queijo")) {
@@ -97,7 +93,6 @@ public class ControllerSirVine {
             model.addAttribute("espumante", espumanteRepositorio.randomEspumante());
 
             model.addAttribute("tipo", "queijo");
-
         }
 
         return "especificacoes";
@@ -105,7 +100,7 @@ public class ControllerSirVine {
 
     @GetMapping("/CadastrarProduto")
     public String cadastrarProduto() {
-        return "adicionarEditarProduto";
+        return "adicionarProduto";
     }
 
     @PostMapping("/CriarProduto")
@@ -142,19 +137,20 @@ public class ControllerSirVine {
         if (radioVinho == 1) {
             Vinho vinho = new Vinho(desc, nome, pc, vinhoService.guardarImg(image), cidade, ano, pais, tipoV, teorV,
                     volV, uvaV, est, "vinho");
+
             vinhoRepositorio.save(vinho);
         } else if (radioQueijo == 1) {
             Queijo queijo = new Queijo(desc, nome, pc, queijoService.guardarImg(image), cidade, ano, pais, anmQueijo,
                     tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
+
             queijoRepositorio.save(queijo);
         } else if (radioEspuma == 1) {
             Espumante espumante = new Espumante(desc, nome, pc, espumanteService.guardarImg(image), cidade, ano, pais,
                     teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
+
             espumanteRepositorio.save(espumante);
         } else {
-
             return "redirect:/cadastrarProduto";
-
         }
 
         return "redirect:/";
@@ -180,13 +176,16 @@ public class ControllerSirVine {
                 senha == null || senha.isEmpty() ||
                 confSenha == null || confSenha.isEmpty()) {
             model.addAttribute("error", "Por favor, preencha todos os campos.");
+
             return "novoUsuario";
         } else if (!senha.equals(confSenha)) {
             model.addAttribute("error", "As senhas não coincidem.");
+            
             return "novoUsuario";
         } else {
             Usuario usuario = new Usuario(nome, CPF, email, senha);
             usuarioRepositorio.save(usuario);
+
             return "redirect:/index";
         }
     }
@@ -209,9 +208,8 @@ public class ControllerSirVine {
             Model model) {
         model.addAttribute("produtos",
                 produtoRepositorio.filter(precoMin, precoMax, radio, radiopais, ordenar, nomeProduto));
-
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
-        return "catalogo";
 
+        return "catalogo";
     }
 }
