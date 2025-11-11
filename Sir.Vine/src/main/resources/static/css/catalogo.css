@@ -100,7 +100,7 @@ ul a {
     -webkit-background-clip: text;
 }
 
-section {
+form {
     background-color: #151413;
 }
 
@@ -115,14 +115,13 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-        border: red solid;
 
+    overflow: hidden;
 }
 
-.prod img {
+.imgDest img {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
@@ -183,7 +182,7 @@ section {
 
 .btnsAdEdit {
     position: relative;
-    top: 13vw;
+    top: -5vw;
     z-index: 1;
     opacity: 0;
     transition: transform .5s ease, opacity 0.3s ease-in-out;
@@ -192,6 +191,11 @@ section {
     flex-direction: column;
     align-items: center;
     width: 90%;
+}
+
+.btnsAdEdit form {
+    width: 100%;
+    background-color: transparent;
 }
 
 .imgDest .btnAdcProd,

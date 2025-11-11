@@ -155,6 +155,7 @@ h3 {
     background-size: 200% auto;
 
     display: block;
+    cursor: pointer;
 
     border: solid #9D7F3C 1px;
     border-radius: 0.62rem;

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sir. Vine - Perfil</title>
+
+    <link rel="stylesheet" th:href="@{/css/perfil.css}">
+
+    <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/perfil.css">
+
+</head>
+
+<body>
+    <section>
+        <header>
+
+            <div id="logo" style="display: flex;">
+                <a href="/">
+
+
+                    <img src="/icons/servine.png" alt="">
+
+                    <p class="sir">Sir. </p>
+                    <p class="vine">Vines</p>
+                </a>
+
+            </div>
+
+            <ul>
+                <li><a href="/Catalogo">Catálogo</a></li>
+                <li><a href="/CatalogoEspuma">Espumantes</a></li>
+                <li><a href="/CatalogoVinho">Vinhos</a></li>
+                <li><a href="/CatalogoQueijo">Queijos</a></li>
+            </ul>
+
+            <div id="atalhos">
+
+                <div id="itensCar">X</div>
+
+                <a href="/Catalogo">
+                    <img src="/icons/lupa.svg" alt="">
+                </a>
+
+                <a href="/Carrinho">
+                    <img src="/icons/carrinho.svg" alt="">
+                </a>
+
+                <a href="/Perfil">
+                    <img src="/icons/perfil.svg" alt="">
+                </a>
+
+            </div>
+
+        </header>
+
+        <h1>Bem Vindo de Volta</h1>
+
+        <div id="perfil">
+
+            <div id="infperfil">
+                <h2>perfil</h2>
+                <p>Entre com seu email e senha</p>
+            </div>
+
+            <div id="inEmail"><label for="email">Email</label>
+                <input type="email" placeholder="Email" id="email" required>
+            </div>
+
+            <div id="inSenha"><label for="senha">Senha</label>
+                <input type="password" placeholder="Senha" id="senha" required>
+            </div>
+
+            <div id="btn"><button id="btnperfil">Fazer perfil</button>
+                <a href="">Ainda não tem uma conta? Clique aqui</a>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

@@ -14,7 +14,7 @@
 
 <body>
 
-    <section>
+    <form th:action="@{/FiltrarProdutos}" th:method="post">
         <header>
 
             <div id="logo" style="display: flex;">
@@ -55,9 +55,9 @@
         </header>
 
         <div id="pesq">
-            <input type="text" id="inpPesq" placeholder="Buscar">
+            <input type="text" id="inpPesq" placeholder="Buscar" th:name="nomeProduto">
 
-            <select name="ordenar" id="ordenar">
+            <select name="ordenar" id="ordenar" th:name="ordenar">
                 <option value="az">Nome: A-Z</option>
                 <option value="pCres">Preço: Crescente</option>
                 <option value="pDecre">Preço: Decrescente</option>
@@ -74,11 +74,11 @@
                 <h3>Faixa de preço</h3>
 
                 <div id="fPc">
-                    <input type="number" name="" id="" placeholder="R$ Min.">
+                    <input type="number" name="" id="" placeholder="R$ Min." th:name="precoMin">
 
                     <span></span>
 
-                    <input type="number" name="" id="" placeholder="R$ Max.">
+                    <input type="number" name="" id="" placeholder="R$ Max." th:name="precoMax">
 
                 </div>
 
@@ -86,17 +86,17 @@
 
                 <div id="rdCategoria">
                     <div class="rd">
-                        <input type="radio" id="vinho" th:name="radioVinho" name="prod" th:value="1">
+                        <input type="radio" id="vinho" th:name="radio" name="prod" th:value="vinho">
                         <label for="vinho">Vinho</label>
                     </div>
 
                     <div class="rd">
-                        <input type="radio" id="queijo" th:name="radioQueijo" name="prod" th:value="1">
+                        <input type="radio" id="queijo" th:name="radio" name="prod" th:value="queijo">
                         <label for="queijo">Queijo</label>
                     </div>
 
                     <div class="rd">
-                        <input type="radio" id="espumante" th:name="radioEspuma" name="prod" th:value="1">
+                        <input type="radio" id="espumante" th:name="radio" name="prod" th:value="espumante">
                         <label for="espumante">Espumante</label>
                     </div>
 
@@ -118,35 +118,41 @@
             </div>
 
             <div id="produtos">
-                <a th:href="@{/Especificacao/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}">
 
-                    <div class="prod" th:each="produto : ${produtos}">
+                <div class="apA" th:each="produto : ${produtos}">
+                    <a th:href="@{/Especificacao/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}">
+                        <div class="prod">
 
-                        <div class="imgDest">
-                            <img th:src="@{${produto.img}}" alt="">
+                            <div class="imgDest">
+                                <img th:src="@{${produto.img}}" src="/Sir.Vine/src/main/resources/static/img/vinho.jpg" alt="">
 
-                            <div class="btnsAdEdit">
-                                <button type="submit" class="btnEditProd"><a
-                                        th:href="@{/editarProduto/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}"
-                                        style="color: white;">Editar
-                                        Produto</a></button>
-                                <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                                <div class="btnsAdEdit">
+
+                                    <form
+                                        th:action="@{/editarProduto/{tipo}/{id}(tipo=${produto.tipo_do_produto}, id=${produto.id})}" method="post" enctype="multipart/form-data">
+                                        <button type="submit" class="btnEditProd">Editar Produto</button>
+                                    </form>
+
+                                    <form th:method="POST">
+                                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                                    </form>
+                                </div>
                             </div>
+
+                            <p class="nome">[[${produto.nome}]]</p>
+                            <p class="loc">[[${produto.cidade}]], [[${produto.pais}]] - [[${produto.ano}]]</p>
+
+                            <b>
+                                <p class="preco">R$ [[${produto.preco}]]</p>
+                            </b>
+
                         </div>
+                    </a>
+                </div>
 
-                        <p class="nome">[[${produto.nome}]]</p>
-                        <p class="loc">[[${produto.cidade}]], [[${produto.pais}]] - [[${produto.ano}]]</p>
-
-                        <b>
-                            <p class="preco">R$ [[${produto.preco}]]</p>
-                        </b>
-
-                    </div>
-                </a>
-               
             </div>
         </div>
-    </section>
+    </form>
 
 </body>
 
