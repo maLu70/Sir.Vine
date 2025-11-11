@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class VinhoService {
-    public static final String endImg = "Sir.Vine/src/main/resources/static/vinhos";
+    public static final String endImg = "Sir.Vine/src/main/resources/static/img/vinhos";
 
     public String guardarImg(MultipartFile imagem) throws IOException {
 

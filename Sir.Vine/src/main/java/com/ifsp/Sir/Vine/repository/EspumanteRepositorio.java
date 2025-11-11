@@ -53,4 +53,9 @@ public class EspumanteRepositorio {
         int randomId = (int) (Math.random() * count) + 1;
         return findAll().get(randomId - 1);
     }
+
+    public int tamanho() {
+        Query q = em.createNativeQuery("SELECT COUNT(*) FROM espumante");
+        return ((Number) q.getSingleResult()).intValue();
+    }
 }

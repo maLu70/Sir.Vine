@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Produto</title>
 
-    <link rel="stylesheet" th:href="@{/css/adicionarEditarProduto.css}">
+    <link rel="stylesheet" th:href="@{/css/adicionarProduto.css}">
 
-    <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/adicionarEditarProduto.css">
-    <script src="/Sir.Vine/src/main/resources/static/script/adicionarEditarProduto.js" defer></script>
+    <link rel="stylesheet" href="/Sir.Vine/src/main/resources/static/css/adicionarProduto.css">
+    <script th:src="@{/script/adicionarEditarProduto.js}" defer></script>
 
 </head>
 
@@ -64,17 +64,17 @@
 
                 <div id="radios">
                     <div class="rd">
-                        <input type="radio" id="vinho" th:name="radioVinho" name="prod" th:value="1">
+                        <input type="radio" id="vinho" th:name="radio" name="prod" th:value="1">
                         <label for="vinho">Vinho</label>
                     </div>
                     <div class="rd">
 
-                        <input type="radio" id="queijo" th:name="radioQueijo" name="prod" th:value="2">
+                        <input type="radio" id="queijo" th:name="radio" name="prod" th:value="2">
                         <label for="queijo">Queijo</label>
                     </div>
                     <div class="rd">
 
-                        <input type="radio" id="espumante" th:name="radioEspuma" name="prod" th:value="3">
+                        <input type="radio" id="espumante" th:name="radio" name="prod" th:value="3">
                         <label for="espumante">Espumante</label>
                     </div>
                 </div>

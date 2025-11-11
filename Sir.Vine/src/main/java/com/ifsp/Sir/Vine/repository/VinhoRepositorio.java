@@ -67,4 +67,9 @@ public class VinhoRepositorio {
         return findAll().get(randomId - 1);
         
     }
+
+    public int tamanho() {
+        Query q = em.createNativeQuery("SELECT COUNT(*) FROM vinho");
+        return ((Number) q.getSingleResult()).intValue();
+    }
 }

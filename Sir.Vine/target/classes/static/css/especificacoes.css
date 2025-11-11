@@ -184,7 +184,6 @@ input {
 
 #infPCLoc {
     display: flex;
-    border: red solid 1px;
     justify-content: space-between;
 }
 

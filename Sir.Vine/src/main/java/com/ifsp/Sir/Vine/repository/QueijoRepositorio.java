@@ -54,4 +54,8 @@ public class QueijoRepositorio {
         int randomId = (int) (Math.random() * count) + 1;
         return findall().get(randomId - 1);
     }
+    public int tamanho() {
+        Query q = em.createNativeQuery("SELECT COUNT(*) FROM queijo");
+        return ((Number) q.getSingleResult()).intValue();
+    }
 }

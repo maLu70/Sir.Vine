@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Produto</title>
+    <title>Editar Produto</title>
 
     <link rel="stylesheet" th:href="@{/css/editarProduto.css}">
 
@@ -58,7 +58,7 @@
 
             <h1>Editar produto</h1>
 
-            <form th:action="@{/CriarProduto}" th:method="post" enctype="multipart/form-data">
+            <form th:action="@{/editarProduto/{id}/{tipo}(id=${produto.tipo_do_produto},tipo=${produto.id})}" th:method="post" enctype="multipart/form-data">
 
                 <div id="adProd">
 
@@ -66,49 +66,49 @@
 
                         <div class="inpLabel">
                             <label for="nome">Nome do produto</label>
-                            <input type="text" id="nome" th:name="nome">
+                            <input type="text"  th:value="${produto.nome}" id="nome" th:name="nome">
                         </div>
 
                         <div class="inpLabel">
                             <label for="desc">Descrição</label>
-                            <textarea name="oi" id="desc" th:name="desc"></textarea>
+                            <textarea name="oi" id="desc" th:name="desc" th:text="${produto.descricao}"></textarea>
                         </div>
 
                     </div>
 
-                    <div id="adVinho" class="contInput">
+                    <div id="adVinho" class="contInput" th:style="${produto.tipo_do_produto == 'vinho'} ? 'display: flex;' : 'display: none'">
 
                         <div class="inpLabel">
                             <label for="volV">Volume (ml)</label>
-                            <input type="number" id="volV" th:name="volV">
+                            <input type="number" id="volV" th:name="volV" th:value="${vinho.volume}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="tipoV">Tipo</label>
                             <select name="" id="tipoV" th:name="tipoV">
-                                <option th:value="seco">Seco</option>
-                                <option th:value="branco">Branco</option>
-                                <option th:value="tinto">Tinto</option>
-                                <option th:value="rose">Rosé</option>
+                                <option th:value="seco" th:selected="${vinho.tipo == 'seco'}">Seco</option>
+                                <option th:value="branco" th:selected="${vinho.tipo == 'branco'}">Branco</option>
+                                <option th:value="tinto" th:selected="${vinho.tipo == 'tinto'}">Tinto</option>
+                                <option th:value="rose" th:selected="${vinho.tipo == 'rose'}">Rosé</option>
                             </select>
                         </div>
 
                         <div class="inpLabel">
                             <label for="teorV">Teor Alcoólico (%)</label>
-                            <input type="number" id="teorV" th:name="teorV" step="0.01">
+                            <input type="number" th:value="${vinho.teor}" id="teorV" th:name="teorV" step="0.01">
                         </div>
 
                         <div class="inpLabel">
                             <label for="uvaV">Uva</label>
-                            <input type="text" th:name="uvaV" id="uvaV">
+                            <input type="text" th:value="${vinho.uva}" th:name="uvaV" id="uvaV">
                         </div>
                     </div>
 
-                    <div id="adEspuma" class="contInput">
+                    <div id="adEspuma" class="contInput" th:style="${produto.tipo_do_produto == 'espumante'} ? 'display: flex;' : 'display: none;'">
 
                         <div class="inpLabel">
                             <label for="volEspuma">Volume (ml)</label>
-                            <input type="number" th:name="volEspuma" id="volEspuma">
+                            <input type="number" th:name="volEspuma" id="volEspuma" th:value="${espumante.volume}">
                         </div>
 
                         <div class="inpLabel">
@@ -124,35 +124,35 @@
 
                         <div class="inpLabel">
                             <label for="teorEspuma">Teor Alcoólico (%)</label>
-                            <input type="number" id="teorEspuma" th:name="teorEspuma" step="0.01">
+                            <input type="number" id="teorEspuma" th:name="teorEspuma" step="0.01" th:value="${espumante.teor}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="atmEspuma">Pressão</label>
-                            <input type="number" id="atmEspuma" th:name="atmEspuma" step="0.01">
+                            <input type="number" id="atmEspuma" th:name="atmEspuma" step="0.01" th:value="${espumante.pressao}">
                         </div>
                     </div>
 
-                    <div id="adQueijo" class="contInput">
+                    <div id="adQueijo" class="contInput" th:style="${produto.tipo_do_produto == 'queijo'} ? 'display: flex;' : 'display: none;'">
 
                         <div class="inpLabel">
                             <label for="pesoQueijo">Peso (Kg)</label>
-                            <input type="number" id="pesoQueijo" th:name="pesoQueijo" step="0.01">
+                            <input type="number" id="pesoQueijo" th:name="pesoQueijo" step="0.01" th:value="${queijo.peso}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="tipoQueijo">Tipo</label>
-                            <input type="text" id="tipoQueijo" th:name="tipoQueijo">
+                            <input type="text" id="tipoQueijo" th:name="tipoQueijo" th:value="${queijo.tipo}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="gordQueijo">Gordura (%)</label>
-                            <input type="number" id="gordQueijo" step="0.01" th:name="gordQueijo">
+                            <input type="number" id="gordQueijo" step="0.01" th:name="gordQueijo" th:value="${queijo.gordura}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="anmQueijo">Animal de leite</label>
-                            <input type="text" id="anmQueijo" th:name="anmQueijo">
+                            <input type="text" id="anmQueijo" th:name="anmQueijo" th:value="${queijo.leite}">
                         </div>
 
                     </div>
@@ -165,31 +165,31 @@
 
                         <div class="inpLabel">
                             <label for="cidade">Cidade</label>
-                            <input type="text" id="cidade" th:name="cidade">
+                            <input type="text" id="cidade" th:name="cidade" th:value="${produto.cidade}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="ano">Ano</label>
-                            <input type="number" id="ano" th:name="ano">
+                            <input type="number" id="ano" th:name="ano" th:value="${produto.ano}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="pc">Preço (R$)</label>
-                            <input type="number" id="pc" step="0.01" th:name="pc">
+                            <input type="number" id="pc" step="0.01" th:name="pc" th:value="${produto.preco}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="est">Estoque</label>
-                            <input type="number" id="est" th:name="est">
+                            <input type="number" id="est" th:name="est" th:value="${produto.estoque}">
                         </div>
 
                         <div class="inpLabel">
                             <label for="image">Imagem</label>
-                            <input type="file" accept="image/*" th:name="image" id="image">
+                            <input type="file" accept="image/*" th:name="image" id="image" >
                         </div>
                     </div>
 
-                    <div id="btns">
+                    <div id="btns" style="display: flex;">
                         <button type="submit" id="btnCancelar">Cancelar</button>
 
                         <button type="submit" id="btnCriar">Editar Produto</button>

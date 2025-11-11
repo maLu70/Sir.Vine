@@ -81,4 +81,8 @@ public class ProdutoRepositorio {
         return countries;
     }
 
+    public void update(Produto produto) {
+        em.merge(produto);
+    }
+
 }

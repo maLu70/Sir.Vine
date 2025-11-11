@@ -56,7 +56,9 @@ public class ControllerSirVine {
         model.addAttribute("randomv", vinhoRepositorio.randomVinho());
         model.addAttribute("randome", espumanteRepositorio.randomEspumante());
         model.addAttribute("randomq", queijoRepositorio.randomQueijo());
-
+        model.addAttribute("nvinhos", vinhoRepositorio.tamanho());
+        model.addAttribute("nespumantes", espumanteRepositorio.tamanho());
+        model.addAttribute("nqueijos", queijoRepositorio.tamanho());
         return "index";
     }
 
@@ -105,9 +107,7 @@ public class ControllerSirVine {
 
     @PostMapping("/CriarProduto")
     public String criarProduto(
-            @RequestParam(required = false) Integer radioVinho,
-            @RequestParam(required = false) Integer radioQueijo,
-            @RequestParam(required = false) Integer radioEspuma,
+            @RequestParam Integer radio,
 
             @RequestParam(required = false) String volV,
             @RequestParam(required = false) String tipoV,
@@ -134,17 +134,17 @@ public class ControllerSirVine {
             @RequestParam String desc,
             @RequestParam("image") MultipartFile image) throws IOException {
 
-        if (radioVinho == 1) {
+        if (radio == 1) {
             Vinho vinho = new Vinho(desc, nome, pc, vinhoService.guardarImg(image), cidade, ano, pais, tipoV, teorV,
                     volV, uvaV, est, "vinho");
 
             vinhoRepositorio.save(vinho);
-        } else if (radioQueijo == 1) {
+        } else if (radio == 2) {
             Queijo queijo = new Queijo(desc, nome, pc, queijoService.guardarImg(image), cidade, ano, pais, anmQueijo,
                     tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
 
             queijoRepositorio.save(queijo);
-        } else if (radioEspuma == 1) {
+        } else if (radio == 3) {
             Espumante espumante = new Espumante(desc, nome, pc, espumanteService.guardarImg(image), cidade, ano, pais,
                     teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
 
@@ -180,7 +180,7 @@ public class ControllerSirVine {
             return "novoUsuario";
         } else if (!senha.equals(confSenha)) {
             model.addAttribute("error", "As senhas não coincidem.");
-            
+
             return "novoUsuario";
         } else {
             Usuario usuario = new Usuario(nome, CPF, email, senha);
@@ -211,5 +211,116 @@ public class ControllerSirVine {
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
 
         return "catalogo";
+    }
+
+    @GetMapping("/CatalogoEspuma")
+    public String CatalogoEspuma(Model model) {
+        model.addAttribute("produtos", produtoRepositorio.filter(null, null, "espumante", null, "az", null));
+        model.addAttribute("paises", produtoRepositorio.findAllCountries());
+        return "catalogo";
+    }
+
+    @GetMapping("/CatalogoQueijo")
+    public String CatalogoQueijo(Model model) {
+        model.addAttribute("produtos", produtoRepositorio.filter(null, null, "queijo", null, "az", null));
+        model.addAttribute("paises", produtoRepositorio.findAllCountries());
+        return "catalogo";
+    }
+
+    @GetMapping("/CatalogoVinho")
+    public String CatalogoVinho(Model model) {
+        model.addAttribute("produtos", produtoRepositorio.filter(null, null, "vinho", null, "az", null));
+        model.addAttribute("paises", produtoRepositorio.findAllCountries());
+        return "catalogo";
+    }
+
+    @GetMapping("editarProduto/{tipo}/{id}")
+    public String editarProduto(@PathVariable String id, @PathVariable String tipo, Model model) {
+
+        if (tipo.toLowerCase().equals("vinho")) {
+
+            model.addAttribute("produto", produtoRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("vinho", vinhoRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("queijo", new Queijo());
+            model.addAttribute("espumante", new Espumante());
+
+        } else if (tipo.toLowerCase().equals("espumante")) {
+
+            model.addAttribute("produto", espumanteRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("espumante", espumanteRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("vinho", new Vinho());
+            model.addAttribute("queijo", new Queijo());
+
+        } else if (tipo.toLowerCase().equals("queijo")) {
+
+            model.addAttribute("produto", queijoRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("queijo", queijoRepositorio.findById(Long.valueOf(id)));
+            model.addAttribute("vinho", new Vinho());
+            model.addAttribute("espumante", new Espumante());
+        }
+
+        return "editarProduto";
+    }
+
+    @PostMapping("/editarProduto/{tipo}/{id}")
+    public String editarProdutoPost(@PathVariable String id,
+            @PathVariable String tipo,
+            @RequestParam(required = false) String volV,
+            @RequestParam(required = false) String tipoV,
+            @RequestParam(required = false) String teorV,
+            @RequestParam(required = false) String uvaV,
+
+            @RequestParam(required = false) String volEspuma,
+            @RequestParam(required = false) String tipoEspuma,
+            @RequestParam(required = false) String teorEspuma,
+            @RequestParam(required = false) String atmEspuma,
+
+            @RequestParam(required = false) String pesoQueijo,
+            @RequestParam(required = false) String tipoQueijo,
+            @RequestParam(required = false) String gordQueijo,
+            @RequestParam(required = false) String anmQueijo,
+
+            @RequestParam String pais,
+            @RequestParam String cidade,
+            @RequestParam String ano,
+            @RequestParam Double pc,
+            @RequestParam Integer est,
+
+            @RequestParam String nome,
+            @RequestParam String desc,
+            @RequestParam("image") MultipartFile image) throws IOException {
+
+
+                System.out.println("\n\n\n" + tipo + "\n\n\n");
+        String novaImagem = image != null && !image.isEmpty()
+                ? vinhoService.guardarImg(image)
+                : vinhoRepositorio.findById(Long.valueOf(id)).getImg();
+
+        if (tipo.equals("vinho") || tipo == "vinho") {
+            System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
+                Vinho vinho = new Vinho(desc, nome, pc,
+                        novaImagem, cidade, ano, pais, tipoV, teorV,
+                        volV, uvaV, est, "vinho");
+                vinho.setId(Long.valueOf(id));
+                vinhoRepositorio.update(vinho);
+        }else if (tipo.equals("queijo") || tipo == "queijo") {
+            System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
+                Queijo queijo = new Queijo(desc, nome, pc,
+                        novaImagem, cidade, ano, pais, anmQueijo,
+                        tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
+                queijo.setId(Long.valueOf(id));
+                queijoRepositorio.update(queijo);
+        }else if (tipo.equals("espumante") || tipo == "espumante") {
+            System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
+                Espumante espumante = new Espumante(desc, nome, pc,
+                        novaImagem, cidade, ano, pais,
+                        teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
+                espumante.setId(Long.valueOf(id));
+                espumanteRepositorio.update(espumante);
+        }else{
+            System.out.println("\n\n\n\nnada foi editado\n\n\n\n\n\n\n\n");
+        }
+
+        return "redirect:/Especificacao/" + tipo + "/" + id;
     }
 }

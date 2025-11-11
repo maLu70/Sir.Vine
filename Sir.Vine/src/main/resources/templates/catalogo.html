@@ -107,8 +107,8 @@
                     <h3>País</h3>
                     <div id="rdPais">
                         <div class="rd" th:each="pais : ${paises}">
-                            <input type="radio" th:id="${#strings.replace(pais, ' ', '_')}" th:name="radiopais" name="pais"
-                                th:value="${pais}">
+                            <input type="radio" th:id="${#strings.replace(pais, ' ', '_')}" th:name="radiopais"
+                                name="pais" th:value="${pais}">
                             <label th:for="${#strings.replace(pais, ' ', '_')}" th:text="${pais}"></label>
                         </div>
 
@@ -121,6 +121,9 @@
 
         <div id="produtos">
             <div class="prod" th:each="produto : ${produtos}">
+
+                <a th:href="@{/Especificacao/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}">
+
 
                 <div class="imgDest">
                     <img th:src="@{${produto.img}}" alt="">
@@ -139,7 +142,7 @@
                 </b>
 
             </div>
-
+            </a>
         </div>
 
     </section>

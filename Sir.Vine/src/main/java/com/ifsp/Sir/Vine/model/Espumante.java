@@ -59,16 +59,16 @@ public class Espumante extends Produto {
         return volume;
     }
 
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
-
-    public String gettipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void settipo(String tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
     }
 
 }
