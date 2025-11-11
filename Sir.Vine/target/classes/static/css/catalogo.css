@@ -115,6 +115,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+        border: red solid;
+
 }
 
 .prod img {
@@ -181,7 +183,7 @@ section {
 
 .btnsAdEdit {
     position: relative;
-    top: -6vw;
+    top: 13vw;
     z-index: 1;
     opacity: 0;
     transition: transform .5s ease, opacity 0.3s ease-in-out;

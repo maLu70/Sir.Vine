@@ -54,97 +54,98 @@
 
         </header>
 
+        <div id="pesq">
+            <input type="text" id="inpPesq" placeholder="Buscar">
 
-        <form action="" th:action="@{/FiltrarProdutos}" th:method="post">
-            <div id="pesq">
-                <input type="text" id="inpPesq" placeholder="Buscar" th:name="nomeProduto">
-
-                <select name="ordenar" id="ordenar" th:name="ordenar">
-                    <option value="az">Nome: A-Z</option>
-                    <option value="pCres">Preço: Crescente</option>
-                    <option value="pDecre">Preço: Decrescente</option>
-                </select>
-
-            </div>
-
-            <div id="container">
-
-                <div id="contFiltros">
-
-                    <h2>Filtros</h2>
-
-                    <h3>Faixa de preço</h3>
-
-                    <div id="fPc">
-                        <input type="number" name="" id="" placeholder="R$ Min." th:name="precoMin">
-
-                        <span></span>
-
-                        <input type="number" name="" id="" placeholder="R$ Max." th:name="precoMax">
-
-                    </div>
-
-                    <h3>Categoria</h3>
-
-                    <div id="rdCategoria">
-                        <div class="rd">
-                            <input type="radio" id="vinho" th:name="radio" name="prod" th:value="vinho">
-                            <label for="vinho">Vinho</label>
-                        </div>
-
-                        <div class="rd">
-                            <input type="radio" id="queijo" th:name="radio" name="prod" th:value="queijo">
-                            <label for="queijo">Queijo</label>
-                        </div>
-
-                        <div class="rd">
-                            <input type="radio" id="espumante" th:name="radio" name="prod" th:value="espumante">
-                            <label for="espumante">Espumante</label>
-                        </div>
-
-                    </div>
-
-                    <h3>País</h3>
-                    <div id="rdPais">
-                        <div class="rd" th:each="pais : ${paises}">
-                            <input type="radio" th:id="${#strings.replace(pais, ' ', '_')}" th:name="radiopais"
-                                name="pais" th:value="${pais}">
-                            <label th:for="${#strings.replace(pais, ' ', '_')}" th:text="${pais}"></label>
-                        </div>
-
-                    </div>
-
-                    <button type="submit" id="btnFiltro">Aplicar Filtros</button>
-        </form>
+            <select name="ordenar" id="ordenar">
+                <option value="az">Nome: A-Z</option>
+                <option value="pCres">Preço: Crescente</option>
+                <option value="pDecre">Preço: Decrescente</option>
+            </select>
 
         </div>
 
-        <div id="produtos">
-            <div class="prod" th:each="produto : ${produtos}">
+        <div id="container">
 
-                <a th:href="@{/Especificacao/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}">
+            <div id="contFiltros">
 
+                <h2>Filtros</h2>
 
-                <div class="imgDest">
-                    <img th:src="@{${produto.img}}" alt="">
+                <h3>Faixa de preço</h3>
 
-                    <div class="btnsAdEdit">
-                        <button type="submit" class="btnEditProd">Editar Produto</button>
-                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
-                    </div>
+                <div id="fPc">
+                    <input type="number" name="" id="" placeholder="R$ Min.">
+
+                    <span></span>
+
+                    <input type="number" name="" id="" placeholder="R$ Max.">
+
                 </div>
 
-                <p class="nome">[[${produto.nome}]]</p>
-                <p class="loc">[[${produto.cidade}]], [[${produto.pais}]] - [[${produto.ano}]]</p>
+                <h3>Categoria</h3>
 
-                <b>
-                    <p class="preco">R$ [[${produto.preco}]]</p>
-                </b>
+                <div id="rdCategoria">
+                    <div class="rd">
+                        <input type="radio" id="vinho" th:name="radioVinho" name="prod" th:value="1">
+                        <label for="vinho">Vinho</label>
+                    </div>
+
+                    <div class="rd">
+                        <input type="radio" id="queijo" th:name="radioQueijo" name="prod" th:value="1">
+                        <label for="queijo">Queijo</label>
+                    </div>
+
+                    <div class="rd">
+                        <input type="radio" id="espumante" th:name="radioEspuma" name="prod" th:value="1">
+                        <label for="espumante">Espumante</label>
+                    </div>
+
+                </div>
+
+                <h3>País</h3>
+                <div id="rdPais">
+                    <div class="rd" th:each="pais : ${paises}">
+                        <input type="radio" th:id="${#strings.replace(pais, ' ', '_')}" th:name="radiopais" name="pais"
+                            th:value="${pais}">
+                        <label th:for="${#strings.replace(pais, ' ', '_')}" th:text="${pais}"></label>
+                    </div>
+
+                </div>
+
+                <button type="submit" id="btnFiltro">Aplicar Filtros</button>
+
 
             </div>
-            </a>
-        </div>
 
+            <div id="produtos">
+                <a th:href="@{/Especificacao/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}">
+
+                    <div class="prod" th:each="produto : ${produtos}">
+
+                        <div class="imgDest">
+                            <img th:src="@{${produto.img}}" alt="">
+
+                            <div class="btnsAdEdit">
+                                <button type="submit" class="btnEditProd"><a
+                                        th:href="@{/editarProduto/{tipo}/{id}(id=${produto.id},tipo=${produto.tipo_do_produto})}"
+                                        style="color: white;">Editar
+                                        Produto</a></button>
+                                <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                            </div>
+                        </div>
+
+                        <p class="nome">[[${produto.nome}]]</p>
+                        <p class="loc">[[${produto.cidade}]], [[${produto.pais}]] - [[${produto.ano}]]</p>
+
+                        <b>
+                            <p class="preco">R$ [[${produto.preco}]]</p>
+                        </b>
+
+                    </div>
+                </a>
+               
+            </div>
+        </div>
     </section>
 
 </body>
