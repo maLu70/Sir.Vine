@@ -3,6 +3,7 @@ package com.ifsp.Sir.Vine.repository;
 import org.springframework.stereotype.Repository;
 
 import com.ifsp.Sir.Vine.model.Usuario;
+import com.ifsp.Sir.Vine.model.Vinho;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -11,16 +12,15 @@ import jakarta.transaction.Transactional;
 @Repository
 public class UsuarioRepositorio {
 
-    
-@PersistenceContext
-private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
     public boolean autenticar(String email, String senha) {
         Usuario usuario = em.find(Usuario.class, email);
         if (usuario != null && usuario.getSenha().equals(senha)) {
             return true;
         }
-        return false;        
+        return false;
     }
 
     public boolean isAdmin(String email) {
@@ -40,48 +40,54 @@ private EntityManager em;
         em.persist(usuario);
     }
 
+    @Transactional
     public void update(Usuario usuario) {
         em.merge(usuario);
     }
 
-    public void delete(Usuario usuario) {
-        em.remove(em.contains(usuario) ? usuario : em.merge(usuario));
-    }  
+    @Transactional
+    public void delete(String email) {
+        Usuario usuario_deletado = em.find(Usuario.class, email);
+
+        em.remove(usuario_deletado);
+    }
+
     public boolean existsByEmail(String email) {
         Usuario usuario = em.find(Usuario.class, email);
         return usuario != null;
     }
 
-    public boolean verificarCPF(String CPF){
-        if (CPF == null) return false;
+    public boolean verificarCPF(String CPF) {
+        if (CPF == null)
+            return false;
 
-    CPF = CPF.replaceAll("[^0-9]", "");
+        CPF = CPF.replaceAll("[^0-9]", "");
 
-    
-    if (CPF.length() != 11) return false;
+        if (CPF.length() != 11)
+            return false;
 
-    if (CPF.matches("(\\d)\\1{10}")) return false;
+        if (CPF.matches("(\\d)\\1{10}"))
+            return false;
 
-    try {
-        
-        int soma = 0;
-        for (int i = 0; i < 9; i++) {
-            soma += (CPF.charAt(i) - '0') * (10 - i);
+        try {
+
+            int soma = 0;
+            for (int i = 0; i < 9; i++) {
+                soma += (CPF.charAt(i) - '0') * (10 - i);
+            }
+            int resto = 11 - (soma % 11);
+            char digito1 = (resto == 10 || resto == 11) ? '0' : (char) (resto + '0');
+
+            soma = 0;
+            for (int i = 0; i < 10; i++) {
+                soma += (CPF.charAt(i) - '0') * (11 - i);
+            }
+            resto = 11 - (soma % 11);
+            char digito2 = (resto == 10 || resto == 11) ? '0' : (char) (resto + '0');
+
+            return (digito1 == CPF.charAt(9) && digito2 == CPF.charAt(10));
+        } catch (Exception e) {
+            return false;
         }
-        int resto = 11 - (soma % 11);
-        char digito1 = (resto == 10 || resto == 11) ? '0' : (char)(resto + '0');
-
-        
-        soma = 0;
-        for (int i = 0; i < 10; i++) {
-            soma += (CPF.charAt(i) - '0') * (11 - i);
-        }
-        resto = 11 - (soma % 11);
-        char digito2 = (resto == 10 || resto == 11) ? '0' : (char)(resto + '0');
-
-        return (digito1 == CPF.charAt(9) && digito2 == CPF.charAt(10));
-    } catch (Exception e) {
-        return false;
-    }
     }
 }

@@ -33,7 +33,7 @@ public class EspumanteRepositorio {
     }
 
     @Transactional
-    public void delete(int id) {
+    public void delete(Long id) {
         Espumante espumante_deletado = em.find(Espumante.class, id);
         em.remove(espumante_deletado);
     }

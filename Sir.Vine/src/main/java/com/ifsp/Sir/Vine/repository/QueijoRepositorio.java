@@ -35,7 +35,7 @@ public class QueijoRepositorio {
     }
 
     @Transactional
-    public void delete(int id) {
+    public void delete(Long id) {
         Queijo queijo_deletado = em.find(Queijo.class, id);
         em.remove(queijo_deletado);
     }

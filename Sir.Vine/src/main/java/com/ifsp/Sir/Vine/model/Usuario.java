@@ -24,12 +24,33 @@ private String nome;
 @Column(name = "CPF")
 private String CPF;
 
+public Usuario() {
+}
+
 public Usuario( String nome, String cPF, String email, String senha) {
     this.nome = nome;
     CPF = cPF;
     this.email = email;
     this.senha = senha;
     this.admin = false;
+}
+
+
+
+public String getNome() {
+    return nome;
+}
+
+public void setNome(String nome) {
+    this.nome = nome;
+}
+
+public String getCPF() {
+    return CPF;
+}
+
+public void setCPF(String cPF) {
+    CPF = cPF;
 }
 
 public String getEmail() {

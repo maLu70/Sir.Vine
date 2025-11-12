@@ -40,10 +40,9 @@ public class VinhoRepositorio {
     }
 
     @Transactional
-    public void delete(int id) {
+    public void delete(Long id) {
         Vinho vinho_deletado = em.find(Vinho.class, id);
         em.remove(vinho_deletado);
-
     }
 
     @Transactional

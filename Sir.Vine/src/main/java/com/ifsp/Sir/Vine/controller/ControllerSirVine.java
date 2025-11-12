@@ -183,7 +183,7 @@ public class ControllerSirVine {
 
             return "novoUsuario";
         } else if (!senha.equals(confSenha)) {
-            
+
             model.addAttribute("error", "As senhas não coincidem.");
             model.addAttribute("nome", nome);
             model.addAttribute("CPF", CPF);
@@ -197,10 +197,27 @@ public class ControllerSirVine {
             model.addAttribute("CPF", CPF);
             model.addAttribute("email", email);
             model.addAttribute("senha", senha);
+
             return "novoUsuario";
         } else {
-            return "redirect:/";
+            Usuario usuario = new Usuario(nome, CPF, email, confSenha);
+            usuario.setAdmin(false);
+            usuarioRepositorio.save(usuario);
+
+            return "redirect:/Perfil/"+email;
         }
+    }
+
+    @GetMapping("/Perfil/{email}")
+    public String perfil(Model model, @PathVariable String email) {
+        model.addAttribute("usuario", usuarioRepositorio.findByEmail(email));
+        return "perfil";
+    }
+
+    @PostMapping("/ExcluirUsuario/{email}")
+    public String excluirUsuario(Model model, @PathVariable String email) {
+        usuarioRepositorio.delete(email);
+        return "redirect:/";
     }
 
     @GetMapping("/Catalogo")
@@ -275,6 +292,23 @@ public class ControllerSirVine {
         return "editarProduto";
     }
 
+    @PostMapping("/DeletarProduto/{tipo}/{id}")
+    public String deletarProduto(@PathVariable String id, @PathVariable String tipo, Model model) {
+
+        if (tipo.toLowerCase().equals("vinho")) {
+            vinhoRepositorio.delete(Long.valueOf(id));
+
+        } else if (tipo.toLowerCase().equals("espumante")) {
+            espumanteRepositorio.delete(Long.valueOf(id));
+
+        } else if (tipo.toLowerCase().equals("queijo")) {
+            queijoRepositorio.delete(Long.valueOf(id));
+
+        }
+
+        return "redirect:/Catalogo";
+    }
+
     @PostMapping("/editarProduto/{tipo}/{id}")
     public String editarProdutoPost(@PathVariable String id,
             @PathVariable String tipo,
@@ -303,34 +337,33 @@ public class ControllerSirVine {
             @RequestParam String desc,
             @RequestParam("image") MultipartFile image) throws IOException {
 
-
-                System.out.println("\n\n\n" + tipo + "\n\n\n");
+        System.out.println("\n\n\n" + tipo + "\n\n\n");
         String novaImagem = image != null && !image.isEmpty()
                 ? vinhoService.guardarImg(image)
                 : vinhoRepositorio.findById(Long.valueOf(id)).getImg();
 
         if (tipo.equals("vinho") || tipo == "vinho") {
             System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
-                Vinho vinho = new Vinho(desc, nome, pc,
-                        novaImagem, cidade, ano, pais, tipoV, teorV,
-                        volV, uvaV, est, "vinho");
-                vinho.setId(Long.valueOf(id));
-                vinhoRepositorio.update(vinho);
-        }else if (tipo.equals("queijo") || tipo == "queijo") {
+            Vinho vinho = new Vinho(desc, nome, pc,
+                    novaImagem, cidade, ano, pais, tipoV, teorV,
+                    volV, uvaV, est, "vinho");
+            vinho.setId(Long.valueOf(id));
+            vinhoRepositorio.update(vinho);
+        } else if (tipo.equals("queijo") || tipo == "queijo") {
             System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
-                Queijo queijo = new Queijo(desc, nome, pc,
-                        novaImagem, cidade, ano, pais, anmQueijo,
-                        tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
-                queijo.setId(Long.valueOf(id));
-                queijoRepositorio.update(queijo);
-        }else if (tipo.equals("espumante") || tipo == "espumante") {
+            Queijo queijo = new Queijo(desc, nome, pc,
+                    novaImagem, cidade, ano, pais, anmQueijo,
+                    tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
+            queijo.setId(Long.valueOf(id));
+            queijoRepositorio.update(queijo);
+        } else if (tipo.equals("espumante") || tipo == "espumante") {
             System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
-                Espumante espumante = new Espumante(desc, nome, pc,
-                        novaImagem, cidade, ano, pais,
-                        teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
-                espumante.setId(Long.valueOf(id));
-                espumanteRepositorio.update(espumante);
-        }else{
+            Espumante espumante = new Espumante(desc, nome, pc,
+                    novaImagem, cidade, ano, pais,
+                    teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
+            espumante.setId(Long.valueOf(id));
+            espumanteRepositorio.update(espumante);
+        } else {
             System.out.println("\n\n\n\nnada foi editado\n\n\n\n\n\n\n\n");
         }
 

@@ -55,26 +55,25 @@
 
         </header>
 
-        <h1>Olá, fulano</h1>
+        <h1>Olá, [[${usuario.nome}]]</h1>
 
         <div id="perfil">
 
-            <img src="/Sir.Vine/src/main/resources/static/icons/perfil.svg" alt="">
+            <img src="/icons/perfil.svg" alt="">
 
             <div id="infPerfil">
-                <h2>NOME DA PESSOA</h2>
-                <p>Email: email@pessoa.com</p>
-                <p>CPF: email@pessoa.com</p>
-
+                <h2>[[${usuario.nome}]]</h2>
+                <p>Email: [[${usuario.email}]]</p>
+                <p>CPF: [[${usuario.CPF}]]</p>
             </div>
 
             <div id="btns">
 
-                <form action="">
+                <form>
                     <button id="btnSair">Sair</button>
                 </form>
 
-                <form action="">
+                <form th:action="@{/ExcluirUsuario/{email}(email=${usuario.email})}" th:method="post">
                     <button id="btnExcluir">Excluir conta</button>
                 </form>
 
