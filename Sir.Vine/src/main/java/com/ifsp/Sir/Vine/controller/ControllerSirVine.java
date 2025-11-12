@@ -204,7 +204,7 @@ public class ControllerSirVine {
             usuario.setAdmin(false);
             usuarioRepositorio.save(usuario);
 
-            return "redirect:/Perfil/"+email;
+            return "redirect:/Perfil/" + email;
         }
     }
 
@@ -338,31 +338,34 @@ public class ControllerSirVine {
             @RequestParam("image") MultipartFile image) throws IOException {
 
         System.out.println("\n\n\n" + tipo + "\n\n\n");
-        String novaImagem = image != null && !image.isEmpty()
-                ? vinhoService.guardarImg(image)
-                : vinhoRepositorio.findById(Long.valueOf(id)).getImg();
 
         if (tipo.equals("vinho") || tipo == "vinho") {
-            System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
+            String imagemvinho = vinhoService.guardarImg(image);
+            
             Vinho vinho = new Vinho(desc, nome, pc,
-                    novaImagem, cidade, ano, pais, tipoV, teorV,
+                    imagemvinho, cidade, ano, pais, tipoV, teorV,
                     volV, uvaV, est, "vinho");
             vinho.setId(Long.valueOf(id));
             vinhoRepositorio.update(vinho);
+
         } else if (tipo.equals("queijo") || tipo == "queijo") {
-            System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
+            String imagemQueijo = queijoService.guardarImg(image);
+
             Queijo queijo = new Queijo(desc, nome, pc,
-                    novaImagem, cidade, ano, pais, anmQueijo,
+                    imagemQueijo, cidade, ano, pais, anmQueijo,
                     tipoQueijo, pesoQueijo, gordQueijo, est, "queijo");
             queijo.setId(Long.valueOf(id));
             queijoRepositorio.update(queijo);
+
         } else if (tipo.equals("espumante") || tipo == "espumante") {
-            System.out.println("entrou no queijo\n\n\n\n\n\n\n\n" + image.getOriginalFilename() + "\n\n\n\n\n\n\n");
+            String imagemEspumante = espumanteService.guardarImg(image);
+
             Espumante espumante = new Espumante(desc, nome, pc,
-                    novaImagem, cidade, ano, pais,
+                    imagemEspumante, cidade, ano, pais,
                     teorEspuma, volEspuma, tipoEspuma, atmEspuma, est, "espumante");
             espumante.setId(Long.valueOf(id));
             espumanteRepositorio.update(espumante);
+
         } else {
             System.out.println("\n\n\n\nnada foi editado\n\n\n\n\n\n\n\n");
         }

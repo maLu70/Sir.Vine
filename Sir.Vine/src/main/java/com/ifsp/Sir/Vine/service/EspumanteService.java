@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class EspumanteService {
-    public static final String endImg = "src/main/resources/static/img/espumantes";
+    public static final String endImg = "Sir.Vine/src/main/resources/static/img/espumantes";
 
     public String guardarImg(MultipartFile imagem) throws IOException {
 
@@ -22,7 +22,7 @@ public class EspumanteService {
 
         Files.copy(imagem.getInputStream(), enderecoArquivo.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-        String endereco = "../" + imagem.getOriginalFilename();
+        String endereco = "/img/espumantes/" + imagem.getOriginalFilename();
         return endereco;
 
     }
