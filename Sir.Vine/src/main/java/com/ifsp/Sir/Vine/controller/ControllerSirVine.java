@@ -159,6 +159,10 @@ public class ControllerSirVine {
     @GetMapping("/NovoUsuario")
     public String novoUsuario(Model model) {
         model.addAttribute("error", "");
+        model.addAttribute("nome", "");
+        model.addAttribute("CPF", "");
+        model.addAttribute("email", "");
+        model.addAttribute("senha", "");
         return "novoUsuario";
     }
 
@@ -179,14 +183,23 @@ public class ControllerSirVine {
 
             return "novoUsuario";
         } else if (!senha.equals(confSenha)) {
+            
             model.addAttribute("error", "As senhas não coincidem.");
+            model.addAttribute("nome", nome);
+            model.addAttribute("CPF", CPF);
+            model.addAttribute("email", email);
+            model.addAttribute("senha", senha);
+            return "novoUsuario";
 
+        } else if (usuarioRepositorio.existsByEmail(email)) {
+            model.addAttribute("error", "Já existe um usuário cadastrado com esse email.");
+            model.addAttribute("nome", nome);
+            model.addAttribute("CPF", CPF);
+            model.addAttribute("email", email);
+            model.addAttribute("senha", senha);
             return "novoUsuario";
         } else {
-            Usuario usuario = new Usuario(nome, CPF, email, senha);
-            usuarioRepositorio.save(usuario);
-
-            return "redirect:/index";
+            return "redirect:/";
         }
     }
 

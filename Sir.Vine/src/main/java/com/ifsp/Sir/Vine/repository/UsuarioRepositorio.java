@@ -47,8 +47,41 @@ private EntityManager em;
     public void delete(Usuario usuario) {
         em.remove(em.contains(usuario) ? usuario : em.merge(usuario));
     }  
+    public boolean existsByEmail(String email) {
+        Usuario usuario = em.find(Usuario.class, email);
+        return usuario != null;
+    }
 
-    public void saver(Usuario usuario) {
-        em.persist(usuario);
+    public boolean verificarCPF(String CPF){
+        if (CPF == null) return false;
+
+    CPF = CPF.replaceAll("[^0-9]", "");
+
+    
+    if (CPF.length() != 11) return false;
+
+    if (CPF.matches("(\\d)\\1{10}")) return false;
+
+    try {
+        
+        int soma = 0;
+        for (int i = 0; i < 9; i++) {
+            soma += (CPF.charAt(i) - '0') * (10 - i);
+        }
+        int resto = 11 - (soma % 11);
+        char digito1 = (resto == 10 || resto == 11) ? '0' : (char)(resto + '0');
+
+        
+        soma = 0;
+        for (int i = 0; i < 10; i++) {
+            soma += (CPF.charAt(i) - '0') * (11 - i);
+        }
+        resto = 11 - (soma % 11);
+        char digito2 = (resto == 10 || resto == 11) ? '0' : (char)(resto + '0');
+
+        return (digito1 == CPF.charAt(9) && digito2 == CPF.charAt(10));
+    } catch (Exception e) {
+        return false;
+    }
     }
 }

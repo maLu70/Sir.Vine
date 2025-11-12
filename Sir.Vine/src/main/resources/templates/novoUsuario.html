@@ -65,22 +65,22 @@
             <form th:action="@{/CriarUsuario}" th:method="post" id="formNovoUsuario">
                 <div id="inNome">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" placeholder="Nome Completo" id="nome" th:name="nome" required>
+                    <input type="text" placeholder="Nome Completo" id="nome" th:name="nome" required th:value="${nome}">
                 </div>
 
                 <div id="inCPF">
                     <label for="cpf">CPF</label>
-                    <input type="text" placeholder="CPF" id="cpf" required th:name="CPF">
+                    <input type="text" placeholder="CPF" id="cpf" required th:name="CPF" th:value="${CPF}" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite o CPF no formato 000.000.000-00">
                 </div>
 
                 <div id="inEmail">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="Email" id="email" required th:name="email">
+                    <input type="email" placeholder="Email" id="email" required th:name="email" th:value="${email}">
                 </div>
 
                 <div id="inSenha">
                     <label for="senha">Senha</label>
-                    <input type="password" placeholder="Senha" id="senha" required th:name="senha">
+                    <input type="password" placeholder="Senha" id="senha" required th:name="senha" th:value="${senha}">
                 </div>
 
                 <div id="confSenha">
