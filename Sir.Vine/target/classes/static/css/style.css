@@ -335,9 +335,11 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    overflow: hidden;
 }
 
-.prodDestaque img {
+.imgDest img {
     width: 100%;
     height: 100%;
 
@@ -397,7 +399,7 @@ section {
 
 .btnsAdEdit {
     position: relative;
-    top: -6vw;
+    top: -12vw;
     z-index: 1;
     opacity: 0;
     transition: transform .5s ease, opacity 0.3s ease-in-out;
@@ -406,7 +408,6 @@ section {
     flex-direction: column;
     align-items: center;
     width: 90%;
-
 }
 
 .imgDest .btnAdcProd,
