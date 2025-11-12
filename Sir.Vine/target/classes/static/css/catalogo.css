@@ -375,7 +375,7 @@ label {
 #pesq input {
     width: 72%;
 
-    background-image: url("/Sir.Vine/src/main/resources/static/icons/lupa.svg");
+    background-image: url("/icons/lupa.svg");
     background-repeat: no-repeat;
     background-size: 35px;
     padding-left: 50px;

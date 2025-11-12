@@ -121,7 +121,9 @@
                         <img th:src="@{${randomv.img}}" alt="">
 
                         <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd"><a th:href="@{/editarProduto/{tipo}/{id}(id=${randomv.id},tipo=${randomv.tipo_do_produto})}" style="color: white;">Editar Produto</a></button>
+                            <button type="submit" class="btnEditProd"><a
+                                    th:href="@{/editarProduto/{tipo}/{id}(id=${randomv.id},tipo=${randomv.tipo_do_produto})}"
+                                    style="color: white;">Editar Produto</a></button>
                             <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                         </div>
                     </div>
@@ -145,7 +147,9 @@
                         <img th:src="@{${randomq.img}}" alt="">
 
                         <div class="btnsAdEdit">
-                            <button type="submit" class="btnEditProd"> <a th:href="@{/editarProduto/{tipo}/{id}(id=${randomq.id},tipo=${randomq.tipo_do_produto})}" style="color: white;">Editar produto</a></button>
+                            <button type="submit" class="btnEditProd"> <a
+                                    th:href="@{/editarProduto/{tipo}/{id}(id=${randomq.id},tipo=${randomq.tipo_do_produto})}"
+                                    style="color: white;">Editar produto</a></button>
                             <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                         </div>
                     </div>
@@ -169,7 +173,8 @@
 
                         <div class="btnsAdEdit">
                             <button type="submit" class="btnEditProd"><a
-                                    th:href="@{/editarProduto/{tipo}/{id}(id=${randome.id},tipo=${randome.tipo_do_produto})}" style="color: white;">Editar
+                                    th:href="@{/editarProduto/{tipo}/{id}(id=${randome.id},tipo=${randome.tipo_do_produto})}"
+                                    style="color: white;">Editar
                                     Produto</a></button>
                             <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
                         </div>
@@ -206,7 +211,9 @@
                         <p class="rotulos">[[${nvinhos}]]+ Rótulos</p>
                     </b>
 
-                    <button class="btnExp"><a th:href="@{CatalogoVinho}" style="color: white;">Explorar</a></button>
+                    <form th:action="@{CatalogoVinho}" th:method="get" class="formExpBTN">
+                        <button class="btnExp">Explorar</button>
+                    </form>
                 </div>
             </div>
 
@@ -224,8 +231,9 @@
                         <p class="rotulos">[[${nespumantes}]]+ Rótulos</p>
                     </b>
 
-                    <button class="btnExp"><a th:href="@{CatalogoEspuma}" style="color: white;">Explorar</a></button>
-
+                    <form th:action="@{CatalogoEspuma}" th:method="get" class="formExpBTN">
+                        <button class="btnExp">Explorar</button>
+                    </form>
                 </div>
             </div>
 
@@ -243,8 +251,9 @@
                         <p class="rotulos">[[${nqueijos}]]+ Rótulos</p>
                     </b>
 
-                    <button class="btnExp"><a th:href="@{CatalogoQueijo}" style="color: white;">Explorar</a></button>
-
+                    <form th:action="@{CatalogoQueijo}" th:method="get" class="formExpBTN">
+                        <button class="btnExp">Explorar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -271,9 +280,9 @@
             <div id="footProd">
                 <h3>Produtos</h3>
                 <ul>
-                    <li>Vinhos</li>
-                    <li>Queijos</li>
-                    <li>Espumantes</li>
+                    <li><a href="/CatalogoVinho">Vinhos</a></li>
+                    <li><a href="/CatalogoQueijo">Queijos</a></li>
+                    <li><a href="/CatalogoEspuma">Espumantes</a></li>
                 </ul>
 
             </div>

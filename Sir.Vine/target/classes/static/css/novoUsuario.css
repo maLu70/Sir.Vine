@@ -202,6 +202,8 @@ input {
     font-size: 1.2rem;
 
     padding-left: 3%;
+
+    color: white;
 }
 
 #inSenha, #inEmail, #btn, #inCPF, #inNome, #confSenha {
