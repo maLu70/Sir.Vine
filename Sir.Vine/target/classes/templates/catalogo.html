@@ -129,7 +129,7 @@
                                 <div class="btnsAdEdit">
 
                                     <form
-                                        th:action="@{/editarProduto/{tipo}/{id}(tipo=${produto.tipo_do_produto}, id=${produto.id})}" method="post" enctype="multipart/form-data">
+                                        th:action="@{/editarProduto/{tipo}/{id}(tipo=${produto.tipo_do_produto}, id=${produto.id})}" enctype="multipart/form-data">
                                         <button type="submit" class="btnEditProd">Editar Produto</button>
                                     </form>
 
