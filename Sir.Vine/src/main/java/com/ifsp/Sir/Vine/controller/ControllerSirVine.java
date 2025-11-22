@@ -18,9 +18,7 @@ import com.ifsp.Sir.Vine.service.EspumanteService;
 import com.ifsp.Sir.Vine.service.VinhoService;
 import com.ifsp.Sir.Vine.service.QueijoService;
 import com.ifsp.Sir.Vine.model.Espumante;
-import com.ifsp.Sir.Vine.model.Produto;
 import com.ifsp.Sir.Vine.model.Queijo;
-import com.ifsp.Sir.Vine.model.Usuario;
 import com.ifsp.Sir.Vine.model.Vinho;
 import com.ifsp.Sir.Vine.repository.EspumanteRepositorio;
 import com.ifsp.Sir.Vine.repository.ProdutoRepositorio;
@@ -62,11 +60,7 @@ public class ControllerSirVine {
         return "index";
     }
 
-    @GetMapping("/Carrinho")
-    public String carrinho() {
-        return "carrinho";
-    }
-
+   
     @GetMapping("/Especificacao/{tipo}/{id}")
     public String especificacao(@PathVariable String id, @PathVariable String tipo, Model model) {
 
@@ -156,70 +150,7 @@ public class ControllerSirVine {
         return "redirect:/";
     }
 
-    @GetMapping("/NovoUsuario")
-    public String novoUsuario(Model model) {
-        model.addAttribute("error", "");
-        model.addAttribute("nome", "");
-        model.addAttribute("CPF", "");
-        model.addAttribute("email", "");
-        model.addAttribute("senha", "");
-        return "novoUsuario";
-    }
-
-    @PostMapping("/CriarUsuario")
-    public String criarUsuario(
-            @RequestParam String nome,
-            @RequestParam String CPF,
-            @RequestParam String email,
-            @RequestParam String senha,
-            @RequestParam String confSenha,
-            Model model) {
-        if (nome == null || nome.isEmpty() ||
-                CPF == null || CPF.isEmpty() ||
-                email == null || email.isEmpty() ||
-                senha == null || senha.isEmpty() ||
-                confSenha == null || confSenha.isEmpty()) {
-            model.addAttribute("error", "Por favor, preencha todos os campos.");
-
-            return "novoUsuario";
-        } else if (!senha.equals(confSenha)) {
-
-            model.addAttribute("error", "As senhas não coincidem.");
-            model.addAttribute("nome", nome);
-            model.addAttribute("CPF", CPF);
-            model.addAttribute("email", email);
-            model.addAttribute("senha", senha);
-            return "novoUsuario";
-
-        } else if (usuarioRepositorio.existsByEmail(email)) {
-            model.addAttribute("error", "Já existe um usuário cadastrado com esse email.");
-            model.addAttribute("nome", nome);
-            model.addAttribute("CPF", CPF);
-            model.addAttribute("email", email);
-            model.addAttribute("senha", senha);
-
-            return "novoUsuario";
-        } else {
-            Usuario usuario = new Usuario(nome, CPF, email, confSenha);
-            usuario.setAdmin(false);
-            usuarioRepositorio.save(usuario);
-
-            return "redirect:/Perfil/" + email;
-        }
-    }
-
-    @GetMapping("/Perfil/{email}")
-    public String perfil(Model model, @PathVariable String email) {
-        model.addAttribute("usuario", usuarioRepositorio.findByEmail(email));
-        return "perfil";
-    }
-
-    @PostMapping("/ExcluirUsuario/{email}")
-    public String excluirUsuario(Model model, @PathVariable String email) {
-        usuarioRepositorio.delete(email);
-        return "redirect:/";
-    }
-
+    
     @GetMapping("/Catalogo")
     public String Catalgo(Model model) {
         model.addAttribute("produtos", produtoRepositorio.findAll());
@@ -264,7 +195,7 @@ public class ControllerSirVine {
         return "catalogo";
     }
 
-    @GetMapping("editarProduto/{tipo}/{id}")
+    @GetMapping("/editarProduto/{tipo}/{id}")
     public String editarProduto(@PathVariable String id, @PathVariable String tipo, Model model) {
 
         if (tipo.toLowerCase().equals("vinho")) {
@@ -341,7 +272,7 @@ public class ControllerSirVine {
 
         if (tipo.equals("vinho") || tipo == "vinho") {
             String imagemvinho = vinhoService.guardarImg(image);
-            
+
             Vinho vinho = new Vinho(desc, nome, pc,
                     imagemvinho, cidade, ano, pais, tipoV, teorV,
                     volV, uvaV, est, "vinho");
@@ -367,7 +298,7 @@ public class ControllerSirVine {
             espumanteRepositorio.update(espumante);
 
         } else {
-            System.out.println("\n\n\n\nnada foi editado\n\n\n\n\n\n\n\n");
+            return "redirect:/editarProduto/" + tipo + "/" + id;
         }
 
         return "redirect:/Especificacao/" + tipo + "/" + id;

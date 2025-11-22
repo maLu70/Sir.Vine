@@ -64,17 +64,19 @@
                 <p>Entre com seu email e senha</p>
             </div>
 
-            <div id="inEmail"><label for="email">Email</label>
-                <input type="email" placeholder="Email" id="email" required>
-            </div>
+            <form th:action="@{/logarUsuario}" style="width: 100%; height: 100%;" method="post">
+                <div id="inEmail"><label for="email">Email</label>
+                    <input type="email" placeholder="Email" id="email" th:name="email" required>
+                </div>
 
-            <div id="inSenha"><label for="senha">Senha</label>
-                <input type="password" placeholder="Senha" id="senha" required>
-            </div>
+                <div id="inSenha"><label for="senha">Senha</label>
+                    <input type="password" placeholder="Senha" id="senha" th:name="senha" required>
+                </div>
 
-            <div id="btn"><button id="btnLogin">Fazer Login</button>
-                <a href="">Ainda não tem uma conta? Clique aqui</a>
-            </div>
+                <div id="btn"><button id="btnLogin" type="submit">Fazer Login</button>
+            </form>
+            <a th:href="@{/NovoUsuario}">Ainda não tem uma conta? Clique aqui</a>
+        </div>
         </div>
 
     </section>
