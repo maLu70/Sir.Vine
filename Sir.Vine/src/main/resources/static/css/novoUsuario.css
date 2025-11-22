@@ -206,7 +206,12 @@ input {
     color: white;
 }
 
-#inSenha, #inEmail, #btn, #inCPF, #inNome, #confSenha {
+#inSenha,
+#inEmail,
+#btn,
+#inCPF,
+#inNome,
+#confSenha {
     width: 100%;
 }
 
@@ -214,9 +219,152 @@ input {
     width: 90%;
 }
 
-#inSenha, #inEmail, #inCPF, #inNome, #confSenha {
+#inSenha,
+#inEmail,
+#inCPF,
+#inNome,
+#confSenha {
     height: 12%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+
+    header ul {
+        width: 50%;
+        font-size: 1.4rem;
+    }
+
+    #atalhos {
+        width: 18%;
+    }
+
+    #login {
+        width: 40vw;
+    }
+
+    #btnLogin {
+        height: 10%;
+    }
+
+    input {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 992px) {
+
+    header {
+        height: 13vh;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+
+    header ul {
+        display: none;
+    }
+
+    #atalhos {
+        width: 25%;
+    }
+
+    #logo img {
+        width: 5vw;
+    }
+
+    #login {
+        width: 55%;
+    }
+
+    input {
+        border-radius: 12px;
+    }
+
+    #btnLogin {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #logo img {
+        width: 9vw;
+        margin-right: 2vw;
+    }
+
+    #atalhos {
+        width: 32%;
+    }
+
+    #login {
+        width: 75vw;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p, label {
+        font-size: 1.2rem;
+    }
+
+    #btnLogin {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+   header {
+        height: 10vh;
+        padding: 0 1rem;
+    }
+
+    #logo img {
+        width: 12vw;
+    }
+
+    #logo p {
+        font-size: 2rem;
+    }
+
+    #atalhos {
+        width: 40%;
+    }
+
+    section {
+        padding-bottom: 30px;
+    }
+
+    #login {
+        width: 90%;
+        height: 80%;
+        margin: 0;
+    }
+
+    input {
+        font-size: 1rem;
+    }
+
+    #btnLogin {
+        font-size: 0.95rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    p, label {
+        font-size: 1rem;
+    }
 }
