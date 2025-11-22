@@ -18,8 +18,6 @@
 
             <div id="logo" style="display: flex;">
                 <a href="/">
-
-
                     <img src="/icons/servine.png" alt="">
 
                     <p class="sir">Sir. </p>
@@ -59,12 +57,13 @@
 
         <div id="login">
 
-            <div id="infLogin">
-                <h2>Login</h2>
-                <p>Entre com seu email e senha</p>
-            </div>
-
             <form th:action="@{/logarUsuario}" style="width: 100%; height: 100%;" method="post">
+
+                <div id="infLogin">
+                    <h2>Login</h2>
+                    <p>Entre com seu email e senha</p>
+                </div>
+
                 <div id="inEmail"><label for="email">Email</label>
                     <input type="email" placeholder="Email" id="email" th:name="email" required>
                 </div>
@@ -74,9 +73,9 @@
                 </div>
 
                 <div id="btn"><button id="btnLogin" type="submit">Fazer Login</button>
+                    <a th:href="@{/NovoUsuario}">Ainda não tem uma conta? Clique aqui</a>
+                </div>
             </form>
-            <a th:href="@{/NovoUsuario}">Ainda não tem uma conta? Clique aqui</a>
-        </div>
         </div>
 
     </section>
