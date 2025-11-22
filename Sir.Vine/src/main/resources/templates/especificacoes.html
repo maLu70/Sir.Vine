@@ -15,7 +15,7 @@
 
     <section>
         <div id="especificacoes">
-            <img th:src="${produto.img}" alt="">
+            <img th:src="${produto.img}" src="/Sir.Vine/src/main/resources/static/img/vinho.jpg" alt="">
 
             <div id="container">
 
@@ -112,13 +112,14 @@
 
                     </div>
 
-                     <form th:action="@{/DeletarProduto/{id}/{tipo}(id=${produto.tipo_do_produto},tipo=${produto.id})}"
-                th:method="post">
+                    <form th:action="@{/DeletarProduto/{id}/{tipo}(id=${produto.tipo_do_produto},tipo=${produto.id})}"
+                        th:method="post" class="formBtn">
                         <button type="submit" id="comprar">Deletar Produto</button>
                     </form>
 
-                    <button type="submit" id="adicionar">Adicionar ao carrinho</button>
-
+                    <form action="" class="formBtn">
+                        <button type="submit" id="adicionar">Adicionar ao carrinho</button>
+                    </form>
                 </div>
             </div>
         </div>
