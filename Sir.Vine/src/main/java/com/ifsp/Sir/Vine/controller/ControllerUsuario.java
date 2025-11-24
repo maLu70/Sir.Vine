@@ -52,7 +52,7 @@ public class ControllerUsuario {
 
     @GetMapping("/NovoUsuario")
     public String novoUsuario(Model model, Principal principal, HttpServletRequest request) {
-        
+
         List<ItemCarrinho> carrinho = lerCarrinho(request);
         model.addAttribute("itensCarrinho", carrinho.size());
         model.addAttribute("error", "");
@@ -134,7 +134,7 @@ public class ControllerUsuario {
 
     @GetMapping("/Perfil")
     public String perfilRedirect(Model model, Principal principal, HttpServletRequest request) {
-        
+
         List<ItemCarrinho> carrinho = lerCarrinho(request);
         model.addAttribute("itensCarrinho", carrinho.size());
         Usuario usuario = new Usuario();

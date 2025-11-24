@@ -25,39 +25,36 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
 
-                .requestMatchers("/", "/Catalogo", "/CatalogoVinho",
-                        "/CatalogoQueijo", "/CatalogoEspuma",
-                        "/FiltrarProdutos", "/Especificacao/**",
-                        "/NovoUsuario", "/CriarUsuario",
-                        "/css/**", "/js/**", "/img/**", "/icons/**",
-                        "/logarUsuario", "/login")
+                        .requestMatchers("/", "/Catalogo", "/CatalogoVinho",
+                                "/CatalogoQueijo", "/CatalogoEspuma",
+                                "/FiltrarProdutos", "/Especificacao/**",
+                                "/NovoUsuario", "/CriarUsuario",
+                                "/css/**", "/js/**", "/img/**", "/icons/**",
+                                "/logarUsuario", "/login")
                         .permitAll()
 
-                .requestMatchers("/Carrinho/**").authenticated()
+                        .requestMatchers("/Carrinho/**").authenticated()
 
-                .requestMatchers("/Perfil/**").authenticated()
+                        .requestMatchers("/Perfil/**").authenticated()
 
-                .requestMatchers("/CadastrarProduto", "/CriarProduto",
+                        .requestMatchers("/CadastrarProduto", "/CriarProduto",
                                 "/editarProduto/**", "/DeletarProduto/**")
                         .hasRole("ADMIN")
 
-                .anyRequest().authenticated()
-            )
+                        .anyRequest().authenticated())
 
-            .formLogin(login -> login
-                .loginPage("/login")
-                .defaultSuccessUrl("/", true)
-                .permitAll()
-            )
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll())
 
-            .logout(logout -> logout
-                .logoutSuccessUrl("/")
-                .permitAll()
-            );
-        
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/")
+                        .permitAll());
+
         return http.build();
     }
 

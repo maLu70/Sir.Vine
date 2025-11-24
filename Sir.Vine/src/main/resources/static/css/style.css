@@ -339,6 +339,10 @@ section {
     overflow: hidden;
 }
 
+.imgDest form {
+    width: 100%;
+}
+
 .imgDest img {
     width: 100%;
     height: 100%;

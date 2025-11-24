@@ -136,8 +136,10 @@
                                             th:if="${usuario != null and usuario.admin}">Editar Produto</button>
                                     </form>
 
-                                    <form th:method="post" th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=1)}">
-                                        <button type="submit" class="btnAdcProd" th:if="${usuario != null and !usuario.admin}">
+                                    <form th:method="post"
+                                        th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=1)}">
+                                        <button type="submit" class="btnAdcProd"
+                                            th:if="${usuario != null and !usuario.admin}">
                                             Adicionar ao carrinho
                                         </button>
                                     </form>
