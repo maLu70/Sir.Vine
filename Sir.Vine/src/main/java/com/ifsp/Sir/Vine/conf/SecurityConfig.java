@@ -31,26 +31,33 @@ public class SecurityConfig {
                 .requestMatchers("/", "/Catalogo", "/CatalogoVinho",
                         "/CatalogoQueijo", "/CatalogoEspuma",
                         "/FiltrarProdutos", "/Especificacao/**",
-                        "/NovoUsuario", "/CriarUsuario" , "/css/**", "/js/**", "/img/**", "/icons/**", "/Perfil", "/logarUsuario", "/login").permitAll()
+                        "/NovoUsuario", "/CriarUsuario",
+                        "/css/**", "/js/**", "/img/**", "/icons/**",
+                        "/logarUsuario", "/login")
+                        .permitAll()
 
-                .requestMatchers("/Perfil/**", "/Carrinho")
-                        .authenticated()
+                .requestMatchers("/Carrinho/**").authenticated()
 
-                .requestMatchers("/CadastrarProduto", "/CriarProduto", 
-                                 "/editarProduto/**", "/DeletarProduto/**")
+                .requestMatchers("/Perfil/**").authenticated()
+
+                .requestMatchers("/CadastrarProduto", "/CriarProduto",
+                                "/editarProduto/**", "/DeletarProduto/**")
                         .hasRole("ADMIN")
 
                 .anyRequest().authenticated()
             )
 
-            
-            .logout(logout -> logout
-                .logoutSuccessUrl("/")
+            .formLogin(login -> login
+                .loginPage("/login")
+                .defaultSuccessUrl("/", true)
                 .permitAll()
             )
 
-            .userDetailsService(usuarioDetailsService);
-
+            .logout(logout -> logout
+                .logoutSuccessUrl("/")
+                .permitAll()
+            );
+        
         return http.build();
     }
 
@@ -58,12 +65,13 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
+
     @Bean
-public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-    return http.getSharedObject(AuthenticationManagerBuilder.class)
-            .userDetailsService(usuarioDetailsService)
-            .passwordEncoder(passwordEncoder())
-            .and()
-            .build();
-}
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(usuarioDetailsService)
+                .passwordEncoder(passwordEncoder())
+                .and()
+                .build();
+    }
 }

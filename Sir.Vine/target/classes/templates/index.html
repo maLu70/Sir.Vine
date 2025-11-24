@@ -36,13 +36,13 @@
 
             <div id="atalhos">
 
-                <div id="itensCar">X</div>
+                <div id="itensCar" th:if="${usuario != null and !usuario.admin}">[[${itensCarrinho}]]</div>
 
                 <a href="/Catalogo">
                     <img src="/icons/lupa.svg" alt="">
                 </a>
 
-                <a href="/Carrinho">
+                <a href="/Carrinho" th:if="${usuario != null and !usuario.admin}">
                     <img src="/icons/carrinho.svg" alt="">
                 </a>
 
@@ -66,7 +66,7 @@
 
             <div id="btnsIndex">
                 <button id="btnInicial" type="submit"><a href="/Catalogo">Ver Catálogo</a></button>
-                <button id="btnInicialAdc" type="submit"> <a th:href="@{CadastrarProduto}">Adicionar
+                <button id="btnInicialAdc" type="submit" th:if="${usuario != null and usuario.admin}"> <a th:href="@{CadastrarProduto}" >Adicionar
                         produto</a></button>
             </div>
 
@@ -123,8 +123,8 @@
                         <div class="btnsAdEdit">
                             <button type="submit" class="btnEditProd"><a
                                     th:href="@{/editarProduto/{tipo}/{id}(id=${randomv.id},tipo=${randomv.tipo_do_produto})}"
-                                    style="color: white;">Editar Produto</a></button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                                    style="color: white;" th:if="${usuario != null and usuario.admin}">Editar Produto</a></button>
+                            <button type="submit" class="btnAdcProd" th:if="${usuario != null and !usuario.admin}">Adicionar ao carrinho</button>
                         </div>
                     </div>
 
@@ -149,8 +149,8 @@
                         <div class="btnsAdEdit">
                             <button type="submit" class="btnEditProd"> <a
                                     th:href="@{/editarProduto/{tipo}/{id}(id=${randomq.id},tipo=${randomq.tipo_do_produto})}"
-                                    style="color: white;">Editar produto</a></button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                                    style="color: white;" th:if="${usuario != null and usuario.admin}">Editar produto</a></button>
+                            <button type="submit" class="btnAdcProd" th:if="${usuario != null and !usuario.admin}">Adicionar ao carrinho</button>
                         </div>
                     </div>
 
@@ -174,9 +174,9 @@
                         <div class="btnsAdEdit">
                             <button type="submit" class="btnEditProd"><a
                                     th:href="@{/editarProduto/{tipo}/{id}(id=${randome.id},tipo=${randome.tipo_do_produto})}"
-                                    style="color: white;">Editar
+                                    style="color: white;" th:if="${usuario != null and usuario.admin}">Editar
                                     Produto</a></button>
-                            <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                            <button type="submit" class="btnAdcProd" th:if="${usuario != null and !usuario.admin}">Adicionar ao carrinho</button>
                         </div>
                     </div>
 

@@ -9,9 +9,11 @@ import com.ifsp.Sir.Vine.model.Produto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 
 @Repository
 public class ProdutoRepositorio {
+
     @PersistenceContext
     private EntityManager em;
 
@@ -81,8 +83,36 @@ public class ProdutoRepositorio {
         return countries;
     }
 
+    @Transactional
     public void update(Produto produto) {
         em.merge(produto);
+    }
+
+    @Transactional
+    public void delete(Produto produto) {
+        Produto prod = em.find(Produto.class, produto.getId());
+        if (prod != null) {
+            em.remove(prod);
+        }
+    }
+
+    @Transactional
+    public void DiminurQuantidadeByProdutos(List<Produto> produtos) {
+        for (Produto produto : produtos) {
+            Produto produtoReal = em.find(Produto.class, produto.getId());
+
+            if (produtoReal == null)
+                continue;
+
+            int quantidadeComprada = produto.getEstoque();
+
+            if (produtoReal.getEstoque() <= quantidadeComprada) {
+                this.delete(produtoReal);
+            } else {
+                produtoReal.setEstoque(produtoReal.getEstoque() - quantidadeComprada);
+                this.update(produtoReal);
+            }
+        }
     }
 
 }

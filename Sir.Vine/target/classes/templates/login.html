@@ -18,6 +18,7 @@
 
             <div id="logo" style="display: flex;">
                 <a href="/">
+
                     <img src="/icons/servine.png" alt="">
 
                     <p class="sir">Sir. </p>
@@ -35,24 +36,24 @@
 
             <div id="atalhos">
 
-                <div id="itensCar">X</div>
+                <div id="itensCar" th:if="${usuario != null and !usuario.admin}">[[${itensCarrinho}]]</div>
 
                 <a href="/Catalogo">
                     <img src="/icons/lupa.svg" alt="">
                 </a>
 
-                <a href="/Carrinho">
+                <a href="/Carrinho" th:if="${usuario != null and !usuario.admin}">
                     <img src="/icons/carrinho.svg" alt="">
                 </a>
 
-                <a th:href="@{/NovoUsuario}">
+                <a th:href="@{/Perfil}">
                     <img src="/icons/perfil.svg" alt="">
                 </a>
 
             </div>
 
         </header>
-
+        
         <h1>Bem Vindo de Volta</h1>
 
         <div id="login">
@@ -66,12 +67,12 @@
 
                 <div id="inEmail">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="Email" id="email" th:name="email" required>
+                    <input type="email" placeholder="Email" id="email" th:name="email" required style="color: white;" th:value="${email}">
                 </div>
 
                 <div id="inSenha">
                     <label for="senha">Senha</label>
-                    <input type="password" placeholder="Senha" id="senha" th:name="senha" required>
+                    <input type="password" placeholder="Senha" id="senha" th:name="senha" required style="color: white;" th:value="${senha}">
                 </div>
 
                 <div id="btn">

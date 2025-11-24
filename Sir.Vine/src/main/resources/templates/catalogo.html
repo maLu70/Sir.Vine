@@ -19,6 +19,7 @@
 
             <div id="logo" style="display: flex;">
                 <a href="/">
+
                     <img src="/icons/servine.png" alt="">
 
                     <p class="sir">Sir. </p>
@@ -36,17 +37,17 @@
 
             <div id="atalhos">
 
-                <div id="itensCar">X</div>
+                <div id="itensCar" th:if="${usuario != null and !usuario.admin}">[[${itensCarrinho}]]</div>
 
                 <a href="/Catalogo">
                     <img src="/icons/lupa.svg" alt="">
                 </a>
 
-                <a href="/Carrinho">
+                <a href="/Carrinho" th:if="${usuario != null and !usuario.admin}">
                     <img src="/icons/carrinho.svg" alt="">
                 </a>
 
-                <a th:href="@{/NovoUsuario}">
+                <a th:href="@{/Perfil}">
                     <img src="/icons/perfil.svg" alt="">
                 </a>
 
@@ -129,12 +130,16 @@
                                 <div class="btnsAdEdit">
 
                                     <form
-                                        th:action="@{/editarProduto/{tipo}/{id}(tipo=${produto.tipo_do_produto}, id=${produto.id})}" enctype="multipart/form-data">
-                                        <button type="submit" class="btnEditProd">Editar Produto</button>
+                                        th:action="@{/editarProduto/{tipo}/{id}(tipo=${produto.tipo_do_produto}, id=${produto.id})}"
+                                        enctype="multipart/form-data">
+                                        <button type="submit" class="btnEditProd"
+                                            th:if="${usuario != null and usuario.admin}">Editar Produto</button>
                                     </form>
 
-                                    <form th:method="POST">
-                                        <button type="submit" class="btnAdcProd">Adicionar ao carrinho</button>
+                                    <form th:method="post" th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=1)}">
+                                        <button type="submit" class="btnAdcProd" th:if="${usuario != null and !usuario.admin}">
+                                            Adicionar ao carrinho
+                                        </button>
                                     </form>
                                 </div>
                             </div>

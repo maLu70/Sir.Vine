@@ -1,8 +1,13 @@
 package com.ifsp.Sir.Vine.controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +21,17 @@ import com.ifsp.Sir.Vine.repository.UsuarioRepositorio;
 import com.ifsp.Sir.Vine.repository.VinhoRepositorio;
 import com.ifsp.Sir.Vine.service.EspumanteService;
 import com.ifsp.Sir.Vine.service.VinhoService;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+
 import com.ifsp.Sir.Vine.service.QueijoService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ifsp.Sir.Vine.model.Espumante;
+import com.ifsp.Sir.Vine.model.ItemCarrinho;
 import com.ifsp.Sir.Vine.model.Queijo;
+import com.ifsp.Sir.Vine.model.Usuario;
 import com.ifsp.Sir.Vine.model.Vinho;
 import com.ifsp.Sir.Vine.repository.EspumanteRepositorio;
 import com.ifsp.Sir.Vine.repository.ProdutoRepositorio;
@@ -49,20 +62,43 @@ public class ControllerSirVine {
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, Principal principal, HttpServletRequest request) {
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
+
+
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
         model.addAttribute("randomv", vinhoRepositorio.randomVinho());
         model.addAttribute("randome", espumanteRepositorio.randomEspumante());
         model.addAttribute("randomq", queijoRepositorio.randomQueijo());
         model.addAttribute("nvinhos", vinhoRepositorio.tamanho());
         model.addAttribute("nespumantes", espumanteRepositorio.tamanho());
         model.addAttribute("nqueijos", queijoRepositorio.tamanho());
+        
+
         return "index";
     }
 
-   
     @GetMapping("/Especificacao/{tipo}/{id}")
-    public String especificacao(@PathVariable String id, @PathVariable String tipo, Model model) {
+    public String especificacao(@PathVariable String id, @PathVariable String tipo, Model model, Principal principal,
+            HttpServletRequest request) {
+
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
 
         if (tipo.toLowerCase().equals("vinho")) {
 
@@ -150,9 +186,16 @@ public class ControllerSirVine {
         return "redirect:/";
     }
 
-    
     @GetMapping("/Catalogo")
-    public String Catalgo(Model model) {
+    public String Catalgo(Model model, Principal principal, HttpServletRequest request) {
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
         model.addAttribute("produtos", produtoRepositorio.findAll());
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
         return "catalogo";
@@ -166,7 +209,17 @@ public class ControllerSirVine {
             @RequestParam(required = false) Float precoMax,
             @RequestParam(required = false) String radio,
             @RequestParam(required = false) String radiopais,
-            Model model) {
+            Model model,
+            Principal principal,
+            HttpServletRequest request) {
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
         model.addAttribute("produtos",
                 produtoRepositorio.filter(precoMin, precoMax, radio, radiopais, ordenar, nomeProduto));
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
@@ -175,21 +228,45 @@ public class ControllerSirVine {
     }
 
     @GetMapping("/CatalogoEspuma")
-    public String CatalogoEspuma(Model model) {
+    public String CatalogoEspuma(Model model, Principal principal, HttpServletRequest request) {
         model.addAttribute("produtos", produtoRepositorio.filter(null, null, "espumante", null, "az", null));
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
         return "catalogo";
     }
 
     @GetMapping("/CatalogoQueijo")
-    public String CatalogoQueijo(Model model) {
+    public String CatalogoQueijo(Model model, Principal principal, HttpServletRequest request) {
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
         model.addAttribute("produtos", produtoRepositorio.filter(null, null, "queijo", null, "az", null));
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
         return "catalogo";
     }
 
     @GetMapping("/CatalogoVinho")
-    public String CatalogoVinho(Model model) {
+    public String CatalogoVinho(Model model, Principal principal, HttpServletRequest request) {
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+        Usuario usuario = new Usuario();
+        if (principal != null) {
+            model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
+        } else {
+            model.addAttribute("usuario", usuario);
+        }
         model.addAttribute("produtos", produtoRepositorio.filter(null, null, "vinho", null, "az", null));
         model.addAttribute("paises", produtoRepositorio.findAllCountries());
         return "catalogo";
@@ -303,4 +380,23 @@ public class ControllerSirVine {
 
         return "redirect:/Especificacao/" + tipo + "/" + id;
     }
+
+    private List<ItemCarrinho> lerCarrinho(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies == null)
+            return new ArrayList<>();
+        for (Cookie c : cookies) {
+            if (c.getName().equals("carrinho")) {
+                try {
+                    String value = java.net.URLDecoder.decode(c.getValue(), StandardCharsets.UTF_8);
+                    return mapper.readValue(value, new TypeReference<List<ItemCarrinho>>() {
+                    });
+                } catch (Exception e) {
+                    return new ArrayList<>();
+                }
+            }
+        }
+        return new ArrayList<>();
+    }
+
 }

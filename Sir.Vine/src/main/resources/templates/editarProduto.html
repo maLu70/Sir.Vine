@@ -14,7 +14,7 @@
 <body>
 
     <div>
-        <header>
+       <header>
 
             <div id="logo" style="display: flex;">
                 <a href="/">
@@ -36,24 +36,24 @@
 
             <div id="atalhos">
 
-                <div id="itensCar">X</div>
+                <div id="itensCar" th:if="${usuario != null and !usuario.admin}">[[${itensCarrinho}]]</div>
 
                 <a href="/Catalogo">
                     <img src="/icons/lupa.svg" alt="">
                 </a>
 
-                <a href="/Carrinho">
+                <a href="/Carrinho" th:if="${usuario != null and !usuario.admin}">
                     <img src="/icons/carrinho.svg" alt="">
                 </a>
 
-                <a th:href="@{/NovoUsuario}">
+                <a th:href="@{/Perfil}">
                     <img src="/icons/perfil.svg" alt="">
                 </a>
 
             </div>
 
         </header>
-
+        
         <div id="novoProd">
 
             <h1>Editar produto</h1>

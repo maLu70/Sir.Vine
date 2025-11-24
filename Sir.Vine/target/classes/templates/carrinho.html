@@ -14,11 +14,10 @@
 <body>
 
     <section>
-       <header>
+        <header>
 
             <div id="logo" style="display: flex;">
                 <a href="/">
-
 
                     <img src="/icons/servine.png" alt="">
 
@@ -37,17 +36,17 @@
 
             <div id="atalhos">
 
-                <div id="itensCar">X</div>
+                <div id="itensCar" th:if="${usuario != null and !usuario.admin}">[[${itensCarrinho}]]</div>
 
                 <a href="/Catalogo">
                     <img src="/icons/lupa.svg" alt="">
                 </a>
 
-                <a href="/Carrinho">
+                <a href="/Carrinho" th:if="${usuario != null and !usuario.admin}">
                     <img src="/icons/carrinho.svg" alt="">
                 </a>
 
-                <a th:href="@{/NovoUsuario}">
+                <a th:href="@{/Perfil}">
                     <img src="/icons/perfil.svg" alt="">
                 </a>
 
@@ -57,27 +56,27 @@
 
         <div id="infCar">
             <h1>Carrinho de compras</h1>
-            <h2>X itens no carrinho</h2>
+            <h2>[[${itensCarrinho}]] itens no carrinho</h2>
         </div>
 
         <div id="car">
             <div id="itens">
 
-                <div class="prodCar">
+                <div class="prodCar" th:each="produto : ${carrinho}">
                     <img src="/Sir.Vine/src/main/resources/static/espumantes/espumante_aurora.jpg" alt="">
-                    
+
                     <div class="infProdCar">
-                        <h4>Nome do Queijo</h4>
-                        <p>Cidade, pais, ano</p>
+                        <h4>[[${produto.nome}]]</h4>
+                        <p>[[@{produto.cidade}]], [[${produto.pais}]], [[${produto.ano}]]</p>
 
                         <div class="tipoProd">
-                            <p>Queijo</p>
+                            <p>[[${produto.tipo_do_produto}]]</p>
                         </div>
 
                         <div class="unid">
                             <button type="submit" class="menos">-</button>
 
-                            <input type="number" readonly value="1">
+                            <input type="number" readonly th:value="${produto.estoque}">
 
                             <button type="submit" class="mais">+</button>
 
@@ -86,7 +85,8 @@
 
                     <div class="valProdCar">
                         <img src="/Sir.Vine/src/main/resources/static/icons/lixeira.svg" alt="">
-                        <p>R$1111,50</p>
+                        <p>R$ [[${#numbers.formatDecimal(produto.preco * produto.estoque, 1, 'POINT', 2, 'POINT')}]]</p>
+
                     </div>
 
                 </div>
@@ -98,11 +98,11 @@
                 <table class="detalhes" id="preFre">
                     <tr>
                         <td class="prim">Preço</td>
-                        <td>2025</td>
+                        <td>R$ [[${#numbers.formatDecimal(valorProdutos, 1, 'POINT', 2, 'POINT')}]]</td>
                     </tr>
                     <tr>
                         <td class="prim">Frete</td>
-                        <td>2025</td>
+                        <td>R$ [[${#numbers.formatDecimal(frete , 1, 'POINT', 2, 'POINT')}]]</td>
                     </tr>
                 </table>
 
@@ -111,13 +111,14 @@
                 <table class="detalhes" id="tot">
                     <tr>
                         <td class="prim"> <b>Total</b></td>
-                        <td>2025</td>
+                        <td>R$ [[${#numbers.formatDecimal(valorTotal, 1, 'POINT', 2, 'POINT')}]]</td>
                     </tr>
 
                 </table>
 
-                <button id="btnComprar" type="submit">Finalizar compra</button>
-
+                <form th:action="@{/Carrinho/Esvaziar}" th:method="post" style="padding: 0.94rem 2.8rem; text-align: center; width: 100%; height: 3.5vw;">
+                    <button id="btnComprar" type="submit">Finalizar compra</button>
+                </form>
             </div>
         </div>
 
