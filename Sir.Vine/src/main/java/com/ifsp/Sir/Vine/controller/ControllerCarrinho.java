@@ -71,7 +71,6 @@ public class ControllerCarrinho {
     public String adicionarItem(HttpServletRequest request, HttpServletResponse response,
             @PathVariable String id, @PathVariable String quantidade) {
 
-        
         String tipo = produtoRepositorio.findById(Long.parseLong(id)).getTipo_do_produto();
         List<ItemCarrinho> carrinho = lerCarrinho(request);
 
@@ -147,11 +146,10 @@ public class ControllerCarrinho {
     @GetMapping("/Carrinho")
     public String paginaCarrinho(HttpServletRequest request, Model model, Principal principal) {
 
-        
         Usuario usuario = new Usuario();
-        if (principal!=null) {
+        if (principal != null) {
             model.addAttribute("usuario", usuario = usuarioRepositorio.findByEmail(principal.getName()));
-        }else{
+        } else {
             model.addAttribute("usuario", usuario);
         }
         List<ItemCarrinho> carrinho = lerCarrinho(request);

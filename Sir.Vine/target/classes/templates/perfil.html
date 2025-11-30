@@ -72,7 +72,7 @@
                     <button id="btnSair">Sair</button>
                 </form>
 
-                <form th:action="@{/ExcluirUsuario/{email}(email=${usuario.email})}" th:method="post">
+                <form th:action="@{/ExcluirUsuario/{email}(email=${usuario.email})}" th:method="post" th:if="${!usuario.admin}">
                     <button id="btnExcluir">Excluir conta</button>
                 </form>
 

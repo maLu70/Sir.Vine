@@ -308,6 +308,11 @@ h4 {
 
 .valProdCar img {
     width: 15%;
+    height: 20%;
+}
+
+.valProdCar img {
+    width: 100%;
     height: auto;
 }
 

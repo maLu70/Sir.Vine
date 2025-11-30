@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="valProdCar">
-                        <a href="@{/Carrinho/Remover/{id}/{tipo}(id=${produto.id},tipo=${produto.tipo_do_produto})}"><img id="imgLixo" src="/icons/lixeira.svg" alt="lixo"></a>
+                        <a th:href="@{/Carrinho/Remover/{id}/{tipo}(id=${produto.id},tipo=${produto.tipo_do_produto})}"><img id="imgLixo" src="/icons/lixeira.svg" alt="lixo"></a>
                         <p>R$ [[${#numbers.formatDecimal(produto.preco * produto.estoque, 1, 'POINT', 2, 'POINT')}]]</p>
 
                     </div>

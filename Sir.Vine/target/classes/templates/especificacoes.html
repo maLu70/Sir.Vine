@@ -114,12 +114,23 @@
                     </div>
 
                     <form th:action="@{/DeletarProduto/{id}/{tipo}(id=${produto.tipo_do_produto},tipo=${produto.id})}"
-                        th:method="post" class="formBtn">
+                        th:method="post" class="formBtn" th:if="${usuario != null and usuario.admin}">
                         <button type="submit" id="comprar">Deletar Produto</button>
                     </form>
 
-                    <form action="" class="formBtn">
+                    <form class="formBtn" th:if="${usuario != null and !usuario.admin}">
+                        <button type="submit" id="comprar">Comprar agora</button>
+                    </form>
+
+                    <form th:method="post"
+                        th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=1)}"
+                        th:if="${!usuario.admin}" id="formAddCarrinho">
                         <button type="submit" id="adicionar">Adicionar ao carrinho</button>
+                    </form>
+
+                    <form th:action="@{/editarProduto/{tipo}/{id}(id=${produto.id},tipo=${produtotipo_do_produto})}"
+                        th:method="get" class="formBtn" th:if="${usuario != null and usuario.admin}">
+                        <button type="submit" id="adicionar">Editar Produto</button>
                     </form>
                 </div>
             </div>
@@ -129,13 +140,15 @@
     <script th:inline="javascript">
 
         const input = document.querySelector('#inpQuantidade');
-        var estoque = [[${produto.estoque}]];
+        const estoque = [[${ produto.estoque }]];
+        const form = document.querySelector('#formAddCarrinho');
 
         console.log("Estoque: " + estoque)
 
         function aumentar() {
             if (input.value < estoque) {
                 input.value = parseInt(input.value) + 1;
+                // form.action = "@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=5)}"
             }
         }
 
