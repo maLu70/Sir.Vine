@@ -130,9 +130,7 @@
                                 th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${randomv.id}, quantidade=1)}"
                                 th:if="${!usuario.admin}">
 
-                                <button type="submit" class="btnAdcProd" >
-                                    Adicionar ao carrinho
-                                </button>
+                                <button type="submit" class="btnAdcProd" id="adCarBtn"> Adicionar ao carrinho</button>
 
                             </form>
                         </div>
@@ -166,7 +164,7 @@
                                 th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${randomq.id}, quantidade=1)}"
                                 th:if="${!usuario.admin}">
 
-                                <button type="submit" class="btnAdcProd" >
+                                <button type="submit" class="btnAdcProd">
                                     Adicionar ao carrinho
                                 </button>
 
@@ -202,7 +200,7 @@
                                 th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${randome.id}, quantidade=1)}"
                                 th:if="${!usuario.admin}">
 
-                                <button type="submit" class="btnAdcProd" >
+                                <button type="submit" class="btnAdcProd">
                                     Adicionar ao carrinho
                                 </button>
 

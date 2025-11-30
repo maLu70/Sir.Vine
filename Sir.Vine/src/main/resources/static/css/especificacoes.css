@@ -6,8 +6,21 @@ body {
     padding: 0;
 }
 
+h1 {
+    position: absolute;
+    font-size: 3rem;
+    top: 5rem;
+    left: 14rem;
+    font-family: "Inter", sans-serif;
+}
+
+h1 a {
+    text-decoration: none;
+    color: red;
+}
+
 section {
-    height: 96vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,8 +280,6 @@ h4 {
     img {
         width: 85vw;
         height: 85vw;
-
-        border: red solid;
     }
 
     #container {

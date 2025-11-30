@@ -63,11 +63,11 @@
             <div id="itens">
 
                 <div class="prodCar" th:each="produto : ${carrinho}">
-                    <img src="/Sir.Vine/src/main/resources/static/espumantes/espumante_aurora.jpg" alt="">
+                    <img th:src="@{${produto.img}}" alt="">
 
                     <div class="infProdCar">
                         <h4>[[${produto.nome}]]</h4>
-                        <p>[[@{produto.cidade}]], [[${produto.pais}]], [[${produto.ano}]]</p>
+                        <p>[[${produto.cidade}]], [[${produto.pais}]], [[${produto.ano}]]</p>
 
                         <div class="tipoProd">
                             <p>[[${produto.tipo_do_produto}]]</p>
@@ -76,7 +76,7 @@
                         <div class="unid">
                             <button type="submit" class="menos">-</button>
 
-                            <input type="number" readonly th:value="${produto.estoque}">
+                            <input type="number" id="inpQuantidade" readonly th:value="${produto.estoque}">
 
                             <button type="submit" class="mais">+</button>
 
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="valProdCar">
-                        <img src="/Sir.Vine/src/main/resources/static/icons/lixeira.svg" alt="">
+                        <a href="@{/Carrinho/Remover/{id}/{tipo}(id=${produto.id},tipo=${produto.tipo_do_produto})}"><img id="imgLixo" src="/icons/lixeira.svg" alt="lixo"></a>
                         <p>R$ [[${#numbers.formatDecimal(produto.preco * produto.estoque, 1, 'POINT', 2, 'POINT')}]]</p>
 
                     </div>

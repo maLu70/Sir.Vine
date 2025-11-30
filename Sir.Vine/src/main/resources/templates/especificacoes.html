@@ -14,6 +14,7 @@
 <body>
 
     <section>
+        <h1><a href="/">X</a></h1>
         <div id="especificacoes">
             <img th:src="${produto.img}" src="/Sir.Vine/src/main/resources/static/img/vinho.jpg" alt="">
 
@@ -104,11 +105,11 @@
                 <div id="bott">
 
                     <div id="unid">
-                        <button type="submit" id="menos">-</button>
+                        <button type="submit" id="menos" onclick="diminuir()">-</button>
 
-                        <input type="number" readonly value="10">
+                        <input id="inpQuantidade" type="number" readonly value="1">
 
-                        <button type="submit" id="mais">+</button>
+                        <button type="submit" id="mais" onclick="aumentar()">+</button>
 
                     </div>
 
@@ -125,6 +126,25 @@
         </div>
     </section>
 
+    <script th:inline="javascript">
+
+        const input = document.querySelector('#inpQuantidade');
+        var estoque = [[${produto.estoque}]];
+
+        console.log("Estoque: " + estoque)
+
+        function aumentar() {
+            if (input.value < estoque) {
+                input.value = parseInt(input.value) + 1;
+            }
+        }
+
+        function diminuir() {
+            if (input.value > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+    </script>
 </body>
 
 </html>

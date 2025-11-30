@@ -126,7 +126,7 @@ public class ControllerCarrinho {
         return "redirect:/Carrinho";
     }
 
-    @PostMapping("/Carrinho/Remover/{id}/{tipo}")
+    @GetMapping("/Carrinho/Remover/{id}/{tipo}")
     public String removerItem(HttpServletRequest request, HttpServletResponse response,
             @PathVariable Long id, @PathVariable String tipo) {
 
