@@ -74,17 +74,23 @@
                         </div>
 
                         <div class="unid">
-                            <button type="submit" class="menos">-</button>
+                            <form
+                                th:action="@{/Carrinho/Diminuir/{id}/{tipo}(id=${produto.id}, tipo=${produto.tipo_do_produto})}"
+                                method="post">
+                                <button type="submit" class="menos">-</button>
+                            </form>
 
                             <input type="number" id="inpQuantidade" readonly th:value="${produto.estoque}">
 
-                            <button type="submit" class="mais">+</button>
-
+                            <form th:action="@{/Carrinho/Aumentar/{id}(id=${produto.id})}" method="post">
+                                <button type="submit" class="mais">+</button>
+                            </form>
                         </div>
                     </div>
 
                     <div class="valProdCar">
-                        <a th:href="@{/Carrinho/Remover/{id}/{tipo}(id=${produto.id},tipo=${produto.tipo_do_produto})}"><img id="imgLixo" src="/icons/lixeira.svg" alt="lixo"></a>
+                        <a th:href="@{/Carrinho/Remover/{id}(id=${produto.id})}"><img id="imgLixo"
+                                src="/icons/lixeira.svg" alt="lixo"></a>
                         <p>R$ [[${#numbers.formatDecimal(produto.preco * produto.estoque, 1, 'POINT', 2, 'POINT')}]]</p>
 
                     </div>
@@ -116,7 +122,8 @@
 
                 </table>
 
-                <form th:action="@{/Carrinho/Esvaziar}" th:method="post" style="padding: 0.94rem 2.8rem; text-align: center; width: 100%; height: 3.5vw;">
+                <form th:action="@{/Carrinho/Esvaziar}" th:method="post"
+                    style="padding: 0.94rem 2.8rem; text-align: center; width: 100%; height: 3.5vw;">
                     <button id="btnComprar" type="submit">Finalizar compra</button>
                 </form>
             </div>

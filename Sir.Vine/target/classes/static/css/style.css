@@ -120,6 +120,7 @@ h1 {
 }
 
 h3 {
+    transition: 0.5s;
     color: white;
     font-family: "Inter", sans-serif;
     font-weight: 260;
@@ -281,6 +282,7 @@ section {
     letter-spacing: 5px;
 
     margin: 2rem;
+    transition: 0.5s;
 
     opacity: 0;
 }

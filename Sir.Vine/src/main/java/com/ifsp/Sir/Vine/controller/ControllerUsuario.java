@@ -156,9 +156,12 @@ public class ControllerUsuario {
     }
 
     @GetMapping("/Perfil/{email}")
-    public String perfil(@PathVariable String email, Model model, Authentication auth, Principal principal) {
+    public String perfil(@PathVariable String email, Model model, Authentication auth, Principal principal, HttpServletRequest request) {
         Usuario usuario = usuarioRepositorio.findByEmail(email);
         model.addAttribute("usuario", usuario);
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+        model.addAttribute("itensCarrinho", carrinho.size());
+
         return "perfil";
     }
 

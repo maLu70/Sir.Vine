@@ -4,13 +4,16 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ifsp.Sir.Vine.repository.EspumanteRepositorio;
@@ -54,22 +57,47 @@ public class ControllerCarrinho {
         return new ArrayList<>();
     }
 
-    private void salvarCarrinho(HttpServletResponse response, List<ItemCarrinho> carrinho) {
-        try {
-            String json = mapper.writeValueAsString(carrinho);
-            String encoded = URLEncoder.encode(json, StandardCharsets.UTF_8);
-            Cookie cookie = new Cookie("carrinho", encoded);
-            cookie.setMaxAge(60 * 60 * 24);
-            cookie.setPath("/");
-            cookie.setHttpOnly(false);
-            response.addCookie(cookie);
-        } catch (Exception e) {
+    private void salvarCarrinho(HttpServletResponse response, List<ItemCarrinho> carrinho) throws JsonProcessingException {
+
+        Map<String, ItemCarrinho> mapa = new LinkedHashMap<>();
+
+        for (ItemCarrinho it : carrinho) {
+            String chave = it.getId() + "|" + it.getTipo();
+            Produto prod = produtoRepositorio.findById(it.getId());
+            int estoque = prod == null ? 0 : prod.getEstoque();
+            if (estoque <= 0)
+                continue;
+
+            ItemCarrinho existente = mapa.get(chave);
+            if (existente == null) {
+                int qtd = Math.min(it.getQtd(), estoque);
+                if (qtd > 0) {
+                    ItemCarrinho novo = new ItemCarrinho(it.getId(), it.getTipo(), qtd);
+                    mapa.put(chave, novo);
+                }
+            } else {
+                int soma = existente.getQtd() + it.getQtd();
+                existente.setQtd(Math.min(soma, estoque));
+            }
         }
+
+        List<ItemCarrinho> normalizado = new ArrayList<>(mapa.values());
+        for (ItemCarrinho i : normalizado)
+            i.setProduto(null);
+
+        String json = mapper.writeValueAsString(normalizado);
+        String encoded = URLEncoder.encode(json, StandardCharsets.UTF_8);
+
+        Cookie cookie = new Cookie("carrinho", encoded);
+        cookie.setMaxAge(60 * 60 * 24);
+        cookie.setPath("/");
+        cookie.setHttpOnly(false);
+        response.addCookie(cookie);
     }
 
     @PostMapping("/Carrinho/Adicionar/{id}/{quantidade}")
     public String adicionarItem(HttpServletRequest request, HttpServletResponse response,
-            @PathVariable String id, @PathVariable String quantidade) {
+            @PathVariable String id, @PathVariable String quantidade) throws JsonProcessingException {
 
         String tipo = produtoRepositorio.findById(Long.parseLong(id)).getTipo_do_produto();
         List<ItemCarrinho> carrinho = lerCarrinho(request);
@@ -88,7 +116,7 @@ public class ControllerCarrinho {
 
     @PostMapping("/Carrinho/Adicionar/{id}")
     public String adicionarItemsemPath(HttpServletRequest request, HttpServletResponse response,
-            @PathVariable String id, @RequestParam String quantidade) {
+            @PathVariable String id, @RequestParam String quantidade) throws JsonProcessingException {
 
         String tipo = produtoRepositorio.findById(Long.parseLong(id)).getTipo_do_produto();
         List<ItemCarrinho> carrinho = lerCarrinho(request);
@@ -106,26 +134,10 @@ public class ControllerCarrinho {
         return "redirect:/Carrinho";
     }
 
-    @PostMapping("/Carrinho/Aumentar/{id}/{tipo}")
-    public String aumentarItem(HttpServletRequest request, HttpServletResponse response,
-            @PathVariable Long id, @PathVariable String tipo) {
-
-        List<ItemCarrinho> carrinho = lerCarrinho(request);
-
-        for (ItemCarrinho item : carrinho) {
-            if (item.getId().equals(id) && item.getTipo().equals(tipo)) {
-                item.setQtd(item.getQtd() + 1);
-                salvarCarrinho(response, carrinho);
-                return "redirect:/Carrinho";
-            }
-        }
-
-        return "redirect:/Carrinho";
-    }
 
     @PostMapping("/Carrinho/Diminuir/{id}/{tipo}")
     public String diminuirItem(HttpServletRequest request, HttpServletResponse response,
-            @PathVariable Long id, @PathVariable String tipo) {
+            @PathVariable Long id, @PathVariable String tipo) throws JsonProcessingException {
 
         List<ItemCarrinho> carrinho = lerCarrinho(request);
 
@@ -146,7 +158,7 @@ public class ControllerCarrinho {
 
     @GetMapping("/Carrinho/Remover/{id}/{tipo}")
     public String removerItem(HttpServletRequest request, HttpServletResponse response,
-            @PathVariable Long id, @PathVariable String tipo) {
+            @PathVariable Long id, @PathVariable String tipo) throws JsonProcessingException {
 
         List<ItemCarrinho> carrinho = lerCarrinho(request);
 
@@ -183,8 +195,14 @@ public class ControllerCarrinho {
         }
 
         model.addAttribute("valorProdutos", valorTotal);
-        model.addAttribute("frete", 20);
-        model.addAttribute("valorTotal", valorTotal + 20);
+        if (carrinho.size() == 0) {
+            model.addAttribute("frete", 0);
+            model.addAttribute("valorTotal", valorTotal);
+        } else {
+            model.addAttribute("valorTotal", valorTotal + 20);
+            model.addAttribute("frete", 20);
+        }
+
         model.addAttribute("carrinho", produtos);
         model.addAttribute("itensCarrinho", carrinho.size());
 
@@ -206,5 +224,43 @@ public class ControllerCarrinho {
         cookie.setPath("/");
         response.addCookie(cookie);
         return "redirect:/";
+    }
+     @PostMapping("/Carrinho/Aumentar/{id}")
+    public String aumentarItem(HttpServletRequest request, HttpServletResponse response,
+            @PathVariable Long id) throws JsonProcessingException {
+
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+
+        for (ItemCarrinho item : carrinho) {
+            if (item.getId().equals(id)) {
+                if (item.getQtd()+1>produtoRepositorio.findById(id).getEstoque()) {
+                    
+                }else{
+                    item.setQtd(item.getQtd() + 1);
+                }
+                
+            }
+        }
+
+        salvarCarrinho(response, carrinho);
+        return "redirect:/Carrinho";
+    }
+    @PostMapping("/Carrinho/Diminuir/{id}")
+    public String dimunuirItem(HttpServletRequest request, HttpServletResponse response,
+            @PathVariable Long id) throws JsonProcessingException {
+
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+
+        for (ItemCarrinho item : carrinho) {
+            if (item.getId().equals(id)) {
+                if (item.getQtd() == 1) {
+                    return "redirect:/Carrinho/Remover/"+item.getId()+"/"+produtoRepositorio.findById(id).getTipo_do_produto();
+                }
+                item.setQtd(item.getQtd() - 1);
+            }
+        }
+
+        salvarCarrinho(response, carrinho);
+        return "redirect:/Carrinho";
     }
 }

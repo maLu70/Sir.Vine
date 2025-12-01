@@ -105,11 +105,11 @@
                 <div id="bott">
 
                     <div id="unid">
-                        <button type="submit" id="menos" onclick="diminuir()">-</button>
+                        <button type="submit" id="menos" onclick="diminuir()" th:if="${!usuario.admin}">-</button>
 
-                        <input id="inpQuantidade" type="number" readonly value="1">
+                        <input id="inpQuantidade" type="number" readonly value="1" th:if="${!usuario.admin}">
 
-                        <button type="submit" id="mais" onclick="aumentar()">+</button>
+                        <button type="submit" id="mais" onclick="aumentar()" th:if="${!usuario.admin}">+</button>
 
                     </div>
 
