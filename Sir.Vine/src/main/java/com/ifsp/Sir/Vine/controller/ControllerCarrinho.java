@@ -81,6 +81,25 @@ public class ControllerCarrinho {
                 return "redirect:/Carrinho";
             }
         }
+        carrinho.add(new ItemCarrinho(Long.parseLong(id), tipo, Integer.parseInt(quantidade)));
+        salvarCarrinho(response, carrinho);
+        return "redirect:/Carrinho";
+    }
+
+    @PostMapping("/Carrinho/Adicionar/{id}")
+    public String adicionarItemsemPath(HttpServletRequest request, HttpServletResponse response,
+            @PathVariable String id, @RequestParam String quantidade) {
+
+        String tipo = produtoRepositorio.findById(Long.parseLong(id)).getTipo_do_produto();
+        List<ItemCarrinho> carrinho = lerCarrinho(request);
+
+        for (ItemCarrinho item : carrinho) {
+            if (item.getId().equals(id) && item.getTipo().equals(tipo)) {
+                item.setQtd(item.getQtd() + Integer.parseInt(quantidade));
+                salvarCarrinho(response, carrinho);
+                return "redirect:/Carrinho";
+            }
+        }
 
         carrinho.add(new ItemCarrinho(Long.parseLong(id), tipo, Integer.parseInt(quantidade)));
         salvarCarrinho(response, carrinho);

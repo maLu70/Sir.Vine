@@ -123,8 +123,9 @@
                     </form>
 
                     <form th:method="post"
-                        th:action="@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=1)}"
+                        th:action="@{/Carrinho/Adicionar/{id}(id=${produto.id})}"
                         th:if="${!usuario.admin}" id="formAddCarrinho">
+                        <input type="hidden" id="quantidade" th:name="quantidade" value="0">
                         <button type="submit" id="adicionar">Adicionar ao carrinho</button>
                     </form>
 
@@ -140,21 +141,24 @@
     <script th:inline="javascript">
 
         const input = document.querySelector('#inpQuantidade');
-        const estoque = [[${ produto.estoque }]];
+        const inputquantidade = document.querySelector('#quantidade')
         const form = document.querySelector('#formAddCarrinho');
+        const estoque = [[${ produto.estoque }]];
 
-        console.log("Estoque: " + estoque)
+
 
         function aumentar() {
             if (input.value < estoque) {
                 input.value = parseInt(input.value) + 1;
-                // form.action = "@{/Carrinho/Adicionar/{id}/{quantidade}(id=${produto.id}, quantidade=5)}"
+                inputquantidade.value = parseInt(input.value)+1; 
+                
             }
         }
 
         function diminuir() {
             if (input.value > 1) {
                 input.value = parseInt(input.value) - 1;
+                inputquantidade.value = parseInt(input.value) - 1;
             }
         }
     </script>
