@@ -273,8 +273,14 @@ h4 {
     width: 20%;
 }
 
+.unid form {
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
 .unid input {
-    width: 30%;
+    width: 100%;
     height: 100%;
     margin: 0 3% 0 3%;
     background-color: #15141300;
@@ -286,7 +292,7 @@ h4 {
 
 .mais,
 .menos {
-    width: 30%;
+    width: 100%;
     height: 100%;
     border-radius: 25%;
     border: none;
